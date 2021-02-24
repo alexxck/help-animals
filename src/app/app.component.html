@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<div class="root" (window:resize)="updateMode()">
+  <div class="aside" *ngIf="asideNeedShow">
+    AsideComponent WILL HERE (REMOVE AFTER COMPONENT CREATE)
+    <!--  <AsideComponent></AsideComponent>-->
+  </div>
+  <div class="main">
+    <header class="header">
+      HeaderComponent WILL HERE (REMOVE AFTER COMPONENT CREATE)
+      <!--    <HeaderComponent showMenuButton="!asideNeedShow"></HeaderComponent>-->
+    </header>
+
+    <div class="router-container">
+      ROUTER (REMOVE AFTER COMPONENT WILL NOT EMPTY)
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
