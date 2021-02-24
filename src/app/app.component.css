@@ -4,29 +4,33 @@
   min-height: 100vh;
   display: flex;
   flex-direction: row;
-  border: solid purple 2px;
 }
 
-/*  remove styles below after components create */
-
 .aside {
-  max-width: 300px;
-  border: solid blue 2px;
+  width: 300px;
+  padding: 5px;
+}
+
+.main-page-image-container {
+  width: 100%;
+  background-image: url("src/assets/images/main-page-image.jpg");
+  min-height: 100px;
+}
+
+.main-page-image {
+  display: block;
+  width: 100%;
 }
 
 .main {
   width: 100%;
-  border: solid yellow 2px;
 }
 
 .header {
-  min-height: 200px;
+  min-height: 150px;
   width: 100%;
-  border: solid green 2px;
 }
 
 .router-container {
-  min-height: 400px;
   width: 100%;
-  border: solid red 2px;
 }

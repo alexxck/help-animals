@@ -1,18 +1,18 @@
-import {AfterViewInit, Component, ElementRef} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterContentInit {
   title = 'help-animals';
   asideNeedShow = false;
 
   constructor(private elRef: ElementRef) {
   }
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     this.updateMode();
   }
 
