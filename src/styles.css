@@ -5,12 +5,10 @@
   box-sizing: border-box;
 }
 
-.default-color-theme {
+.background-color-default {
   background-color: #FF6732;
-  color: #FFF;
 }
 
-.dark-color-theme {
-  background-color: #C45224;
-  color: #FFF;
+.background-color-dark {
+  background-color: #c45224;
 }
