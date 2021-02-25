@@ -7,28 +7,21 @@
 }
 
 .aside {
-  width: 300px;
   padding: 5px;
+  min-width: 250px;
 }
 
-.main-page-image-container {
-  width: 100%;
-  background-image: url("src/assets/images/main-page-image.jpg");
-  min-height: 100px;
-}
-
-.main-page-image {
+.main-page-aside-image {
   display: block;
-  width: 100%;
 }
 
 .main {
   width: 100%;
+  max-width: 1100px;
 }
 
 .header {
   min-height: 150px;
-  width: 100%;
 }
 
 .router-container {
