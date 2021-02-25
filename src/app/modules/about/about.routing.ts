@@ -4,7 +4,7 @@ import {AboutComponent} from './about/about.component';
 export const AboutRouting: Routes = [
   {
     path: '',
-    // resolve: { posts: AboutResolver },
+    // resolve: { posts: AboutResolver }, //todo
     component: AboutComponent,
   }
 ];

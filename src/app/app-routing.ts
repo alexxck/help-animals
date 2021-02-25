@@ -19,14 +19,14 @@ const routes: Routes = [
   //   path: 'help_us',
   //   loadChildren: () => import('./modules/help-us/help-us.module').then(m => m.HelpUsModule)
   // },
-  // {
-  //   path: 'animals',
-  //   loadChildren: () => import('./modules/animals/animals.module').then(m => m.AnimalsModule)
-  // },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
-  // },
+  {
+    path: 'animals',
+    loadChildren: () => import('./modules/animals/animals.module').then(m => m.AnimalsModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+  },
   // {
   //   path: 'login',
   //   loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
