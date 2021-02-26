@@ -1,4 +1,5 @@
 import {AfterContentInit, AfterViewInit, Component, ElementRef} from '@angular/core';
+import {environment} from '../environments';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements AfterContentInit {
 
   ngAfterContentInit(): void {
     this.updateMode();
+    console.log(environment.apiUrl);
   }
 
   updateMode(): void {
