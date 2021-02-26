@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRouting } from './app-routing';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './core/nav-menu/nav-menu.component';
+import { NavMenuComponent } from './core/components/nav-menu/nav-menu.component';
+import {coreServices} from './core/services';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { NavMenuComponent } from './core/nav-menu/nav-menu.component';
     BrowserModule,
     AppRouting
   ],
-  providers: [],
+  providers: [...coreServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
