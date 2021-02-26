@@ -31,19 +31,24 @@ class User implements IUser {
   providedIn: 'root'
 })
 export class UserAuthService {
-
-  user = new User();
-
-  public getPermissions(): UserPermission[] {
-    return this.user.permissions;
-  }
-
-  public hasPermission(permission: UserPermission): boolean {
-    return this.user.permissions.find((e) => e === permission) || false;
-  }
+  private user: IUser = new User();
 
   constructor() {
   }
 
+  public getUserPermissions(): UserPermission[] {
+    return this.user.permissions;
+  }
 
+  public hasPermission(permission: UserPermission): boolean {
+    return !!this.user.permissions.find((e) => e === permission);
+  }
+
+  public get isAuthorized(): boolean {
+    return !!this.user.id;
+  }
+
+  public setUser(user: IUser): void {
+    this.user = user;
+  }
 }
