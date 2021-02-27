@@ -13,7 +13,8 @@ export interface IUser {
   id: string;
   login: string;
   name: string;
-  phones: string[];
+  phone1: string;
+  phone2: string;
   email: string;
   permissions: UserPermission[];
 }
@@ -22,7 +23,8 @@ class User implements IUser {
   id = '';
   login = '';
   name = '';
-  phones = [];
+  phone1 = '';
+  phone2 = '';
   email = '';
   permissions = [];
 }
