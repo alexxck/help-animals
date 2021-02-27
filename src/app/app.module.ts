@@ -5,7 +5,7 @@ import { AppRouting } from './app-routing';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './core/components/nav-menu/nav-menu.component';
 import {coreServices} from './core/services';
-import { HeaderComponent } from './header/header.component';
+import {HeaderComponent} from './core/components/header/header.component';
 
 @NgModule({
   declarations: [
