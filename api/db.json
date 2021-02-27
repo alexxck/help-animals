@@ -12,5 +12,11 @@
       "email": "email3@gmail.com",
       "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
     }
-  ]
+  ],
+
+  "current_user":
+    { "id": 1, "login": "login_1", "name": "name_1", "phone1": "name_1", "phone2": "name_1",
+      "email": "email1@gmail.com",
+      "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
+    }
 }
