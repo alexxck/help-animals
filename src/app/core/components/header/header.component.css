@@ -1,5 +1,6 @@
 .header {
-  min-height: 150px;
+  position: relative;
+  height: 150px;
   width: 100%;
   display: grid;
   grid-template-columns: 65% 35%;

@@ -2,11 +2,13 @@
   <aside class="aside background-color-default" *ngIf="asideNeedShow">
     <img class="main-page-aside-image" src="assets/images/main-page-image.jpg" alt="funny cat">
     <!--  <NavigationComponent></NavigationComponent>-->
+    <app-nav-menu></app-nav-menu>
   </aside>
 
   <div class="main">
     <app-header>
-      <button type="button" style="background-color: aqua; width: 80px; height: 80px; display: block" *ngIf="!asideNeedShow">Nav menu from aside</button>
+      <app-nav-menu *ngIf="!asideNeedShow"></app-nav-menu>
+      <!-- <button type="button" style="background-color: aqua; width: 80px; height: 80px; display: block" *ngIf="!asideNeedShow">Nav menu from aside</button> -->
     </app-header>
     <!-- <header class="header background-color-default">
       HeaderComponent WILL HERE (REMOVE AFTER COMPONENT CREATE) -->
