@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {environment} from '../../../../environments';
 import {HttpClient} from '@angular/common/http';
-import {IAnimalCard} from '../animal-card/animal-card.component';
+import {IAnimalInfo} from '../models/ianimal-info';
 
 const GET_ANIMALS_URL = environment.apiUrl + '/animals';
 
@@ -11,7 +11,7 @@ const GET_ANIMALS_URL = environment.apiUrl + '/animals';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit {
-  animalList: IAnimalCard[] = [];
+  animalList: IAnimalInfo[] = [];
 
 
   constructor(private httpClient: HttpClient) {
@@ -23,7 +23,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   public getAnimals(): void {
-    this.httpClient.get<IAnimalCard[]>(GET_ANIMALS_URL).subscribe((res) => {
+    this.httpClient.get<IAnimalInfo[]>(GET_ANIMALS_URL).subscribe((res) => {
       this.animalList = res;
     });
   }

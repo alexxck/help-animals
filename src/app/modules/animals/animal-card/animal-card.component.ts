@@ -1,22 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-
-export interface IAnimalCard {
-  id: string;
-  breed: string;
-  state: string;
-  color: string;
-  features: string;
-  imgUrl: string;
-}
+import {Component, Input} from '@angular/core';
+import {IAnimalInfo} from '../models/ianimal-info';
 
 @Component({
   selector: 'app-animal-card',
   templateUrl: './animal-card.component.html',
   styleUrls: ['./animal-card.component.css']
 })
-export class AnimalCardComponent{
-
-  @Input() animalInfo?: IAnimalCard;
+export class AnimalCardComponent {
+  @Input() animalInfo?: IAnimalInfo;
 
   constructor() {
   }
