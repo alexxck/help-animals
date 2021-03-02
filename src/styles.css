@@ -88,10 +88,6 @@ body.lock{
   overflow: hidden;
 }
 
-.background-color-default {
-  background-color: #FF8C00;
-}
-
-.background-color-dark {
-  background-color: #c45224;
+:root {
+  --main-site-color: #FF8C00;
 }

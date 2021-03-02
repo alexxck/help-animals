@@ -9,6 +9,7 @@
   justify-items: stretch;
   padding: 1rem;
   color: #fff;
+  background-color: var(--main-site-color);
 }
 
 .header .header__main{
