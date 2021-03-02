@@ -18,5 +18,33 @@
     { "id": 1, "login": "login_1", "name": "name_1", "phone1": "name_1", "phone2": "name_1",
       "email": "email1@gmail.com",
       "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
+    },
+
+  "animals": [
+    { "id": 1, "breed": "Порода 1", "state": "Стать 1", "color": "Колір 1", "features": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 2, "breed": "Порода 2", "state": "Стать 2", "color": "Колір 2", "features": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 3, "breed": "Порода 3", "state": "Стать 3", "color": "Колір 3", "features": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 4, "breed": "Порода 4", "state": "Стать 4", "color": "Колір 4", "features": "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 5, "breed": "Порода 5", "state": "Стать 5", "color": "Колір 5", "features": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 6, "breed": "Порода 6", "state": "Стать 6", "color": "Колір 6", "features": "6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 7, "breed": "Порода 7", "state": "Стать 7", "color": "Колір 7", "features": "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    },
+    { "id": 8, "breed": "Порода 8", "state": "Стать 8", "color": "Колір 8", "features": "8 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
     }
+  ]
 }
+

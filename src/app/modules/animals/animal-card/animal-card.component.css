@@ -1,0 +1,27 @@
+.animal-card-container {
+  padding: 5px;
+  border: 1px solid var(--main-site-color);
+}
+
+.animal-card-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+.animal-card-main-field {
+  width: 100%;
+  padding: 2px 0;
+  height: 1em;
+}
+
+.animal-card-secondary-field {
+  padding: 2px 0;
+  overflow: hidden;
+  text-align: justify;
+  height: 3em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
