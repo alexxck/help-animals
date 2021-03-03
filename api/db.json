@@ -1,50 +1,208 @@
 {
   "users": [
-    { "id": 1, "login": "login_1", "name": "name_1", "phone1": "name_1", "phone2": "name_1",
+    {
+      "id": 1,
+      "login": "login_1",
+      "name": "name_1",
+      "phone1": "name_1",
+      "phone2": "name_1",
       "email": "email1@gmail.com",
-      "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
+      "permissions": [
+        "CAN_ADD_AND_REMOVE_USERS",
+        "CAN_EDIT_USERS",
+        "CAN_ADD_AND_REMOVE_ANIMALS",
+        "CAN_SEE_USER_DETAILS",
+        "CAN_EDIT_ANIMALS",
+        "CAN_CREATE_ANIMALS_REQUESTS",
+        "CAN_CLOSE_ANIMALS_REQUESTS",
+        "CAN_SEE_ANIMAL_DETAILS"
+      ]
     },
-    { "id": 2, "login": "login_2", "name": "name_2", "phone1": "name_2", "phone2": "name_2",
+    {
+      "id": 2,
+      "login": "login_2",
+      "name": "name_2",
+      "phone1": "name_2",
+      "phone2": "name_2",
       "email": "email2@gmail.com",
-      "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
+      "permissions": [
+        "CAN_ADD_AND_REMOVE_USERS",
+        "CAN_EDIT_USERS",
+        "CAN_ADD_AND_REMOVE_ANIMALS",
+        "CAN_SEE_USER_DETAILS",
+        "CAN_EDIT_ANIMALS",
+        "CAN_CREATE_ANIMALS_REQUESTS",
+        "CAN_CLOSE_ANIMALS_REQUESTS",
+        "CAN_SEE_ANIMAL_DETAILS"
+      ]
     },
-    { "id": 3, "login": "login_3", "name": "name_3", "phone1": "name_3", "phone2": "name_3",
+    {
+      "id": 3,
+      "login": "login_3",
+      "name": "name_3",
+      "phone1": "name_3",
+      "phone2": "name_3",
       "email": "email3@gmail.com",
-      "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
+      "permissions": [
+        "CAN_ADD_AND_REMOVE_USERS",
+        "CAN_EDIT_USERS",
+        "CAN_ADD_AND_REMOVE_ANIMALS",
+        "CAN_SEE_USER_DETAILS",
+        "CAN_EDIT_ANIMALS",
+        "CAN_CREATE_ANIMALS_REQUESTS",
+        "CAN_CLOSE_ANIMALS_REQUESTS",
+        "CAN_SEE_ANIMAL_DETAILS"
+      ]
     }
   ],
-
-  "current_user":
-    { "id": 1, "login": "login_1", "name": "name_1", "phone1": "name_1", "phone2": "name_1",
-      "email": "email1@gmail.com",
-      "permissions": ["CAN_ADD_USERS","CAN_EDIT_USERS","CAN_ADD_ANIMALS","CAN_EDIT_ANIMALS","CAN_CREATE_ANIMALS_REQUESTS","CAN_CLOSE_ANIMALS_REQUESTS"]
-    },
-
+  "current_user": {
+    "id": 1,
+    "login": "login_1",
+    "name": "name_1",
+    "phone1": "name_1",
+    "phone2": "name_1",
+    "email": "email1@gmail.com",
+    "permissions": [
+      "CAN_ADD_AND_REMOVE_USERS",
+      "CAN_EDIT_USERS",
+      "CAN_ADD_AND_REMOVE_ANIMALS",
+      "CAN_SEE_USER_DETAILS",
+      "CAN_EDIT_ANIMALS",
+      "CAN_CREATE_ANIMALS_REQUESTS",
+      "CAN_CLOSE_ANIMALS_REQUESTS",
+      "CAN_SEE_ANIMAL_DETAILS"
+    ]
+  },
   "animals": [
-    { "id": 1, "breed": "Порода 1", "state": "Стать 1", "color": "Колір 1", "features": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 1,
+      "breed": "Порода 1",
+      "state": "Стать 1",
+      "color": "Колір 1",
+      "features": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 1,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
+      "responsiblePerson": "some person data 1"
     },
-    { "id": 2, "breed": "Порода 2", "state": "Стать 2", "color": "Колір 2", "features": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 2,
+      "breed": "Порода 2",
+      "state": "Стать 2",
+      "color": "Колір 2",
+      "features": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 2,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": false,
+      "responsiblePerson": "some person data 2"
     },
-    { "id": 3, "breed": "Порода 3", "state": "Стать 3", "color": "Колір 3", "features": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 3,
+      "breed": "Порода 3",
+      "state": "Стать 3",
+      "color": "Колір 3",
+      "features": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 3,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": false,
+      "responsiblePerson": ""
     },
-    { "id": 4, "breed": "Порода 4", "state": "Стать 4", "color": "Колір 4", "features": "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 4,
+      "breed": "Порода 4",
+      "state": "Стать 4",
+      "color": "Колір 4",
+      "features": "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 4,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": false,
+      "responsiblePerson": "some person data 4"
     },
-    { "id": 5, "breed": "Порода 5", "state": "Стать 5", "color": "Колір 5", "features": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 5,
+      "breed": "Порода 5",
+      "state": "Стать 5",
+      "color": "Колір 5",
+      "features": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 5,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
+      "responsiblePerson": "some person data 5"
     },
-    { "id": 6, "breed": "Порода 6", "state": "Стать 6", "color": "Колір 6", "features": "6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 6,
+      "breed": "Порода 6",
+      "state": "Стать 6",
+      "color": "Колір 6",
+      "features": "6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 6,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
+      "responsiblePerson": "some person data 6"
     },
-    { "id": 7, "breed": "Порода 7", "state": "Стать 7", "color": "Колір 7", "features": "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 7,
+      "breed": "Порода 7",
+      "state": "Стать 7",
+      "color": "Колір 7",
+      "features": "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 7,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": false,
+      "rabiesVaccination": false,
+      "sterilization": false,
+      "animalHasFamily": true,
+      "responsiblePerson": "some person data 7"
     },
-    { "id": 8, "breed": "Порода 8", "state": "Стать 8", "color": "Колір 8", "features": "8 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg"
+    {
+      "id": 8,
+      "breed": "Порода 8",
+      "state": "Стать 8",
+      "color": "Колір 8",
+      "features": "8 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "age": 8,
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
+      "responsiblePerson": "some person data 8"
     }
   ]
 }
+
 

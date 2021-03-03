@@ -7,11 +7,13 @@ import {Subscription} from 'rxjs';
 const COOKIES_USER_NAME = 'user';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';
 
-export enum UserPermission {  //  todo maybe edit, if backend say
-  CAN_ADD_USERS = 'CAN_ADD_USERS',
+export enum UserAuthPermission {  //  todo maybe edit, if backend say
+  CAN_ADD_AND_REMOVE_USERS = 'CAN_ADD_AND_REMOVE_USERS',
   CAN_EDIT_USERS = 'CAN_EDIT_USERS',
-  CAN_ADD_ANIMALS = 'CAN_ADD_ANIMALS',
+  CAN_SEE_USER_DETAILS = 'CAN_SEE_USER_DETAILS',
+  CAN_ADD_AND_REMOVE_ANIMALS = 'CAN_ADD_AND_REMOVE_ANIMALS',
   CAN_EDIT_ANIMALS = 'CAN_EDIT_ANIMALS',
+  CAN_SEE_ANIMAL_DETAILS = 'CAN_SEE_ANIMAL_DETAILS',
   CAN_CREATE_ANIMALS_REQUESTS = 'CAN_CREATE_ANIMALS_REQUESTS',
   CAN_CLOSE_ANIMALS_REQUESTS = 'CAN_CLOSE_ANIMALS_REQUESTS'
 }
@@ -49,7 +51,7 @@ export class UserAuthService {
     return this.getUser().permissions;
   }
 
-  public hasPermission(permission: UserPermission): boolean {
+  public hasPermission(permission: UserAuthPermission): boolean {
     const user = this.getUser();
     return !!user.permissions.find((e) => e === permission);
   }

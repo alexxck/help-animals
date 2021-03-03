@@ -8,7 +8,7 @@ import {AdminRouting} from './admin.routing';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(AdminRouting),
+    RouterModule.forChild(AdminRouting),
   ]
 })
 export class AdminModule {

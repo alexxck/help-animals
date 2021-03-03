@@ -1,0 +1,31 @@
+<div class="admin-animal-list-container">
+  <div class="admin-animal-list-header">
+    <button type="button" routerLink="{{getRedirectToAddLink()}}">Додати тваринку</button>
+  </div>
+
+  <table class="admin-animal-list--table">
+    <tr>
+      <th>id</th>
+      <th>Відповідальна особа</th>
+      <th>Стер</th>
+      <th>Сказ</th>
+      <th>Комп</th>
+      <th>Влаш</th>
+      <th *ngIf="currentUserHasPermission(userAuthPermission.CAN_SEE_ANIMAL_DETAILS)">&#9997;</th>
+    </tr>
+
+    <tr *ngFor="let animal of animalList">
+      <td>{{animal.id}}</td>
+      <td>{{animal.responsiblePerson}}</td>
+      <td>{{animal.sterilization ? '&#10004;': '&#10008;'}}</td>
+      <td>{{animal.rabiesVaccination ? '&#10004;' : '&#10008;'}}</td>
+      <td>{{animal.complexVaccination ? '&#10004;' : '&#10008;'}}</td>
+      <td>{{animal.animalHasFamily ? '&#10004;' : '&#10008;'}}</td>
+      <td *ngIf="currentUserHasPermission(userAuthPermission.CAN_SEE_ANIMAL_DETAILS)">
+        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToAnimalDetailsLink(animal.id)}}">&#9997;</a>
+      </td>
+    </tr>
+
+
+  </table>
+</div>

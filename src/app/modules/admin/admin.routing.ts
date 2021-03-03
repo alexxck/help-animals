@@ -1,10 +1,9 @@
 import {Routes} from '@angular/router';
-import {AboutComponent} from '../about/about/about.component';
 
 export const AdminRouting: Routes = [
   {
-    path: '',
-    // resolve: { posts: AdminResolver }, // todo
-    component: AboutComponent,
+    path: 'animals',
+    // canActivate: ,
+    loadChildren: () => import('./animals/admin-animals.module').then(m => m.AdminAnimalsModule)
   }
 ];
