@@ -5,7 +5,7 @@ export interface IAdminAnimalInfo {
   color: string;
   features: string;
   imgUrl: string;
-  age: number;
+  age: string;
   dateAdded: string;
   dateLastEdit: string;
   complexVaccination: boolean;

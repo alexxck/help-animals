@@ -8,16 +8,12 @@ export const AdminAnimalsRouting: Routes = [
     // canActivate: [],
     component: AdminAnimalListComponent,
   },
-  // {
-  //   path: '/add',
-  //   component: AdminAnimalAddComponent,
-  // },
   {
-    path: '/:id',
+    path: 'add',
     component: AdminAnimalDetailsComponent,
   },
-  // {
-  //   path: '/:id/edit',
-  //   component: AdminAnimalEditComponent,
-  // }
+  {
+    path: ':id',
+    component: AdminAnimalDetailsComponent,
+  },
 ];

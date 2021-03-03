@@ -47,7 +47,7 @@ export class UserAuthService {
     this.updateUserFromServer();
   }
 
-  public getPermissions(): string[] {
+  public getUserPermissions(): string[] {
     return this.getUser().permissions;
   }
 

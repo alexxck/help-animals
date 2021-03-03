@@ -197,10 +197,16 @@
       "dateAdded": "03 03 2021",
       "dateLastEdit": "04 03 2021",
       "complexVaccination": true,
-      "rabiesVaccination": false,
-      "sterilization": false,
-      "animalHasFamily": false,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
       "responsiblePerson": "some person data 8"
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
     }
   ]
 }
