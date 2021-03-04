@@ -3,80 +3,104 @@
   <img class="admin-animal-details-photo" src="{{animal.imgUrl}}" alt="PHOTO">
 
   <form enctype="multipart/form-data">
-<!--  <form action="{{formActionUrl}}" enctype="multipart/form-data" method="post">-->
     <div class="admin-animal-details-form-field-container" *ngIf="animal.id">
-      <label for="id">id:</label>
-      <input id="id" name="id" [(ngModel)]="animal.id" required="required" readonly="readonly"/>
+      <label class="admin-animal-details-form-field-label" for="id">id:</label>
+      <input class="admin-animal-details-form-field-input" id="id" name="id" [(ngModel)]="animal.id" required="required"
+             readonly="readonly"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="age">age:</label>
-      <input id="age" name="age" type="number" [(ngModel)]="animal.age" required="required"
+      <label class="admin-animal-details-form-field-label" for="age">age:</label>
+      <input class="admin-animal-details-form-field-input"
+             id="age" name="age" type="number" [(ngModel)]="animal.age" required="required"
              [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="breed">Порода:</label>
-      <input id="breed" name="breed" [(ngModel)]="animal.breed" required="required" [readonly]="formReadonlyFieldCheck()"/>
+      <label class="admin-animal-details-form-field-label" for="breed">Порода:</label>
+      <input class="admin-animal-details-form-field-input" id="breed" name="breed" [(ngModel)]="animal.breed"
+             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="state">Стать:</label>
-      <input id="state" name="state" [(ngModel)]="animal.state" required="required" [readonly]="formReadonlyFieldCheck()"/>
+      <label class="admin-animal-details-form-field-label" for="state">Стать:</label>
+      <input class="admin-animal-details-form-field-input" id="state" name="state" [(ngModel)]="animal.state"
+             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="color">Колір:</label>
-      <input id="color" name="color" [(ngModel)]="animal.color" required="required" [readonly]="formReadonlyFieldCheck()"/>
+      <label class="admin-animal-details-form-field-label" for="color">Колір:</label>
+      <input class="admin-animal-details-form-field-input" id="color" name="color" [(ngModel)]="animal.color"
+             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="features">Особливості:</label>
-      <input id="features" name="features" [(ngModel)]="animal.features" required="required" [readonly]="formReadonlyFieldCheck()"/>
+      <label class="admin-animal-details-form-field-label" for="features">Особливості:</label>
+      <input class="admin-animal-details-form-field-input" id="features" name="features" [(ngModel)]="animal.features"
+             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="imgUrl">Зображення:</label>
-      <input id="imgUrl" name="imgUrl" type="file" accept="image/png,image/jpeg"
+      <img src="{{imagePreview}}" height="200px" alt="Image preview...">
+      <label class="admin-animal-details-form-field-label" for="imgUrl">Зображення:</label>
+      <input class="admin-animal-details-form-field-input" id="imgUrl" name="photo" type="file"
+             (change)="addPhoto($event)"
+             accept="image/png,image/jpeg"
              [readonly]="formReadonlyFieldCheck()"/>
+
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="responsiblePerson">Відповідальна персона:</label>
-      <input id="responsiblePerson" name="responsiblePerson" [(ngModel)]="animal.responsiblePerson" [readonly]="formReadonlyFieldCheck()"/>
+      <label class="admin-animal-details-form-field-label" for="responsiblePerson">Відповідальна персона:</label>
+      <input class="admin-animal-details-form-field-input" id="responsiblePerson" name="responsiblePerson"
+             [(ngModel)]="animal.responsiblePerson" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="complexVaccination">Вакцинація комплексна:</label>
-      <input id="complexVaccination" name="complexVaccination" type="checkbox" [(ngModel)]="animal.complexVaccination" [readonly]="!addPermission && !editPermission"/>
+      <label class="admin-animal-details-form-field-label" for="complexVaccination">Вакцинація комплексна:</label>
+      <input class="admin-animal-details-form-field-input" id="complexVaccination" name="complexVaccination"
+             type="checkbox" [(ngModel)]="animal.complexVaccination" [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="rabiesVaccination">Вакцинація від сказу:</label>
-      <input id="rabiesVaccination" name="rabiesVaccination" type="checkbox" [(ngModel)]="animal.rabiesVaccination" [readonly]="!addPermission && !editPermission"/>
+      <label class="admin-animal-details-form-field-label" for="rabiesVaccination">Вакцинація від сказу:</label>
+      <input class="admin-animal-details-form-field-input" id="rabiesVaccination" name="rabiesVaccination"
+             type="checkbox" [(ngModel)]="animal.rabiesVaccination" [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="sterilization">Тварина стерилізована:</label>
-      <input id="sterilization" name="sterilization" type="checkbox" [(ngModel)]="animal.sterilization" [readonly]="!addPermission && !editPermission"/>
+      <label class="admin-animal-details-form-field-label" for="sterilization">Тварина стерилізована:</label>
+      <input class="admin-animal-details-form-field-input" id="sterilization" name="sterilization" type="checkbox"
+             [(ngModel)]="animal.sterilization" [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
     <div class="admin-animal-details-form-field-container">
-      <label for="animalHasFamily">Тварина влаштована:</label>
-      <input id="animalHasFamily" name="animalHasFamily" type="checkbox" [(ngModel)]="animal.animalHasFamily" [readonly]="!addPermission && !editPermission"/>
+      <label class="admin-animal-details-form-field-label" for="animalHasFamily">Тварина влаштована:</label>
+      <input class="admin-animal-details-form-field-input" id="animalHasFamily" name="animalHasFamily" type="checkbox"
+             [(ngModel)]="animal.animalHasFamily" [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
-    <button type="button" *ngIf="animal.id && editPermission" (click)="submit()">Підтвердити зміни</button>
-    <button type="button" *ngIf="!animal.id && addPermission" (click)="submit()">Додати тварину</button>
+    <div class="admin-animal-details-form-field-container">
+      <label class="admin-animal-details-form-field-label" for="showInGallery">Відображати в галереї:</label>
+      <input class="admin-animal-details-form-field-input" id="showInGallery" name="showInGallery" type="checkbox"
+             [(ngModel)]="animal.showInGallery" [readonly]="formReadonlyFieldCheck()"/>
+    </div>
+
+    <button class="admin-animal-details-form-field-submit-button" type="button" *ngIf="animal.id && editPermission"
+            (click)="submitEditAnimal()">Підтвердити зміни
+    </button>
+    <button class="admin-animal-details-form-field-submit-button" type="button" *ngIf="animal.id && addPermission"
+            (click)="submitAddAnimal()">Додати тварину
+    </button>
   </form>
 
   <div class="admin-animal-details-form-field-container" *ngIf="animal.dateLastEdit">
-    <label for="dateLastEdit">Дата останнього редагування:</label>
+    <label class="admin-animal-details-form-field-label" for="dateLastEdit">Дата останнього редагування:</label>
     <input id="dateLastEdit" value="{{animal.dateLastEdit}}" readonly="readonly"/>
   </div>
 
   <div class="admin-animal-details-form-field-container" *ngIf="animal.dateLastEdit">
-    <label for="dateAdded">Тварина додавання тварини:</label>
+    <label class="admin-animal-details-form-field-label" for="dateAdded">Тварина додавання тварини:</label>
     <input id="dateAdded" value="{{animal.dateAdded}}" readonly="readonly"/>
   </div>
 </div>

@@ -13,4 +13,5 @@ export interface IAdminAnimalInfo {
   sterilization: boolean;
   animalHasFamily: boolean;
   responsiblePerson: string;
+  showInGallery: boolean;
 }
