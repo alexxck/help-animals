@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments';
 import {CookieService} from 'ngx-cookie-service';
-import {Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 const COOKIES_USER_NAME = 'user';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';
@@ -44,7 +45,7 @@ class User implements IUser {
 export class UserAuthService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
-    this.updateUserFromServer();
+    this.getUserFromServer().subscribe();
   }
 
   public getUserPermissions(): string[] {
@@ -80,10 +81,11 @@ export class UserAuthService {
     this.cookieService.delete(COOKIES_USER_NAME);
   }
 
-  public updateUserFromServer(): Subscription {
-    return this.httpClient.get<IUser>(GET_CURRENT_USER_URL).subscribe((res) => {
-      this.saveUser(res);
-      return res;
-    });
+  public getUserFromServer(): Observable<IUser> {
+    return this.httpClient.get<IUser>(GET_CURRENT_USER_URL).pipe(
+      map((res) => {
+        this.saveUser(res);
+        return res;
+      }));
   }
 }
