@@ -34,10 +34,10 @@ export class PaginationComponent implements OnInit, AfterContentChecked {
   }
 
   updatePaginationItems(): void {
+    this.pagination.page = Number(this.pagination.page) || 1;
+
     const offset = 3;
     const pagination: number[] = [];
-    this.pagination.page = Number(this.pagination.page);
-
     const startPage = this.pagination.page - offset > 1 ? this.pagination.page - offset : 1;
     const endPage = this.pagination.page + offset <= this.pagination.totalPages
       ? this.pagination.page + offset
