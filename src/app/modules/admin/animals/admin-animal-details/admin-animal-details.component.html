@@ -89,7 +89,7 @@
     <button class="admin-animal-details-form-field-submit-button" type="button" *ngIf="animal.id && editPermission"
             (click)="submitEditAnimal()">Підтвердити зміни
     </button>
-    <button class="admin-animal-details-form-field-submit-button" type="button" *ngIf="animal.id && addPermission"
+    <button class="admin-animal-details-form-field-submit-button" type="button" *ngIf="!animal.id && addPermission"
             (click)="submitAddAnimal()">Додати тварину
     </button>
   </form>
