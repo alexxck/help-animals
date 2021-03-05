@@ -3,7 +3,7 @@ import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import {UserAuthPermission, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import { UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileLoader} from '../../../shared/models/file-loader';
 
 const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
@@ -38,8 +38,8 @@ class AdminAnimalInfo implements IAdminAnimalInfo, LoadedPhotoFile {
 })
 export class AdminAnimalDetailsComponent {
   animal = new AdminAnimalInfo();
-  addPermission = this.userAuthService.hasPermission(UserAuthPermission.CAN_ADD_AND_REMOVE_ANIMALS);
-  editPermission = this.userAuthService.hasPermission(UserAuthPermission.CAN_EDIT_ANIMALS);
+  addPermission = this.userAuthService.getUser().permissions.canAddAndRemoveAnimals;
+  editPermission = this.userAuthService.getUser().permissions.canEditAnimals;
   imagePreview = '';
 
   constructor(private httpClient: HttpClient,

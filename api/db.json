@@ -7,19 +7,18 @@
       "phone1": "name_1_phone1",
       "phone2": "name_1_phone2",
       "email": "email1@gmail.com",
-      "isActive": true,
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
-      "permissions": [
-        "CAN_ADD_AND_REMOVE_USERS",
-        "CAN_EDIT_USERS",
-        "CAN_ADD_AND_REMOVE_ANIMALS",
-        "CAN_SEE_USER_DETAILS",
-        "CAN_EDIT_ANIMALS",
-        "CAN_CREATE_ANIMALS_REQUESTS",
-        "CAN_CLOSE_ANIMALS_REQUESTS",
-        "CAN_SEE_ANIMAL_DETAILS"
-      ]
+      "permissions": {
+        "isActive": true,
+        "canAddAndRemoveUsers": true,
+        "canEditUsers": true,
+        "canSeeUserDetails": true,
+        "canAddAndRemoveAnimals": true,
+        "canEditAnimals": true,
+        "canSeeAnimalDetails": true,
+        "canCreateAndCloseAnimalRequests": true
+      }
     },
     {
       "id": 2,
@@ -28,19 +27,18 @@
       "phone1": "name_2_phone1",
       "phone2": "name_2_phone2",
       "email": "email2@gmail.com",
-      "isActive": false,
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
-      "permissions": [
-        "CAN_ADD_AND_REMOVE_USERS",
-        "CAN_EDIT_USERS",
-        "CAN_ADD_AND_REMOVE_ANIMALS",
-        "CAN_SEE_USER_DETAILS",
-        "CAN_EDIT_ANIMALS",
-        "CAN_CREATE_ANIMALS_REQUESTS",
-        "CAN_CLOSE_ANIMALS_REQUESTS",
-        "CAN_SEE_ANIMAL_DETAILS"
-      ]
+      "permissions": {
+        "isActive": true,
+        "canAddAndRemoveUsers": false,
+        "canEditUsers": false,
+        "canSeeUserDetails": false,
+        "canAddAndRemoveAnimals": false,
+        "canEditAnimals": false,
+        "canSeeAnimalDetails": false,
+        "canCreateAndCloseAnimalRequests": false
+      }
     },
     {
       "id": 3,
@@ -49,19 +47,18 @@
       "phone1": "name_3_phone1",
       "phone2": "name_3_phone2",
       "email": "email3@gmail.com",
-      "isActive": true,
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
-      "permissions": [
-        "CAN_ADD_AND_REMOVE_USERS",
-        "CAN_EDIT_USERS",
-        "CAN_ADD_AND_REMOVE_ANIMALS",
-        "CAN_SEE_USER_DETAILS",
-        "CAN_EDIT_ANIMALS",
-        "CAN_CREATE_ANIMALS_REQUESTS",
-        "CAN_CLOSE_ANIMALS_REQUESTS",
-        "CAN_SEE_ANIMAL_DETAILS"
-      ]
+      "permissions": {
+        "isActive": true,
+        "canAddAndRemoveUsers": false,
+        "canEditUsers": false,
+        "canSeeUserDetails": false,
+        "canAddAndRemoveAnimals": false,
+        "canEditAnimals": false,
+        "canSeeAnimalDetails": false,
+        "canCreateAndCloseAnimalRequests": false
+      }
     }
   ],
   "current_user": {
@@ -71,19 +68,18 @@
     "phone1": "name_1_phone1",
     "phone2": "name_1_phone2",
     "email": "email1@gmail.com",
-    "isActive": true,
     "createDate": "05.03.2021",
     "lastEditDate": "06.03.2021",
-    "permissions": [
-      "CAN_ADD_AND_REMOVE_USERS",
-      "CAN_EDIT_USERS",
-      "CAN_ADD_AND_REMOVE_ANIMALS",
-      "CAN_SEE_USER_DETAILS",
-      "CAN_EDIT_ANIMALS",
-      "CAN_CREATE_ANIMALS_REQUESTS",
-      "CAN_CLOSE_ANIMALS_REQUESTS",
-      "CAN_SEE_ANIMAL_DETAILS"
-    ]
+    "permissions": {
+      "isActive": true,
+      "canAddAndRemoveUsers": true,
+      "canEditUsers": true,
+      "canSeeUserDetails": true,
+      "canAddAndRemoveAnimals": true,
+      "canEditAnimals": true,
+      "canSeeAnimalDetails": true,
+      "canCreateAndCloseAnimalRequests": true
+    }
   },
   "animals": [
     {
@@ -130,7 +126,7 @@
       "age": 3,
       "dateAdded": "03 03 2021",
       "dateLastEdit": "04 03 2021",
-      "complexVaccination": true,
+      "complexVaccination": false,
       "rabiesVaccination": true,
       "sterilization": true,
       "animalHasFamily": true,

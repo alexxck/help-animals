@@ -4,7 +4,7 @@ import {environment} from '../../../../../environments';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
-import {UserAuthPermission, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {IAdminUserInfo} from '../models/i-admin-user-info';
 
 const API_USERS_URL = environment.apiUrl + '/users';
@@ -17,14 +17,13 @@ const ADMIN_USERS_URL = '/admin/users';
   styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnDestroy {
-  animalList: IAdminUserInfo[] = [];
-  userAuthPermission = UserAuthPermission;
+  userList: IAdminUserInfo[] = [];
 
   pagination: IPagination;
 
   private querySubscription: Subscription;
 
-  constructor(private httpClient: HttpClient, private userAuthService: UserAuthService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpClient: HttpClient, public userAuthService: UserAuthService, private activatedRoute: ActivatedRoute) {
     this.pagination = new Pagination();
     this.pagination.url = ADMIN_USERS_URL;
 
@@ -42,13 +41,9 @@ export class AdminUserListComponent implements OnDestroy {
 
   public getAnimals(): void {
     this.httpClient.get<IAdminUserInfo[]>(API_USERS_URL).subscribe((res) => {
-      this.animalList = res;
+      this.userList = res;
       this.pagination.totalPages = 10; // todo set params from back
     });
-  }
-
-  public currentUserHasPermission(permission: UserAuthPermission): boolean {
-    return this.userAuthService.hasPermission(permission);
   }
 
   public getRedirectToUserDetailsLink(id: number | string): string {

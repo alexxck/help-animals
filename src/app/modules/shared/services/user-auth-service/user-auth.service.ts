@@ -8,15 +8,26 @@ import {environment} from '../../../../../environments';
 const COOKIES_USER_NAME = 'user';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';
 
-export enum UserAuthPermission {  //  todo maybe edit, if backend say
-  CAN_ADD_AND_REMOVE_USERS = 'CAN_ADD_AND_REMOVE_USERS',
-  CAN_EDIT_USERS = 'CAN_EDIT_USERS',
-  CAN_SEE_USER_DETAILS = 'CAN_SEE_USER_DETAILS',
-  CAN_ADD_AND_REMOVE_ANIMALS = 'CAN_ADD_AND_REMOVE_ANIMALS',
-  CAN_EDIT_ANIMALS = 'CAN_EDIT_ANIMALS',
-  CAN_SEE_ANIMAL_DETAILS = 'CAN_SEE_ANIMAL_DETAILS',
-  CAN_CREATE_ANIMALS_REQUESTS = 'CAN_CREATE_ANIMALS_REQUESTS',
-  CAN_CLOSE_ANIMALS_REQUESTS = 'CAN_CLOSE_ANIMALS_REQUESTS'
+export interface IUserAuthPermissions { //  todo maybe edit, if backend say
+  isActive: boolean;
+  canAddAndRemoveUsers: boolean;
+  canEditUsers: boolean;
+  canSeeUserDetails: boolean;
+  canAddAndRemoveAnimals: boolean;
+  canEditAnimals: boolean;
+  canSeeAnimalDetails: boolean;
+  canCreateAndCloseAnimalRequests: boolean;
+}
+
+export class UserDefaultAuthPermissions implements IUserAuthPermissions {
+  isActive = false;
+  canAddAndRemoveUsers = false;
+  canEditUsers = false;
+  canSeeUserDetails = false;
+  canAddAndRemoveAnimals = false;
+  canEditAnimals = false;
+  canSeeAnimalDetails = false;
+  canCreateAndCloseAnimalRequests = false;
 }
 
 export interface IUser {
@@ -26,7 +37,7 @@ export interface IUser {
   phone1: string;
   phone2: string;
   email: string;
-  permissions: string[];
+  permissions: IUserAuthPermissions;
 }
 
 class User implements IUser {
@@ -36,7 +47,7 @@ class User implements IUser {
   phone1 = '';
   phone2 = '';
   email = '';
-  permissions = new Array<string>();
+  permissions = new UserDefaultAuthPermissions();
 }
 
 @Injectable({
@@ -46,15 +57,6 @@ export class UserAuthService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
     this.getUserFromServer().subscribe();
-  }
-
-  public getUserPermissions(): string[] {
-    return this.getUser().permissions;
-  }
-
-  public hasPermission(permission: UserAuthPermission): boolean {
-    const user = this.getUser();
-    return !!user.permissions.find((e) => e === permission);
   }
 
   public get isAuthorized(): boolean {

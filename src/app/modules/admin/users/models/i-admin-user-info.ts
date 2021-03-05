@@ -1,17 +1,13 @@
+import {IUserAuthPermissions} from '../../../shared/services/user-auth-service/user-auth.service';
+
 export interface IAdminUserInfo {
   id: string;
-  breed: string;
-  state: string;
-  color: string;
-  features: string;
-  imgUrl: string;
-  age: string;
-  dateAdded: string;
-  dateLastEdit: string;
-  complexVaccination: boolean;
-  rabiesVaccination: boolean;
-  sterilization: boolean;
-  animalHasFamily: boolean;
-  responsiblePerson: string;
-  showInGallery: boolean;
+  login: string;
+  name: string;
+  phone1: string;
+  phone2: string;
+  email: string;
+  createDate: string;
+  lastEditDate: string;
+  permissions: IUserAuthPermissions;
 }

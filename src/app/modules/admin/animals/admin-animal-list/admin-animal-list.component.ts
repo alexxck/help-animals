@@ -5,7 +5,7 @@ import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
-import {UserAuthPermission, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
 const API_ANIMALS_URL = environment.apiUrl + '/animals';
 const ADMIN_ANIMALS_URL = '/admin/animals';
@@ -18,13 +18,11 @@ const ADMIN_ANIMALS_URL = '/admin/animals';
 })
 export class AdminAnimalListComponent implements OnDestroy {
   animalList: IAdminAnimalInfo[] = [];
-  userAuthPermission = UserAuthPermission;
-
   pagination: IPagination;
 
   private querySubscription: Subscription;
 
-  constructor(private httpClient: HttpClient, private userAuthService: UserAuthService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpClient: HttpClient, public userAuthService: UserAuthService, private activatedRoute: ActivatedRoute) {
     this.pagination = new Pagination();
     this.pagination.url = ADMIN_ANIMALS_URL;
 
@@ -45,10 +43,6 @@ export class AdminAnimalListComponent implements OnDestroy {
       this.animalList = res;
       this.pagination.totalPages = 10; // todo set params from back
     });
-  }
-
-  public currentUserHasPermission(permission: UserAuthPermission): boolean {
-    return this.userAuthService.hasPermission(permission);
   }
 
   public getRedirectToAnimalDetailsLink(id: number | string): string {
