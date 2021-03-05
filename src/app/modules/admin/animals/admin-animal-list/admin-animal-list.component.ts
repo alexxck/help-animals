@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
-import {UserAuthPermission, UserAuthService} from '../../../../core/services/user-auth-service/user-auth.service';
+import {UserAuthPermission, UserAuthService} from '../../../../shared/services/user-auth-service/user-auth.service';
 
 const API_ANIMALS_URL = environment.apiUrl + '/animals';
 const ADMIN_ANIMALS_URL = '/admin/animals';

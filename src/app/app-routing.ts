@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {LoginGuard} from './core/guards/login-guard/login.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginGuard} from './shared/guards/login-guard/login.guard';
 
 const routes: Routes = [
   {
@@ -39,4 +39,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRouting { }
+export class AppRouting {
+}

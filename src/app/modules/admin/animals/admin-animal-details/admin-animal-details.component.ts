@@ -3,8 +3,8 @@ import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import {UserAuthPermission, UserAuthService} from '../../../../core/services/user-auth-service/user-auth.service';
-import {FileLoader} from '../../../../core/model/file-loader';
+import {UserAuthPermission, UserAuthService} from '../../../../shared/services/user-auth-service/user-auth.service';
+import {FileLoader} from '../../../../shared/model/file-loader';
 
 const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
 
@@ -81,7 +81,7 @@ export class AdminAnimalDetailsComponent {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.put(url, JSON.stringify(this.animal), {headers}).subscribe(() => {
       this.getAnimal(this.animal.id);
-    });
+    }, (err) => this.submitErrorHandler(err));
   }
 
   submitAddAnimal(): void {
@@ -90,6 +90,10 @@ export class AdminAnimalDetailsComponent {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.post(url, JSON.stringify(this.animal), {headers}).subscribe(() => {
       this.getAnimal(this.animal.id);
-    });
+    }, (err) => this.submitErrorHandler(err));
+  }
+
+  submitErrorHandler(err: Error): void{
+    alert('Сталася помилка при відправці форми: ' + err.message);
   }
 }
