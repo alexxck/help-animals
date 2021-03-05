@@ -3,8 +3,8 @@ import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import {UserAuthPermission, UserAuthService} from '../../../../shared/services/user-auth-service/user-auth.service';
-import {FileLoader} from '../../../../shared/model/file-loader';
+import {UserAuthPermission, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {FileLoader} from '../../../shared/models/file-loader';
 
 const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
 

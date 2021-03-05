@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../environments';
 import {CookieService} from 'ngx-cookie-service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../../../environments';
 
 const COOKIES_USER_NAME = 'user';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';

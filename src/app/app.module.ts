@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './core/components/nav-menu/nav-menu.component';
 import {HeaderComponent} from './core/components/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
-import {coreServices} from './shared/services';
 import {SharedModule} from './modules/shared/shared.module';
 
 @NgModule({
@@ -21,7 +20,6 @@ import {SharedModule} from './modules/shared/shared.module';
     AppRouting,
     SharedModule
   ],
-  providers: [...coreServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

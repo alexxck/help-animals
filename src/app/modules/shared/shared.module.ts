@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PaginationComponent} from './components/pagination/pagination.component';
 import {RouterModule} from '@angular/router';
+import {sharedServices} from './services';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     RouterModule
-  ]
+  ],
+  providers: [...sharedServices],
 })
 export class SharedModule {
 }
