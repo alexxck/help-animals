@@ -1,0 +1,29 @@
+<div class="pagination-section" *ngIf="pagination.totalPages > 1">
+  <a class="pagination-element" *ngIf="pagination.page > 1"
+     routerLink="{{getUrlForPage()}}"
+     [queryParams]="getUrlParamsForPage(pagination.page - 1)">&#8249;
+  </a>
+
+  <a class="pagination-element" *ngIf="pagination.page > 1"
+     routerLink="{{getUrlForPage()}}"
+     [queryParams]="getUrlParamsForPage(1)">&laquo;
+  </a>
+
+  <a
+    *ngFor="let page of paginationPages"
+    class="pagination-element"
+    [class.pagination-current]="page === (pagination.page)"
+    routerLink="{{getUrlForPage()}}"
+    [queryParams]="getUrlParamsForPage(page)">
+    {{page}}
+  </a>
+
+  <a class="pagination-element" *ngIf="pagination.page < pagination.totalPages"
+     routerLink="{{getUrlForPage()}}"
+     [queryParams]="getUrlParamsForPage(pagination.totalPages)">&raquo;
+  </a>
+  <a class="pagination-element" *ngIf="pagination.page < pagination.totalPages"
+     routerLink="{{getUrlForPage()}}"
+     [queryParams]="getUrlParamsForPage(pagination.page + 1)">&#8250;
+  </a>
+</div>
