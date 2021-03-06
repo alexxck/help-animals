@@ -48,7 +48,7 @@ export class UserAuthService {
   }
 
   public get isAuthorized(): boolean {
-    return !!this.getUser().id;
+    return !!this.getUser().id.toString();
   }
 
   public getUser(): IUser {
