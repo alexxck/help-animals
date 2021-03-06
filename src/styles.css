@@ -87,7 +87,3 @@ h6 {
 body.lock{
   overflow: hidden;
 }
-
-:root {
-  --main-site-color: #FF8C00;
-}

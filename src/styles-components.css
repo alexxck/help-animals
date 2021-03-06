@@ -1,0 +1,43 @@
+:root {
+  --main-site-color: #FF8C00;
+  --default-component-background-color: #FF8C00;
+  --default-component-font-size: 20px;
+  --default-component-font-color: #FFF;
+}
+
+button{
+  padding: 5px 20px 8px;
+  background-color: var(--default-component-background-color);
+  font-size: var(--default-component-font-size);
+  color: var(--default-component-font-color);
+  margin: 3px;
+  box-shadow: 0 0 7px rgba(0,0,0,0.5);
+  border-radius: 5px;
+}
+
+button:hover {
+  margin: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+input{
+  padding: 5px 15px;
+  font-size: var(--default-component-font-size);
+  border: 1px solid var(--default-component-background-color);
+  margin: 3px;
+}
+
+input:focus {
+  font-weight: bold;
+}
+
+label {
+  font-size: var(--default-component-font-size);
+}
+
+input[type='checkbox'] {
+  transform: scale(2);
+}
+
+
+
