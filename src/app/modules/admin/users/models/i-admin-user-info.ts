@@ -10,4 +10,5 @@ export interface IAdminUserInfo {
   createDate: string;
   lastEditDate: string;
   permissions: IUserAuthPermissions;
+  editedBy: string;
 }

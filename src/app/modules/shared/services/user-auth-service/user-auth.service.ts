@@ -10,32 +10,23 @@ const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';
 
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   isActive: boolean;
-  canAddAndRemoveUsers: boolean;
-  canEditUsers: boolean;
-  canSeeUserDetails: boolean;
+  canAddEditAndRemoveUsers: boolean;
   canAddAndRemoveAnimals: boolean;
   canEditAnimals: boolean;
-  canSeeAnimalDetails: boolean;
   canCreateAndCloseAnimalRequests: boolean;
 }
 
-export class UserDefaultAuthPermissions implements IUserAuthPermissions {
+export class UserAuthPermissionsDefault implements IUserAuthPermissions {
   isActive = false;
-  canAddAndRemoveUsers = false;
-  canEditUsers = false;
-  canSeeUserDetails = false;
+  canAddEditAndRemoveUsers = false;
   canAddAndRemoveAnimals = false;
   canEditAnimals = false;
-  canSeeAnimalDetails = false;
   canCreateAndCloseAnimalRequests = false;
 }
 
 export interface IUser {
   id: string;
   login: string;
-  name: string;
-  phone1: string;
-  phone2: string;
   email: string;
   permissions: IUserAuthPermissions;
 }
@@ -43,11 +34,8 @@ export interface IUser {
 class User implements IUser {
   id = '';
   login = '';
-  name = '';
-  phone1 = '';
-  phone2 = '';
   email = '';
-  permissions = new UserDefaultAuthPermissions();
+  permissions = new UserAuthPermissionsDefault();
 }
 
 @Injectable({

@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": 0,
       "login": "login_1",
       "name": "name_1",
       "phone1": "name_1_phone1",
@@ -11,14 +11,31 @@
       "lastEditDate": "06.03.2021",
       "permissions": {
         "isActive": true,
-        "canAddAndRemoveUsers": true,
-        "canEditUsers": true,
-        "canSeeUserDetails": true,
+        "canAddEditAndRemoveUsers": true,
         "canAddAndRemoveAnimals": true,
         "canEditAnimals": true,
-        "canSeeAnimalDetails": true,
         "canCreateAndCloseAnimalRequests": true
-      }
+      },
+      "editedBy": "ADMIN"
+    },
+    {
+      "id": 1,
+      "login": "login_1",
+      "name": "name_1",
+      "phone1": "name_1_phone1",
+      "phone2": "name_1_phone2",
+      "email": "email1@gmail.com",
+      "createDate": "05.03.2021",
+      "lastEditDate": "06.03.2021",
+      "permissions": {
+        "isActive": false,
+        "canAddEditAndRemoveUsers": false,
+        "canAddAndRemoveAnimals": false,
+        "canEditAnimals": false,
+        "canCreateAndCloseAnimalRequests": false,
+        "canAddAndRemoveUsers": true
+      },
+      "editedBy": 0
     },
     {
       "id": 2,
@@ -30,15 +47,13 @@
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
       "permissions": {
-        "isActive": true,
-        "canAddAndRemoveUsers": false,
-        "canEditUsers": false,
-        "canSeeUserDetails": false,
+        "isActive": false,
+        "canAddEditAndRemoveUsers": false,
         "canAddAndRemoveAnimals": false,
         "canEditAnimals": false,
-        "canSeeAnimalDetails": false,
-        "canCreateAndCloseAnimalRequests": false
-      }
+        "canCreateAndCloseAnimalRequests": true
+      },
+      "editedBy": 1
     },
     {
       "id": 3,
@@ -50,19 +65,17 @@
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
       "permissions": {
-        "isActive": true,
-        "canAddAndRemoveUsers": false,
-        "canEditUsers": false,
-        "canSeeUserDetails": false,
+        "isActive": false,
+        "canAddEditAndRemoveUsers": false,
         "canAddAndRemoveAnimals": false,
         "canEditAnimals": false,
-        "canSeeAnimalDetails": false,
-        "canCreateAndCloseAnimalRequests": false
-      }
+        "canCreateAndCloseAnimalRequests": true
+      },
+      "editedBy": 2
     }
   ],
   "current_user": {
-    "id": 1,
+    "id": 0,
     "login": "login_1",
     "name": "name_1",
     "phone1": "name_1_phone1",
@@ -72,14 +85,12 @@
     "lastEditDate": "06.03.2021",
     "permissions": {
       "isActive": true,
-      "canAddAndRemoveUsers": true,
-      "canEditUsers": true,
-      "canSeeUserDetails": true,
+      "canAddEditAndRemoveUsers": true,
       "canAddAndRemoveAnimals": true,
       "canEditAnimals": true,
-      "canSeeAnimalDetails": true,
       "canCreateAndCloseAnimalRequests": true
-    }
+    },
+    "editedBy": "ADMIN"
   },
   "animals": [
     {

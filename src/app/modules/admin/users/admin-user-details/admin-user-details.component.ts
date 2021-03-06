@@ -3,21 +3,32 @@ import {IAdminUserInfo} from '../models/i-admin-user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import {IUserAuthPermissions, UserDefaultAuthPermissions, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {UserAuthPermissionsDefault, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
 const API_USER_BASE_URL = environment.apiUrl + '/users/';
 
+/**
+ * Using in form <input name="..."> to send data for backend
+ */
+enum UserAccessFieldNames {
+  IS_ACTIVE = 'isActive',
+  CAN_ADD_EDIT_AND_REMOVE_USERS = 'canAddEditAndRemoveUsers',
+  CAN_ADD_AND_REMOVE_ANIMALS = 'canAddAndRemoveAnimals',
+  CAN_EDIT_ANIMALS = 'canEditAnimals',
+  CAN_CREATE_AND_CLOSE_ANIMAL_REQUESTS = 'canCreateAndCloseAnimalRequests'
+}
+
 class AdminUserInfo implements IAdminUserInfo {
-  createDate = '';
-  email = '';
   id = '';
-  lastEditDate = '';
   login = '';
   name = '';
-  permissions = new UserDefaultAuthPermissions();
   phone1 = '';
   phone2 = '';
-
+  email = '';
+  createDate = '';
+  lastEditDate = '';
+  permissions = new UserAuthPermissionsDefault();
+  editedBy = '';
 }
 
 @Component({
@@ -26,10 +37,10 @@ class AdminUserInfo implements IAdminUserInfo {
   styleUrls: ['./admin-user-details.component.css']
 })
 export class AdminUserDetailsComponent {
-  user = new AdminUserInfo();
-  addPermission = this.userAuthService.getUser().permissions.canAddAndRemoveUsers;
-  editPermission = this.userAuthService.getUser().permissions.canEditUsers;
+  editedUser = new AdminUserInfo();
+  currentUser = this.userAuthService.getUser();
   imagePreview = '';
+  userAccessFieldNames = UserAccessFieldNames;
 
   constructor(private httpClient: HttpClient,
               private activatedRouter: ActivatedRoute,
@@ -43,28 +54,29 @@ export class AdminUserDetailsComponent {
     }
 
     this.httpClient.get<IAdminUserInfo>(API_USER_BASE_URL + id).subscribe((res) => {
-      this.user = res;
+      this.editedUser = res;
     });
   }
 
   formReadonlyFieldCheck(): boolean {
-    return !this.addPermission && !this.editPermission;
+    return !this.currentUser.permissions.canAddEditAndRemoveUsers;
   }
 
   submitEditUser(): void {
-    const url = API_USER_BASE_URL + this.user.id;
+    const url = API_USER_BASE_URL + this.editedUser.id;
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    this.httpClient.put(url, JSON.stringify(this.user), {headers}).subscribe(() => {
-      this.getUser(this.user.id);
+
+    this.httpClient.put(url, JSON.stringify(this.editedUser), {headers}).subscribe(() => {
+      this.getUser(this.editedUser.id);
     }, (err) => this.submitErrorHandler(err));
   }
 
   submitAddUser(): void {
     const url = API_USER_BASE_URL;
-    this.user.id = '';
+    this.editedUser.id = '';
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    this.httpClient.post(url, JSON.stringify(this.user), {headers}).subscribe(() => {
-      this.getUser(this.user.id);
+    this.httpClient.post(url, JSON.stringify(this.editedUser), {headers}).subscribe(() => {
+      this.getUser(this.editedUser.id);
     }, (err) => this.submitErrorHandler(err));
   }
 

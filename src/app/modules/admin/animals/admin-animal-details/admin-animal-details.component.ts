@@ -29,6 +29,7 @@ class AdminAnimalInfo implements IAdminAnimalInfo, LoadedPhotoFile {
   sterilization = false;
   showInGallery = false;
   loadedPhotoFile?: string;
+  editedBy = '';
 }
 
 @Component({

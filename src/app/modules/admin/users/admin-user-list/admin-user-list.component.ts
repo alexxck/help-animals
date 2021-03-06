@@ -10,7 +10,6 @@ import {IAdminUserInfo} from '../models/i-admin-user-info';
 const API_USERS_URL = environment.apiUrl + '/users';
 const ADMIN_USERS_URL = '/admin/users';
 
-
 @Component({
   selector: 'app-admin-user-list',
   templateUrl: './admin-user-list.component.html',

@@ -12,18 +12,18 @@
       <th>тел2</th>
       <th>діючий</th>
       <th>дата зміни</th>
-      <th *ngIf="userAuthService.getUser().permissions.canSeeUserDetails">&#9997;</th>
+      <th>&#9997;</th>
     </tr>
 
     <tr *ngFor="let user of userList">
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
-      <td>{{user.email ? '&#10004;': '&#10008;'}}</td>
-      <td>{{user.phone1 ? '&#10004;' : '&#10008;'}}</td>
-      <td>{{user.phone2 ? '&#10004;' : '&#10008;'}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone1}}</td>
+      <td>{{user.phone2}}</td>
       <td>{{user.permissions.isActive ? '&#10004;' : '&#10008;'}}</td>
       <td>{{user.lastEditDate}}</td>
-      <td *ngIf="userAuthService.getUser().permissions.canSeeUserDetails">
+      <td>
         <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id)}}">&#9997;</a>
       </td>
     </tr>

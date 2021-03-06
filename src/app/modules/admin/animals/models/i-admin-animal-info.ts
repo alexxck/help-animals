@@ -14,4 +14,5 @@ export interface IAdminAnimalInfo {
   animalHasFamily: boolean;
   responsiblePerson: string;
   showInGallery: boolean;
+  editedBy: string;
 }

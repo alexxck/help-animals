@@ -103,6 +103,11 @@
     <label class="admin-details-form-field-label" for="dateAdded">Тварина додавання тварини:</label>
     <input id="dateAdded" value="{{animal.dateAdded}}" readonly="readonly"/>
   </div>
+
+  <div class="admin-details-form-field-container" *ngIf="animal.dateLastEdit">
+    <label class="admin-details-form-field-label" for="editedBy">Останні зміни внесені користувачем:</label>
+    <input id="editedBy" value="{{animal.editedBy}}" readonly="readonly"/>
+  </div>
 </div>
 
 
