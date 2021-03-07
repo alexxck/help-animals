@@ -14,6 +14,7 @@ export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   canAddAndRemoveAnimals: boolean;
   canEditAnimals: boolean;
   canCreateAndCloseAnimalRequests: boolean;
+  canAddEditAndRemoveNews: boolean;
 }
 
 export class UserAuthPermissionsDefault implements IUserAuthPermissions {
@@ -22,6 +23,7 @@ export class UserAuthPermissionsDefault implements IUserAuthPermissions {
   canAddAndRemoveAnimals = false;
   canEditAnimals = false;
   canCreateAndCloseAnimalRequests = false;
+  canAddEditAndRemoveNews = false;
 }
 
 export interface IUser {

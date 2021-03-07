@@ -48,6 +48,16 @@
     </div>
 
     <div class="admin-details-form-field-container">
+      <label class="admin-details-form-field-label"
+             for="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}">Керування новинами:</label>
+      <input class="admin-details-form-field-input"
+             id="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
+             name="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
+             type="checkbox" [(ngModel)]="editedUser.permissions.canAddEditAndRemoveNews"
+             [readonly]="formReadonlyFieldCheck()"/>
+    </div>
+
+    <div class="admin-details-form-field-container">
       <label class="admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}">Додавання/видалення
         тварин:</label>
       <input class="admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}"
