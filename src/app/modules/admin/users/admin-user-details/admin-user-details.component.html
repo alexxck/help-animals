@@ -2,45 +2,45 @@
 
   <form enctype="multipart/form-data">
     <div class="admin-details-form-field-container" *ngIf="editedUser.id">
-      <label class="admin-details-form-field-label" for="id">id:</label>
-      <input class="admin-details-form-field-input" id="id" name="id" [(ngModel)]="editedUser.id" required="required"
+      <label class="label admin-details-form-field-label" for="id">id:</label>
+      <input class="input admin-details-form-field-input" id="id" name="id" [(ngModel)]="editedUser.id" required="required"
              readonly="readonly"/>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label" for="name">Ім'я та прізвище:</label>
-      <input class="admin-details-form-field-input" id="name" name="name" [(ngModel)]="editedUser.name"
+      <label class="label admin-details-form-field-label" for="name">Ім'я та прізвище:</label>
+      <input class="input admin-details-form-field-input" id="name" name="name" [(ngModel)]="editedUser.name"
              required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label" for="state">Стать:</label>
-      <input class="admin-details-form-field-input" id="state" name="state" [(ngModel)]="editedUser.email"
+      <label class="label admin-details-form-field-label" for="state">Стать:</label>
+      <input class="input admin-details-form-field-input" id="state" name="state" [(ngModel)]="editedUser.email"
              required="required" [readonly]="formReadonlyFieldCheck()" type="email"/>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label">Телефони:
-        <input class="admin-details-form-field-input" id="phone1" name="phone1" [(ngModel)]="editedUser.phone1"
+      <label class="label admin-details-form-field-label">Телефони:
+        <input class="input admin-details-form-field-input" id="phone1" name="phone1" [(ngModel)]="editedUser.phone1"
                required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
-        <input class="admin-details-form-field-input" id="phone2" name="phone2" [(ngModel)]="editedUser.phone2"
+        <input class="input admin-details-form-field-input" id="phone2" name="phone2" [(ngModel)]="editedUser.phone2"
                required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
       </label>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label" for="{{userAccessFieldNames.IS_ACTIVE}}">Діючий (активний)
+      <label class="label admin-details-form-field-label" for="{{userAccessFieldNames.IS_ACTIVE}}">Діючий (активний)
         користувач:</label>
-      <input class="admin-details-form-field-input" id="{{userAccessFieldNames.IS_ACTIVE}}"
+      <input class="input admin-details-form-field-input" id="{{userAccessFieldNames.IS_ACTIVE}}"
              name="{{userAccessFieldNames.IS_ACTIVE}}"
              type="checkbox" [(ngModel)]="editedUser.permissions.isActive" [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label"
+      <label class="label admin-details-form-field-label"
              for="{{userAccessFieldNames.CAN_CREATE_AND_CLOSE_ANIMAL_REQUESTS}}">Отримання та закриття заяв про
         знайдених тварин:</label>
-      <input class="admin-details-form-field-input"
+      <input class="input admin-details-form-field-input"
              id="{{userAccessFieldNames.CAN_CREATE_AND_CLOSE_ANIMAL_REQUESTS}}"
              name="{{userAccessFieldNames.CAN_CREATE_AND_CLOSE_ANIMAL_REQUESTS}}"
              type="checkbox" [(ngModel)]="editedUser.permissions.canCreateAndCloseAnimalRequests"
@@ -48,9 +48,9 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label"
+      <label class="label admin-details-form-field-label"
              for="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}">Керування новинами:</label>
-      <input class="admin-details-form-field-input"
+      <input class="input admin-details-form-field-input"
              id="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
              name="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
              type="checkbox" [(ngModel)]="editedUser.permissions.canAddEditAndRemoveNews"
@@ -58,17 +58,17 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}">Додавання/видалення
+      <label class="label admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}">Додавання/видалення
         тварин:</label>
-      <input class="admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}"
+      <input class="input admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}"
              name="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}"
              type="checkbox"
              [(ngModel)]="editedUser.permissions.canAddAndRemoveAnimals"
              [readonly]="formReadonlyFieldCheck()"/>
 
-      <label class="admin-details-form-field-label" for="{{userAccessFieldNames.CAN_EDIT_ANIMALS}}">Редагування карточок
+      <label class="label admin-details-form-field-label" for="{{userAccessFieldNames.CAN_EDIT_ANIMALS}}">Редагування карточок
         тварин:</label>
-      <input class="admin-details-form-field-input" id="{{userAccessFieldNames.CAN_EDIT_ANIMALS}}"
+      <input class="input admin-details-form-field-input" id="{{userAccessFieldNames.CAN_EDIT_ANIMALS}}"
              name="{{userAccessFieldNames.CAN_EDIT_ANIMALS}}"
              type="checkbox"
              [(ngModel)]="editedUser.permissions.canEditAnimals"
@@ -76,39 +76,39 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_USERS}}">Створення/видалення/редагування
+      <label class="label admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_USERS}}">Створення/видалення/редагування
         користувачів:</label>
-      <input class="admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_USERS}}"
+      <input class="input admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_USERS}}"
              name="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_USERS}}"
              type="checkbox"
              [(ngModel)]="editedUser.permissions.canAddEditAndRemoveUsers"
              [readonly]="formReadonlyFieldCheck()"/>
     </div>
 
-    <button class="admin-details-form-field-submit-button" type="button"
+    <button class="button admin-details-form-field-submit-button" type="button"
             *ngIf="editedUser.id && currentUser.permissions.canAddEditAndRemoveUsers"
             (click)="submitEditUser()">Підтвердити зміни
     </button>
 
-    <button class="admin-details-form-field-submit-button" type="button"
+    <button class="button admin-details-form-field-submit-button" type="button"
             *ngIf="!editedUser.id && currentUser.permissions.canAddEditAndRemoveUsers"
             (click)="submitAddUser()">Додати користувача
     </button>
   </form>
 
   <div class="admin-details-form-field-container" *ngIf="editedUser.lastEditDate">
-    <label class="admin-details-form-field-label" for="dateLastEdit">Дата останнього редагування:</label>
-    <input id="dateLastEdit" value="{{editedUser.lastEditDate}}" readonly="readonly"/>
+    <label class="label admin-details-form-field-label" for="dateLastEdit">Дата останнього редагування:</label>
+    <input class="input admin-details-form-field-input" id="dateLastEdit" value="{{editedUser.lastEditDate}}" readonly="readonly"/>
   </div>
 
   <div class="admin-details-form-field-container" *ngIf="editedUser.createDate">
-    <label class="admin-details-form-field-label" for="dateAdded">Дата створення:</label>
-    <input id="dateAdded" value="{{editedUser.createDate}}" readonly="readonly"/>
+    <label class="label admin-details-form-field-label" for="dateAdded">Дата створення:</label>
+    <input class="input admin-details-form-field-input" id="dateAdded" value="{{editedUser.createDate}}" readonly="readonly"/>
   </div>
 
   <div class="admin-details-form-field-container" *ngIf="editedUser.lastEditDate">
-    <label class="admin-details-form-field-label" for="editedBy">Зміни внесені користувачем: </label>
-    <input id="editedBy" value="{{editedUser.editedBy}}" readonly="readonly"/>
+    <label class="label admin-details-form-field-label" for="editedBy">Зміни внесені користувачем: </label>
+    <input class="input admin-details-form-field-input" id="editedBy" value="{{editedUser.editedBy}}" readonly="readonly"/>
   </div>
 </div>
 

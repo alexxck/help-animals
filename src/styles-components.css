@@ -22,22 +22,26 @@
   box-shadow: 0 0 5px rgba(0,0,0,1);
 }
 
-input{
+.input{
   padding: 5px 15px;
   font-size: var(--default-component-font-size);
   border: 1px solid var(--default-component-background-color);
   margin: 3px;
 }
 
-input:focus {
+.input:read-only {
+  border: none;
+}
+
+.input:focus {
   font-weight: bold;
 }
 
-label {
+.label {
   font-size: var(--default-component-font-size);
 }
 
-input[type='checkbox'] {
+.input[type='checkbox'] {
   transform: scale(2);
 }
 
