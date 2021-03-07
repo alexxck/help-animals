@@ -5,19 +5,21 @@
   --default-component-font-color: #FFF;
 }
 
-button{
-  padding: 5px 20px 8px;
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
   background-color: var(--default-component-background-color);
   font-size: var(--default-component-font-size);
   color: var(--default-component-font-color);
   margin: 3px;
-  box-shadow: 0 0 7px rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(0,0,0,0.7);
   border-radius: 5px;
 }
 
-button:hover {
-  margin: 3px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+.button:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,1);
 }
 
 input{

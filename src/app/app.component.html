@@ -1,15 +1,19 @@
 <div class="root" (window:resize)="updateMode()">
-  <aside class="aside" *ngIf="asideNeedShow">
-    <img class="main-page-aside-image" src="assets/images/main-page-image.jpg" alt="funny cat">
-    <!--  <NavigationComponent></NavigationComponent>-->
-    <app-nav-menu></app-nav-menu>
-  </aside>
+<!--  <aside class="aside" *ngIf="asideNeedShow">-->
+<!--    <img class="main-page-aside-image" src="assets/images/main-page-image.jpg" alt="funny cat">-->
+<!--      <NavigationComponent></NavigationComponent>-->
+<!--    <app-nav-menu></app-nav-menu>-->
+<!--  </aside>-->
 
   <div class="main">
-    <app-header>
-      <app-nav-menu *ngIf="!asideNeedShow"></app-nav-menu>
+<!--    <app-header>-->
+<!--      <app-nav-menu *ngIf="!asideNeedShow"></app-nav-menu>-->
       <!-- <button type="button" style="background-color: aqua; width: 80px; height: 80px; display: block" *ngIf="!asideNeedShow">Nav menu from aside</button> -->
-    </app-header>
+<!--    </app-header>-->
+
+    <app-full-size-header></app-full-size-header>
+
+
     <!-- <header class="header background-color-default">
       HeaderComponent WILL HERE (REMOVE AFTER COMPONENT CREATE) -->
 

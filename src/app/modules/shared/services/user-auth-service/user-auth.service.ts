@@ -47,7 +47,7 @@ export class UserAuthService {
     this.getUserFromServer().subscribe();
   }
 
-  public get isAuthorized(): boolean {
+  public isAuthorized(): boolean {
     return !!this.getUser().id.toString();
   }
 
