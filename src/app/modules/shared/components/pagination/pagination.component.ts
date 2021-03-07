@@ -1,4 +1,4 @@
-import {AfterContentChecked, Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, Component, Input} from '@angular/core';
 
 export interface IPagination {
   page: number;
@@ -21,16 +21,12 @@ export class Pagination implements IPagination {
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent implements OnInit, AfterContentChecked {
+export class PaginationComponent implements AfterContentChecked {
 
   @Input() pagination: IPagination = new Pagination();
   paginationPages: number[] = [];
 
   constructor() {
-  }
-
-  ngOnInit(): void {
-
   }
 
   updatePaginationItems(): void {
