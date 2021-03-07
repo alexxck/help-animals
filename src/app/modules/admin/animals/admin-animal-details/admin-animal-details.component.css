@@ -1,0 +1,15 @@
+.admin-details {
+  margin: 0 auto;
+  padding-left: 30px;
+  max-width: 600px;
+}
+
+.admin-details-form-field-container {
+  padding-top: 10px;
+  display: grid;
+}
+
+.input--multiline {
+  min-height: 5em;
+  height: auto;
+}

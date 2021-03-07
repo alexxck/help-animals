@@ -39,10 +39,22 @@
 
 .label {
   font-size: var(--default-component-font-size);
+  font-weight: 600;
 }
 
 .input[type='checkbox'] {
   transform: scale(2);
+}
+
+.key-value-table-style {
+  max-width: fit-content;
+  margin: 10px 0;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  justify-content: space-between;
+  border: var(--default-component-background-color) solid 1px;
 }
 
 
