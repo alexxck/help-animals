@@ -1,0 +1,27 @@
+.root-container {
+  padding: 10px;
+  display: grid;
+  grid-gap: 25px;
+}
+
+.new-request-section {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: left;
+  align-content: center;
+}
+
+.two-buttons-container {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.not-selected-button {
+  border-color: var(--default-component-background-color);
+  background-color: #FFF;
+  color: #000;
+}
+
+.center-button {
+  margin: 0 auto;
+}

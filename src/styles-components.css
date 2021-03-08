@@ -20,6 +20,10 @@
   border-radius: 5px;
 }
 
+.button:disabled {
+  background-color: grey;
+}
+
 .button:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
@@ -40,6 +44,8 @@
 }
 
 .label {
+  display: grid;
+  align-content: center;
   font-size: var(--default-component-font-size);
   font-weight: 600;
 }

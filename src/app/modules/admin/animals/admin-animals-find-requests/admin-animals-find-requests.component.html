@@ -1,1 +1,68 @@
-<p>admin-animals-find-requests works!</p>
+<div class="root-container">
+
+  <section class="new-request-section">
+    <label class="label" for="address-input">Адреса: </label>
+    <input id="address-input" class="input" type="text" [(ngModel)]="newRequestAddress">
+    <button type="button" class="button" (click)="createAnimalFindRequest()" [disabled]="!newRequestAddress">Створити
+      заявку
+    </button>
+  </section>
+
+
+  <div class="two-buttons-container">
+    <button class="button" [class.not-selected-button]="currentQueryFilterParams === QueryFilterParams.closed"
+            (click)="changeQueryFilterParams(QueryFilterParams.opened)">Відкриті
+    </button>
+    <button class="button" [class.not-selected-button]="currentQueryFilterParams === QueryFilterParams.opened"
+            (click)="changeQueryFilterParams(QueryFilterParams.closed)">Закриті
+    </button>
+  </div>
+
+  <section *ngIf=" currentQueryFilterParams === QueryFilterParams.opened">
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>Адреса</th>
+        <th>Створив</th>
+        <th>Створена</th>
+        <th>Закрити</th>
+      </tr>
+
+      <tr *ngFor="let request of animalRequestList">
+        <td>{{request.id}}</td>
+        <td>{{request.address}}</td>
+        <td>{{request.userCreatedId}}</td>
+        <td>{{request.openedData}}</td>
+        <td>
+          <button *ngIf="!request.userClosedId.toString()" class="button center-button"
+                  (click)="closeAnimalFindRequest(request.id)">Закрити
+          </button>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section *ngIf="currentQueryFilterParams === QueryFilterParams.closed">
+    <table class="table">
+      <tr>
+        <th>id</th>
+        <th>Адреса</th>
+        <th>Створив</th>
+        <th>Створена</th>
+        <th>Закрив</th>
+        <th>Закрита</th>
+      </tr>
+
+      <tr *ngFor="let request of animalRequestList">
+        <td>{{request.id}}</td>
+        <td>{{request.address}}</td>
+        <td>{{request.userCreatedId}}</td>
+        <td>{{request.openedData}}</td>
+        <td>{{request.userClosedId}}</td>
+        <td>{{request.closedData}}</td>
+      </tr>
+    </table>
+  </section>
+
+  <app-pagination [pagination]="pagination"></app-pagination>
+</div>
