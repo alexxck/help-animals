@@ -1,11 +1,16 @@
 <div class="admin-details">
 
-  <form enctype="multipart/form-data">
+  <form>
     <div *ngIf="editedUser.id">
+      <h4 class="caption">Перегляд (Редагування) користувача:</h4>
       <label class="label admin-details-form-field-label" for="id">id:</label>
       <input class="input admin-details-form-field-input" id="id" name="id" [(ngModel)]="editedUser.id"
              required="required"
              readonly="readonly"/>
+    </div>
+
+    <div *ngIf="!editedUser.id">
+      <h4 class="caption">Створення нового користувача:</h4>
     </div>
 
     <div class="admin-details-form-field-container">
@@ -15,7 +20,7 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="state">Стать:</label>
+      <label class="label admin-details-form-field-label" for="state">Email:</label>
       <input class="input admin-details-form-field-input" id="state" name="state" [(ngModel)]="editedUser.email"
              required="required" [readonly]="formReadonlyFieldCheck()" type="email"/>
     </div>
