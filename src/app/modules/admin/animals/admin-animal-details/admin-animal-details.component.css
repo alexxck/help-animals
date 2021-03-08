@@ -1,4 +1,5 @@
 .admin-details {
+  padding-top: 15px;
   margin: 0 auto;
   padding-left: 30px;
   max-width: 600px;
@@ -12,4 +13,10 @@
 .input--multiline {
   min-height: 5em;
   height: auto;
+}
+
+.caption{
+  font-size: var(--default-component-font-size);
+  font-weight: 600;
+  text-align: center;
 }

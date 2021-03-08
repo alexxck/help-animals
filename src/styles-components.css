@@ -7,7 +7,7 @@
 }
 
 /*  COMPONENTS  */
-.button{
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,15 +16,15 @@
   font-size: var(--default-component-font-size);
   color: var(--default-component-font-color);
   margin: 3px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.7);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   border-radius: 5px;
 }
 
 .button:hover {
-  box-shadow: 0 0 5px rgba(0,0,0,1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 1);
 }
 
-.input{
+.input {
   padding: 5px 15px;
   font-size: var(--default-component-font-size);
   border: 1px solid var(--default-component-background-color);
