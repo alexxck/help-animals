@@ -22,7 +22,7 @@
       <td>{{animal.complexVaccination ? '&#10004;' : '&#10008;'}}</td>
       <td>{{animal.animalHasFamily ? '&#10004;' : '&#10008;'}}</td>
       <td>
-        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToAnimalDetailsLink(animal.id)}}">&#9997;</a>
+        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToAnimalDetailsLink(animal.id + '/details')}}">&#9997;</a>
       </td>
     </tr>
   </table>

@@ -51,13 +51,13 @@ export class NavMenuNewComponent implements OnInit {
       return;
     }
     if (p.canCreateAndCloseAnimalRequests) {
-      this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animal-requests'));
+      this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
+    }
+    if (p.canCreateAndCloseAnimalRequests) {
+      this.adminMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals/list'));
     }
     if (p.canAddEditAndRemoveUsers) {
       this.adminMenuItems.push(new NavMenuItem('Керування користувачами', BASE_URL + '/admin/users'));
-    }
-    if (p.canCreateAndCloseAnimalRequests) {
-      this.adminMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals'));
     }
   }
 }

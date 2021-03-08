@@ -6,10 +6,11 @@ import {AdminAnimalListComponent} from './admin-animal-list/admin-animal-list.co
 import {AdminAnimalDetailsComponent} from './admin-animal-details/admin-animal-details.component';
 import {FormsModule} from '@angular/forms';
 import {SharedModule} from '../../shared/shared.module';
+import { AdminAnimalsFindRequestsComponent } from './admin-animals-find-requests/admin-animals-find-requests.component';
 
 
 @NgModule({
-  declarations: [AdminAnimalListComponent, AdminAnimalDetailsComponent],
+  declarations: [AdminAnimalListComponent, AdminAnimalDetailsComponent, AdminAnimalsFindRequestsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(AdminAnimalsRouting),

@@ -1,11 +1,11 @@
 import {Routes} from '@angular/router';
 import {AdminAnimalListComponent} from './admin-animal-list/admin-animal-list.component';
 import {AdminAnimalDetailsComponent} from './admin-animal-details/admin-animal-details.component';
+import {AdminAnimalsFindRequestsComponent} from './admin-animals-find-requests/admin-animals-find-requests.component';
 
 export const AdminAnimalsRouting: Routes = [
   {
-    path: '',
-    // canActivate: [],
+    path: 'list',
     component: AdminAnimalListComponent,
   },
   {
@@ -13,7 +13,16 @@ export const AdminAnimalsRouting: Routes = [
     component: AdminAnimalDetailsComponent,
   },
   {
-    path: ':id',
+    path: 'find-requests',
+    component: AdminAnimalsFindRequestsComponent,
+  },
+  {
+    path: ':id/details',
     component: AdminAnimalDetailsComponent,
+  },
+  {
+    path: '',
+    // canActivate: [],
+    redirectTo: 'list',
   },
 ];

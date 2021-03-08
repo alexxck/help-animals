@@ -10,5 +10,9 @@ export const AdminRouting: Routes = [
     path: 'users',
     // canActivate: ,
     loadChildren: () => import('./users/admin-users.module').then(m => m.AdminUsersModule)
-  }
+  },
+  {
+    path: '',
+    redirectTo: 'animals'
+  },
 ];
