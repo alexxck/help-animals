@@ -12,20 +12,19 @@
   color: inherit;
 }
 .nav-menu-mobile-container{
+  padding-top: 20px;
   position: absolute;
   width: 100%;
-  margin: 2px;
-  padding: 50px 10px;
-  background-color: var(--default-component-font-color);
-  border-radius: 5px;
+  height: 100vh;
+  background-color: rgba(255,255,255,.85);
   left: 0;
   top: 0;
 
-  animation: show-animation 0.3s ease-out;
+
 
 }
 .nav-menu-mobile {
-
+  animation: show-animation 0.3s ease-out;
 }
 
 .hidden {
