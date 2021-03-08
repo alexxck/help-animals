@@ -24,7 +24,7 @@
       <td>{{user.permissions.isActive ? '&#10004;' : '&#10008;'}}</td>
       <td>{{user.lastEditDate}}</td>
       <td>
-        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id)}}">&#9997;</a>
+        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id + '/details')}}">&#9997;</a>
       </td>
     </tr>
   </table>

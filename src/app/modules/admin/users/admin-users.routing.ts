@@ -13,7 +13,7 @@ export const AdminUsersRouting: Routes = [
     component: AdminUserDetailsComponent,
   },
   {
-    path: ':id',
+    path: ':id/details',
     component: AdminUserDetailsComponent,
   },
 ];
