@@ -231,5 +231,31 @@
       "responsiblePerson": "some person data 8",
       "loadedPhotoFile": null
     }
+  ],
+  "animals-find-requests": [
+    {
+      "id": 1,
+      "address": "address 1",
+      "openedData": "openedData 1",
+      "closedData": "closedData 1",
+      "userClosedId": "",
+      "userCreatedId": "1"
+    },
+    {
+      "id": 2,
+      "address": "address 2",
+      "openedData": "openedData 2",
+      "closedData": "closedData 2",
+      "userClosedId": "2",
+      "userCreatedId": "1"
+    },
+    {
+      "id": 3,
+      "address": "address 3",
+      "openedData": "openedData 3",
+      "closedData": "closedData 3",
+      "userClosedId": "",
+      "userCreatedId": "1"
+    }
   ]
 }
