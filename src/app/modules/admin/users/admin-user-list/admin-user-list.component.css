@@ -1,8 +1,5 @@
-.admin-animal-list-container {
-  width: 100%;
+.admin-user-list-container {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: stretch;
-  grid-gap: 5px;
+  grid-gap: 10px;
 }
 

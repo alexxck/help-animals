@@ -1,3 +1,4 @@
+/*  GLOBAL VARS  */
 :root {
   --main-site-color: #FF8C00;
   --default-component-background-color: #FF8C00;
@@ -5,6 +6,7 @@
   --default-component-font-color: #FFF;
 }
 
+/*  COMPONENTS  */
 .button{
   display: flex;
   align-items: center;
@@ -46,6 +48,24 @@
   transform: scale(2);
 }
 
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  font-size: var(--default-component-font-size);
+}
+
+.table td, .table th {
+  padding: 5px;
+  border: 1px solid var(--default-component-background-color);
+}
+
+.table th {
+  text-align: center;
+}
+
+
+/*  ADDITIONAL STYLES */
 .key-value-table-style {
   max-width: fit-content;
   margin: 10px 0;
@@ -56,6 +76,3 @@
   justify-content: space-between;
   border: var(--default-component-background-color) solid 1px;
 }
-
-
-
