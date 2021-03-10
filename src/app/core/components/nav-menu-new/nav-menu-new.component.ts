@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserAuthService} from '../../../modules/shared/services/user-auth-service/user-auth.service';
-
+import {Subscription} from 'rxjs';
 
 const BASE_URL = '/';
 
@@ -25,7 +25,14 @@ export class NavMenuNewComponent implements OnInit {
 
   @Input() menuFlowRow = false;
 
+  subscription: Subscription;
+
   constructor(private userAuthService: UserAuthService) {
+
+    this.subscription = userAuthService.userUpdatedEvent.subscribe(() => {
+      this.fillPublicMenuItems();
+      this.fillAdminMenuItems();
+    });
   }
 
   ngOnInit(): void {
@@ -34,6 +41,7 @@ export class NavMenuNewComponent implements OnInit {
   }
 
   fillPublicMenuItems(): void {
+    this.publicMenuItems = [];
     this.publicMenuItems.push(new NavMenuItem('Переглянути тваринок', BASE_URL + 'animals'));
     this.publicMenuItems.push(new NavMenuItem('Про нас', BASE_URL + 'about'));
     this.publicMenuItems.push(new NavMenuItem('Новини', BASE_URL + 'news'));
@@ -50,6 +58,7 @@ export class NavMenuNewComponent implements OnInit {
     if (!p.isActive) {
       return;
     }
+    this.adminMenuItems = [];
     if (p.canCreateAndCloseAnimalRequests) {
       this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
     }

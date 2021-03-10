@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {environment} from '../../../../../environments';
+import {Subject} from 'rxjs';
 
-const COOKIES_USER_NAME = 'user';
+const COOKIES_USER_NAME = 'authServiceInfo';
 
 
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
@@ -28,15 +26,11 @@ export class UserAuthPermissionsDefault implements IUserAuthPermissions {
 
 export interface IUser {
   id: string;
-  login: string;
-  email: string;
   permissions: IUserAuthPermissions;
 }
 
 class User implements IUser {
   id = '';
-  login = '';
-  email = '';
   permissions = new UserAuthPermissionsDefault();
 }
 
@@ -45,31 +39,44 @@ class User implements IUser {
 })
 export class UserAuthService {
 
+  private currentUser = new User();
+  public userUpdatedEvent = new Subject<IUser>();
+
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+    this.currentUser = this.getUserFromCookies();
   }
+
 
   public isAuthorized(): boolean {
     return !!this.getUser().id.toString();
   }
 
   public getUser(): IUser {
-    const userStr = (this.cookieService.get(COOKIES_USER_NAME));
-    if (userStr) {
-      return JSON.parse(userStr);
+    return this.currentUser;
+  }
+
+  saveUserToCookies(): void {
+    this.cookieService.set(COOKIES_USER_NAME, btoa(JSON.stringify(this.currentUser)));
+  }
+
+  getUserFromCookies(): IUser {
+    try {
+      const userAsString = atob(this.cookieService.get(COOKIES_USER_NAME));
+      return JSON.parse(userAsString);
+    } catch (e) {
+      return new User();
     }
-
-    const user = new User();
-    this.saveUser(user);
-
-    return user;
   }
 
-  public saveUser(user: IUser): void {
-    this.cookieService.set(COOKIES_USER_NAME, JSON.stringify(user));
+  public setUser(user: IUser): void {
+    this.currentUser = user;
+    this.saveUserToCookies();
+    this.userUpdatedEvent.next(user);
   }
 
-  public deleteUserFromCookies(): void {
+  public clearUser(): void {
     this.cookieService.delete(COOKIES_USER_NAME);
+    this.currentUser = new User();
+    this.userUpdatedEvent.next(this.currentUser);
   }
-
 }

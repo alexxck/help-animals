@@ -76,13 +76,6 @@
   ],
   "current_user": {
     "id": 0,
-    "login": "login_1",
-    "name": "name_1",
-    "phone1": "name_1_phone1",
-    "phone2": "name_1_phone2",
-    "email": "email1@gmail.com",
-    "createDate": "05.03.2021",
-    "lastEditDate": "06.03.2021",
     "permissions": {
       "isActive": true,
       "canAddEditAndRemoveUsers": true,
