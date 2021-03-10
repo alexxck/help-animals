@@ -39,7 +39,7 @@ class User implements IUser {
 })
 export class UserAuthService {
 
-  private currentUser = new User();
+  private currentUser;
   public userUpdatedEvent = new Subject<IUser>();
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
@@ -70,13 +70,13 @@ export class UserAuthService {
 
   public setUser(user: IUser): void {
     this.currentUser = user;
+    console.log(user);
     this.saveUserToCookies();
     this.userUpdatedEvent.next(user);
   }
 
   public clearUser(): void {
     this.cookieService.delete(COOKIES_USER_NAME);
-    this.currentUser = new User();
-    this.userUpdatedEvent.next(this.currentUser);
+    this.setUser(new User());
   }
 }

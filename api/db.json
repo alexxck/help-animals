@@ -72,6 +72,69 @@
         "canCreateAndCloseAnimalRequests": true
       },
       "editedBy": 2
+    },
+    {
+      "id": 4,
+      "login": "1",
+      "password": "3",
+      "passwordConfirm": "3",
+      "name": "3",
+      "phone1": "3",
+      "phone2": "3",
+      "email": "3",
+      "createDate": "",
+      "lastEditDate": "",
+      "permissions": {
+        "isActive": false,
+        "canAddEditAndRemoveUsers": false,
+        "canAddAndRemoveAnimals": false,
+        "canEditAnimals": false,
+        "canCreateAndCloseAnimalRequests": false,
+        "canAddEditAndRemoveNews": false
+      },
+      "editedBy": ""
+    },
+    {
+      "id": 5,
+      "login": "1",
+      "password": "1",
+      "passwordConfirm": "1",
+      "name": "1",
+      "phone1": "",
+      "phone2": "",
+      "email": "1",
+      "createDate": "",
+      "lastEditDate": "",
+      "permissions": {
+        "isActive": true,
+        "canAddEditAndRemoveUsers": true,
+        "canAddAndRemoveAnimals": true,
+        "canEditAnimals": true,
+        "canCreateAndCloseAnimalRequests": true,
+        "canAddEditAndRemoveNews": true
+      },
+      "editedBy": ""
+    },
+    {
+      "id": 6,
+      "login": "2",
+      "password": "2",
+      "passwordConfirm": "2",
+      "name": "2",
+      "phone1": "",
+      "phone2": "",
+      "email": "",
+      "createDate": "",
+      "lastEditDate": "",
+      "permissions": {
+        "isActive": false,
+        "canAddEditAndRemoveUsers": false,
+        "canAddAndRemoveAnimals": false,
+        "canEditAnimals": false,
+        "canCreateAndCloseAnimalRequests": false,
+        "canAddEditAndRemoveNews": false
+      },
+      "editedBy": ""
     }
   ],
   "current_user": {

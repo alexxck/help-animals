@@ -2,10 +2,11 @@ import {Component} from '@angular/core';
 import {IAdminUserInfo} from '../models/i-admin-user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserAuthPermissionsDefault, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
 const API_USER_BASE_URL = environment.apiUrl + '/users/';
+const ROUTER_URL = '/admin/users/';
 
 /**
  * Using in form <input name="..."> to send data for backend
@@ -22,6 +23,8 @@ enum UserAccessFieldNames {
 class AdminUserInfo implements IAdminUserInfo {
   id = '';
   login = '';
+  password = '';
+  passwordConfirm = '';
   name = '';
   phone1 = '';
   phone2 = '';
@@ -45,7 +48,8 @@ export class AdminUserDetailsComponent {
 
   constructor(private httpClient: HttpClient,
               private activatedRouter: ActivatedRoute,
-              public userAuthService: UserAuthService) {
+              public userAuthService: UserAuthService,
+              private router: Router) {
     this.getUser(activatedRouter.snapshot.params.id);
   }
 
@@ -77,7 +81,8 @@ export class AdminUserDetailsComponent {
     this.editedUser.id = '';
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.post(url, JSON.stringify(this.editedUser), {headers}).subscribe(() => {
-      this.getUser(this.editedUser.id);
+      this.router.navigate([ROUTER_URL]);
+      // this.getUser(this.editedUser.id);
     }, (err) => this.submitErrorHandler(err));
   }
 

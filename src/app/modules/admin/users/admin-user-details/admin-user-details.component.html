@@ -1,11 +1,10 @@
 <div class="admin-details">
 
-  <form>
+  <form #sendForm>
     <div *ngIf="editedUser.id">
       <h4 class="caption">Перегляд (Редагування) користувача:</h4>
       <label class="label admin-details-form-field-label" for="id">id:</label>
       <input class="input admin-details-form-field-input" id="id" name="id" [(ngModel)]="editedUser.id"
-             required="required"
              readonly="readonly"/>
     </div>
 
@@ -14,15 +13,50 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="name">Ім'я та прізвище:</label>
-      <input class="input admin-details-form-field-input" id="name" name="name" [(ngModel)]="editedUser.name"
-             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
+      <label class="label admin-details-form-field-label" for="login">Логін:</label>
+      <input class="input admin-details-form-field-input"
+             #login
+             id="login" name="login" [(ngModel)]="editedUser.login"
+             [required]="!editedUser.id" [readonly]="formReadonlyFieldCheck()" type="text"/>
+      <div class="input-error" *ngIf="!login.value">Обов'язкове</div>
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="state">Email:</label>
-      <input class="input admin-details-form-field-input" id="state" name="state" [(ngModel)]="editedUser.email"
-             required="required" [readonly]="formReadonlyFieldCheck()" type="email"/>
+      <label class="label admin-details-form-field-label" for="password">Пароль:</label>
+      <input class="input admin-details-form-field-input"
+             id="password"
+             #password name="password"
+             [(ngModel)]="editedUser.password"
+             [required]="!editedUser.id"
+             [readonly]="formReadonlyFieldCheck()" type="password"/>
+      <div class="input-error" *ngIf="!password.value">Обов'язкове</div>
+    </div>
+
+    <div class="admin-details-form-field-container">
+      <label class="label admin-details-form-field-label" for="passwordConfirm">Підтвердження паролю:</label>
+      <input class="input admin-details-form-field-input"
+             id="passwordConfirm"
+             #passwordConfirm name="passwordConfirm"
+             [(ngModel)]="editedUser.passwordConfirm"
+             [required]="!editedUser.id"
+             [readonly]="formReadonlyFieldCheck()" type="password"/>
+      <div class="input-error" *ngIf="password.value !== passwordConfirm.value">Паролі не співпадають</div>
+    </div>
+
+    <div class="admin-details-form-field-container">
+      <label class="label admin-details-form-field-label" for="name">Ім'я та прізвище:</label>
+      <input class="input admin-details-form-field-input"
+             #name
+             id="name" name="name"
+             [(ngModel)]="editedUser.name"
+             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
+      <div class="input-error" *ngIf="!name.value">Обов'язкове</div>
+    </div>
+
+    <div class="admin-details-form-field-container">
+      <label class="label admin-details-form-field-label" for="email">Email:</label>
+      <input class="input admin-details-form-field-input" id="email" name="email" [(ngModel)]="editedUser.email"
+             [readonly]="formReadonlyFieldCheck()" type="text"/>
     </div>
 
     <div class="admin-details-form-field-container">
@@ -30,10 +64,10 @@
       <label for="phone1"></label>
       <input aria-labelledby="phones-label" class="input admin-details-form-field-input" id="phone1" name="phone1"
              [(ngModel)]="editedUser.phone1"
-             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
+             [readonly]="formReadonlyFieldCheck()" type="text"/>
       <label for="phone2"></label>
       <input class="input admin-details-form-field-input" id="phone2" name="phone2" [(ngModel)]="editedUser.phone2"
-             required="required" [readonly]="formReadonlyFieldCheck()" type="text"/>
+             [readonly]="formReadonlyFieldCheck()" type="text"/>
 
     </div>
 
@@ -91,11 +125,13 @@
 
     <button class="button admin-details-form-field-submit-button" type="button"
             *ngIf="editedUser.id && currentUser.permissions.canAddEditAndRemoveUsers"
+            [disabled]="!sendForm.checkValidity() || password.value !== passwordConfirm.value"
             (click)="submitEditUser()">Підтвердити зміни
     </button>
 
     <button class="button admin-details-form-field-submit-button" type="button"
             *ngIf="!editedUser.id && currentUser.permissions.canAddEditAndRemoveUsers"
+            [disabled]="!sendForm.checkValidity() || password.value !== passwordConfirm.value"
             (click)="submitAddUser()">Додати користувача
     </button>
   </form>

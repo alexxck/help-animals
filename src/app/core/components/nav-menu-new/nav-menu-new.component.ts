@@ -54,11 +54,13 @@ export class NavMenuNewComponent implements OnInit {
   }
 
   fillAdminMenuItems(): void {
+    this.adminMenuItems = [];
+
     const p = this.userAuthService.getUser().permissions;
     if (!p.isActive) {
       return;
     }
-    this.adminMenuItems = [];
+
     if (p.canCreateAndCloseAnimalRequests) {
       this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
     }
