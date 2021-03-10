@@ -40,7 +40,7 @@ export class NavMenuNewComponent implements OnInit {
     this.publicMenuItems.push(new NavMenuItem('Допомогти котикам', BASE_URL + 'donate'));
     this.publicMenuItems.push(
       this.userAuthService.isAuthorized()
-        ? new NavMenuItem('Вихід', BASE_URL + 'logout')
+        ? new NavMenuItem('Вихід', BASE_URL + 'login')
         : new NavMenuItem('Вхід', BASE_URL + 'login')
     );
   }

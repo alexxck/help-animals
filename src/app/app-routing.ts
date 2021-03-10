@@ -17,8 +17,8 @@ const routes: Routes = [
   //   loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
   // },
   // {
-  //   path: 'help_us',
-  //   loadChildren: () => import('./modules/help-us/help-us.module').then(m => m.HelpUsModule)
+  //   path: 'donate',
+  //   loadChildren: () => import('./modules/help-us/donate.module').then(m => m.HelpUsModule)
   // },
   {
     path: 'animals',
@@ -29,10 +29,10 @@ const routes: Routes = [
     canActivate: [LoginGuard],
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
-  // },
+  {
+    path: 'login',
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  },
 ];
 
 @NgModule({

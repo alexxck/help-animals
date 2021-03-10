@@ -3,6 +3,8 @@ import {IUserAuthPermissions} from '../../../shared/services/user-auth-service/u
 export interface IAdminUserInfo {
   id: string;
   login: string;
+  password: string;
+  passwordConfirm: string;
   name: string;
   phone1: string;
   phone2: string;

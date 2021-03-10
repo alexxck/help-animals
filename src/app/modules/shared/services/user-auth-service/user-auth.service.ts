@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 import {environment} from '../../../../../environments';
 
 const COOKIES_USER_NAME = 'user';
-const GET_CURRENT_USER_URL = environment.apiUrl + '/current_user';
+
 
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   isActive: boolean;
@@ -46,7 +46,6 @@ class User implements IUser {
 export class UserAuthService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
-    this.getUserFromServer().subscribe();
   }
 
   public isAuthorized(): boolean {
@@ -73,11 +72,4 @@ export class UserAuthService {
     this.cookieService.delete(COOKIES_USER_NAME);
   }
 
-  public getUserFromServer(): Observable<IUser> {
-    return this.httpClient.get<IUser>(GET_CURRENT_USER_URL).pipe(
-      map((res) => {
-        this.saveUser(res);
-        return res;
-      }));
-  }
 }

@@ -1,0 +1,26 @@
+.login-root {
+  margin: 50px auto;
+  display: grid;
+  width: 100%;
+  max-width: 400px;
+  grid-gap: 3px;
+}
+
+.new-line-padding {
+  padding-top: 10px;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.remember-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: left;
+  grid-column-gap: 15px;
+}
+
+.submit-button {
+  min-width: 50%;
+}
