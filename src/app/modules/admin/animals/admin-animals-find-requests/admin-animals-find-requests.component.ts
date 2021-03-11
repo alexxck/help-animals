@@ -3,13 +3,12 @@ import {environment} from '../../../../../environments';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {IAdminAnimalFindRequest} from '../models/i-admin-animal-find-request';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
 const API_ANIMALS_FIND_REQUESTS_URL = environment.apiUrl + '/animals-find-requests/';
-const ADMIN_ANIMALS_FIND_REQUESTS_URL = '/admin/animals-find-requests';
-
+const ADMIN_ANIMALS_FIND_REQUESTS_URL = '/admin/animals/find-requests';
 
 class AnimalFindRequest implements IAdminAnimalFindRequest {
   id = '';
@@ -31,24 +30,28 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
   pagination: IPagination;
   newRequestAddress = '';
 
-  QueryFilterParams = {
+  QueryFilterParamTypes = {
     opened: {filter: 'opened'},
     closed: {filter: 'closed'}
   };
 
-  currentQueryFilterParams = this.QueryFilterParams.opened;
-
+  currentQueryFilterParams = this.QueryFilterParamTypes.opened;
 
   private querySubscription: Subscription;
 
-  constructor(private httpClient: HttpClient, private userAuthService: UserAuthService, private activatedRoute: ActivatedRoute) {
+  constructor(private httpClient: HttpClient,
+              private userAuthService: UserAuthService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
     this.pagination = new Pagination();
+    this.pagination.additionalParams = this.QueryFilterParamTypes.opened;
     this.pagination.url = ADMIN_ANIMALS_FIND_REQUESTS_URL;
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
-        this.pagination.page = queryParam.page;
-        this.getAnimalsFindRequests(this.currentQueryFilterParams);
+        this.pagination.page = queryParam.page || 1;
+        this.pagination.perPage = queryParam.perPage || 20;
+        this.getAnimalsFindRequests();
       }
     );
   }
@@ -57,11 +60,11 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
     this.querySubscription.unsubscribe();
   }
 
-  public getAnimalsFindRequests(params: { [param: string]: string | string[] }): void {
+  public getAnimalsFindRequests(): void {
     const httpParams = new HttpParams();
-    if (params) {
-      httpParams.appendAll(params);
-    }
+    httpParams.append('filter', this.currentQueryFilterParams.filter);
+    httpParams.append('page', this.pagination.page.toString());
+    httpParams.append('perPage', this.pagination.perPage.toString());
 
     this.httpClient.get<IAdminAnimalFindRequest[]>(API_ANIMALS_FIND_REQUESTS_URL, {params: httpParams}).subscribe((res) => {
       this.animalRequestList = res;
@@ -75,7 +78,9 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
 
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.patch(url, JSON.stringify({id, userClosedId}), {headers}).subscribe(() => {
-      this.getAnimalsFindRequests(this.currentQueryFilterParams);
+      this.router.navigate([ADMIN_ANIMALS_FIND_REQUESTS_URL], {
+        queryParams: this.currentQueryFilterParams
+      });
     }, (err) => this.submitErrorHandler(err));
   }
 
@@ -87,14 +92,19 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
 
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.post(API_ANIMALS_FIND_REQUESTS_URL, JSON.stringify(animalFindRequest), {headers}).subscribe(() => {
-      this.getAnimalsFindRequests(this.currentQueryFilterParams);
+      this.router.navigate([ADMIN_ANIMALS_FIND_REQUESTS_URL], {
+        queryParams: this.currentQueryFilterParams
+      });
       this.newRequestAddress = '';
     }, (err) => this.submitErrorHandler(err));
   }
 
   changeQueryFilterParams(params: { filter: string }): void {
     this.currentQueryFilterParams = params;
-    this.getAnimalsFindRequests(this.currentQueryFilterParams);
+    this.pagination.additionalParams = params;
+    this.router.navigate([ADMIN_ANIMALS_FIND_REQUESTS_URL], {
+      queryParams: this.currentQueryFilterParams
+    });
   }
 
 
