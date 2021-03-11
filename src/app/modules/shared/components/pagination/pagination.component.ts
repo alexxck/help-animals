@@ -1,4 +1,5 @@
 import {AfterContentChecked, Component, Input} from '@angular/core';
+import {Params} from '@angular/router';
 
 export interface IPagination {
   page: number;
@@ -50,9 +51,10 @@ export class PaginationComponent implements AfterContentChecked {
     return this.pagination.url;
   }
 
-  getUrlParamsForPage(page: number | string): object {
+  getUrlParamsForPage(page: number | string): Params {
     return {
       page,
+      perPage: this.pagination.perPage,
       ...this.pagination.additionalParams
     };
   }
