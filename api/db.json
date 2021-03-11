@@ -1,4 +1,14 @@
 {
+  "current_user": {
+    "id": 0,
+    "permissions": {
+      "isActive": true,
+      "canAddEditAndRemoveUsers": true,
+      "canAddAndRemoveAnimals": true,
+      "canEditAnimals": true,
+      "canCreateAndCloseAnimalRequests": true
+    }
+  },
   "users": [
     {
       "id": 0,
@@ -137,17 +147,6 @@
       "editedBy": ""
     }
   ],
-  "current_user": {
-    "id": 0,
-    "permissions": {
-      "isActive": true,
-      "canAddEditAndRemoveUsers": true,
-      "canAddAndRemoveAnimals": true,
-      "canEditAnimals": true,
-      "canCreateAndCloseAnimalRequests": true
-    },
-    "editedBy": "ADMIN"
-  },
   "animals": [
     {
       "id": 1,
@@ -194,9 +193,9 @@
       "dateAdded": "03 03 2021",
       "dateLastEdit": "04 03 2021",
       "complexVaccination": false,
-      "rabiesVaccination": true,
-      "sterilization": true,
-      "animalHasFamily": true,
+      "rabiesVaccination": false,
+      "sterilization": false,
+      "animalHasFamily": false,
       "showInGallery": false,
       "responsiblePerson": "",
       "loadedPhotoFile": null
@@ -312,6 +311,14 @@
       "closedData": "closedData 3",
       "userClosedId": "",
       "userCreatedId": "1"
+    },
+    {
+      "id": 4,
+      "address": "e45retfhr",
+      "closedData": "",
+      "openedData": "",
+      "userClosedId": "",
+      "userCreatedId": 0
     }
   ]
 }

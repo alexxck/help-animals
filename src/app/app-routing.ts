@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'about'
+    redirectTo: 'animals'
   },
   {
     path: 'about',
@@ -16,10 +16,10 @@ const routes: Routes = [
   //   path: 'news',
   //   loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
   // },
-  // {
-  //   path: 'donate',
-  //   loadChildren: () => import('./modules/help-us/donate.module').then(m => m.HelpUsModule)
-  // },
+  {
+    path: 'donate',
+    loadChildren: () => import('./modules/donate/donate.module').then(m => m.DonateModule)
+  },
   {
     path: 'animals',
     loadChildren: () => import('./modules/animals/animals.module').then(m => m.AnimalsModule)
