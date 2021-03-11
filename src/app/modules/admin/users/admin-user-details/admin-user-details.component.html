@@ -29,7 +29,7 @@
              [(ngModel)]="editedUser.password"
              [required]="!editedUser.id"
              [readonly]="formReadonlyFieldCheck()" type="password"/>
-      <div class="input-error" *ngIf="!password.value">Обов'язкове</div>
+      <div class="input-error" *ngIf="!password.value && !editedUser.id">Обов'язкове</div>
     </div>
 
     <div class="admin-details-form-field-container">

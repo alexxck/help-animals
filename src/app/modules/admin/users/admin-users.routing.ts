@@ -4,11 +4,6 @@ import {AdminUserDetailsComponent} from './admin-user-details/admin-user-details
 
 export const AdminUsersRouting: Routes = [
   {
-    path: '',
-    // canActivate: [],
-    component: AdminUserListComponent,
-  },
-  {
     path: 'add',
     component: AdminUserDetailsComponent,
   },
@@ -16,4 +11,9 @@ export const AdminUsersRouting: Routes = [
     path: ':id/details',
     component: AdminUserDetailsComponent,
   },
+  {
+    path: '',
+    // canActivate: [],
+    component: AdminUserListComponent,
+  }
 ];

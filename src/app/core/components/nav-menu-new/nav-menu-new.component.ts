@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UserAuthService} from '../../../modules/shared/services/user-auth-service/user-auth.service';
 import {Subscription} from 'rxjs';
 
@@ -19,7 +19,7 @@ class NavMenuItem implements INavMenuItem {
   templateUrl: './nav-menu-new.component.html',
   styleUrls: ['./nav-menu-new.component.css']
 })
-export class NavMenuNewComponent implements OnInit {
+export class NavMenuNewComponent implements OnInit, OnDestroy {
   publicMenuItems: INavMenuItem[] = [];
   adminMenuItems: INavMenuItem[] = [];
 
@@ -38,6 +38,10 @@ export class NavMenuNewComponent implements OnInit {
   ngOnInit(): void {
     this.fillPublicMenuItems();
     this.fillAdminMenuItems();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   fillPublicMenuItems(): void {
