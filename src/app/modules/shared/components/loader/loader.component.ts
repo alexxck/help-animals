@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 
 @Component({
@@ -6,15 +6,12 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.css']
 })
-export class LoaderComponent implements OnInit {
 
+/**
+ * fullScreen: show loader at static position center of screen
+ * show: display/hide loader
+ */
+export class LoaderComponent {
   @Input() fullScreen = false;
   @Input() show = false;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }
