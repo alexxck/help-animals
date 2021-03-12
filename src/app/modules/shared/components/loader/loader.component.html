@@ -1,4 +1,4 @@
-<div class="loader-container" *ngIf="!fullScreen">
+<div class="loader-container" *ngIf="!fullScreen" [class.hide]="!show">
     <div class="sk-circle">
       <div class="sk-circle1 sk-child"></div>
       <div class="sk-circle2 sk-child"></div>
@@ -13,10 +13,9 @@
       <div class="sk-circle11 sk-child"></div>
       <div class="sk-circle12 sk-child"></div>
   </div>
-
 </div>
 
-<div class="full-screen-loader-container" *ngIf="fullScreen">
+<div class="full-screen-loader-container" *ngIf="fullScreen" [class.hide]="!show">
   <div class="loader-container">
     <div class="sk-circle">
       <div class="sk-circle1 sk-child"></div>
