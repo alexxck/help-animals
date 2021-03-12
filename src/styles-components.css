@@ -1,7 +1,7 @@
 /*  GLOBAL VARS  */
 :root {
   /*--default-component-background-color: #FF8C00;*/
-  --default-component-background-color: rgb(255, 140, 0); /*Use RGB style because can use in RGBA color*/
+  --default-component-background-color: 255, 140, 0; /*Use RGB style because can use in RGBA color*/
   --default-component-font-size: 20px;
   --default-component-font-color: #FFF;
 }
@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   padding: 5px 15px;
-  background-color: var(--default-component-background-color);
+  background-color: rgb(var(--default-component-background-color));
   font-size: var(--default-component-font-size);
   color: var(--default-component-font-color);
   margin: 3px;
@@ -31,7 +31,7 @@
 .input {
   padding: 5px 15px;
   font-size: var(--default-component-font-size);
-  border: 1px solid var(--default-component-background-color);
+  border: 1px solid rgb(var(--default-component-background-color));
   margin: 3px;
 }
 
@@ -63,7 +63,7 @@
 
 .table td, .table th {
   padding: 5px;
-  border: 1px solid var(--default-component-background-color);
+  border: 1px solid rgb(var(--default-component-background-color));
 }
 
 .table th {

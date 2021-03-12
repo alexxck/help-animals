@@ -1,5 +1,5 @@
 .header-describe {
-  background-color: var(--default-component-background-color);
+  background-color: rgb(var(--default-component-background-color));
   display: grid;
   justify-content: space-between;
   grid-auto-flow: column;
@@ -48,7 +48,7 @@
   justify-content: center;
   align-content: center;
   font-size: 1em;
-  color: var(--default-component-background-color);
+  color: rgb(var(--default-component-background-color));
   border-radius: 15px;
 }
 

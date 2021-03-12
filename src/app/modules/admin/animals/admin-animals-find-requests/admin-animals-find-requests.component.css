@@ -17,7 +17,7 @@
 }
 
 .not-selected-button {
-  border-color: var(--default-component-background-color);
+  border-color: rgb(var(--default-component-background-color));
   background-color: #FFF;
   color: #000;
 }

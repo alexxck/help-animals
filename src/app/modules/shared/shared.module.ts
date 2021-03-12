@@ -9,7 +9,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
   declarations: [PaginationComponent, LoaderComponent],
   exports: [
-    PaginationComponent
+    PaginationComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

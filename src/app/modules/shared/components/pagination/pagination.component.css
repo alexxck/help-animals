@@ -12,7 +12,7 @@
   width: 50px;
   height: 50px;
   margin-left: 5px;
-  border-color: var(--default-component-background-color);
+  border-color: rgb(var(--default-component-background-color));
   border-style: solid;
   border-width: 2px;
   font-size: 20px;
