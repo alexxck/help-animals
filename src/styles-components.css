@@ -1,7 +1,7 @@
 /*  GLOBAL VARS  */
 :root {
-  --main-site-color: #FF8C00;
-  --default-component-background-color: #FF8C00;
+  /*--default-component-background-color: #FF8C00;*/
+  --default-component-background-color: rgb(255, 140, 0); /*Use RGB style because can use in RGBA color*/
   --default-component-font-size: 20px;
   --default-component-font-color: #FFF;
 }

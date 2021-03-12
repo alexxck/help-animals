@@ -9,7 +9,7 @@
 .aside {
   padding: 5px;
   min-width: 250px;
-  background-color: var(--main-site-color);
+  background-color: var(--default-component-background-color);
 }
 
 .main-page-aside-image {

@@ -1,5 +1,5 @@
 .header-describe {
-  background-color: var(--main-site-color);
+  background-color: var(--default-component-background-color);
   display: grid;
   justify-content: space-between;
   grid-auto-flow: column;

@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 import {PaginationComponent} from './components/pagination/pagination.component';
 import {RouterModule} from '@angular/router';
 import {sharedServices} from './services';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
-  declarations: [PaginationComponent],
+  declarations: [PaginationComponent, LoaderComponent],
   exports: [
     PaginationComponent
   ],
