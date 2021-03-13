@@ -48,7 +48,6 @@ export class NavMenuNewComponent implements OnInit, OnDestroy {
     this.publicMenuItems = [];
     this.publicMenuItems.push(new NavMenuItem('Переглянути тваринок', BASE_URL + 'animals'));
     this.publicMenuItems.push(new NavMenuItem('Про нас', BASE_URL + 'about'));
-    this.publicMenuItems.push(new NavMenuItem('Новини', BASE_URL + 'news'));
     this.publicMenuItems.push(new NavMenuItem('Допомогти котикам', BASE_URL + 'donate'));
     this.publicMenuItems.push(
       this.userAuthService.isAuthorized()

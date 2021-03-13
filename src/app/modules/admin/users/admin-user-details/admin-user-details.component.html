@@ -89,14 +89,6 @@
              type="checkbox" [(ngModel)]="editedUser.permissions.canCreateAndCloseAnimalRequests"
              [readonly]="formReadonlyFieldCheck()"/>
 
-      <label class="label admin-details-form-field-label"
-             for="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}">Керування новинами:</label>
-      <input class="input admin-details-form-field-input"
-             id="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
-             name="{{userAccessFieldNames.CAN_ADD_EDIT_AND_REMOVE_NEWS}}"
-             type="checkbox" [(ngModel)]="editedUser.permissions.canAddEditAndRemoveNews"
-             [readonly]="formReadonlyFieldCheck()"/>
-
       <label class="label admin-details-form-field-label" for="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}">Додавання/видалення
         тварин:</label>
       <input class="input admin-details-form-field-input" id="{{userAccessFieldNames.CAN_ADD_AND_REMOVE_ANIMALS}}"

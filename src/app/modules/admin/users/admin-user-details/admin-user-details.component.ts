@@ -17,7 +17,6 @@ enum UserAccessFieldNames {
   CAN_ADD_AND_REMOVE_ANIMALS = 'canAddAndRemoveAnimals',
   CAN_EDIT_ANIMALS = 'canEditAnimals',
   CAN_CREATE_AND_CLOSE_ANIMAL_REQUESTS = 'canCreateAndCloseAnimalRequests',
-  CAN_ADD_EDIT_AND_REMOVE_NEWS = 'canAddEditAndRemoveNews'
 }
 
 class AdminUserInfo implements IAdminUserInfo {
