@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
 import { UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {FileLoader} from '../../../shared/models/file-loader';
+import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 
 const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
 
@@ -69,7 +69,7 @@ export class AdminAnimalDetailsComponent {
       return;
     }
 
-    FileLoader.loadFile(elem.files[0]).subscribe(res => {
+    FileReaderAsDataUrl.readAsDataURL(elem.files[0]).subscribe(res => {
       this.imagePreview = res.fileContent;
       this.animal.loadedPhotoFile = res.fileContent;
     }, error => {

@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
 
-export interface IFileLoader {
+export interface IFileReaderAsDataUrl {
   readonly name: string;
   readonly fileContent: string;
   readonly size: number;
@@ -8,17 +8,17 @@ export interface IFileLoader {
   readonly lastModified: number;
 }
 
-export class FileLoader implements IFileLoader {
+export class FileReaderAsDataUrl implements IFileReaderAsDataUrl {
   readonly lastModified: number;
   readonly name: string;
   readonly size: number;
   readonly type: string;
 
-  public static loadFile(file: File): Observable<IFileLoader> {
-    return new Observable<IFileLoader>(subscriber => {
+  public static readAsDataURL(file: File): Observable<IFileReaderAsDataUrl> {
+    return new Observable<IFileReaderAsDataUrl>(subscriber => {
       const fileReader = new FileReader();
       fileReader.onload = () => {
-        const model = new FileLoader(file, fileReader.result as string);
+        const model = new FileReaderAsDataUrl(file, fileReader.result as string);
 
         if (!fileReader.error) {
           subscriber.next(model);
