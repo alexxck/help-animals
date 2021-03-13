@@ -16,18 +16,18 @@ export class FileReaderAsArrayBuffer implements IFileReaderAsArrayBuffer {
 
   public static readAsArrayBuffer(file: File): Observable<IFileReaderAsArrayBuffer> {
     return new Observable<IFileReaderAsArrayBuffer>(subscriber => {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        const model = new FileReaderAsArrayBuffer(file, fileReader.result as ArrayBuffer);
+      const fr = new FileReader();
+      fr.onload = () => {
+        const model = new FileReaderAsArrayBuffer(file, fr.result as ArrayBuffer);
 
-        if (!fileReader.error) {
+        if (!fr.error) {
           subscriber.next(model);
         } else {
-          subscriber.error(fileReader.error);
+          subscriber.error(fr.error);
         }
         subscriber.complete();
       };
-      fileReader.readAsArrayBuffer(file);
+      fr.readAsArrayBuffer(file);
     });
   }
 
