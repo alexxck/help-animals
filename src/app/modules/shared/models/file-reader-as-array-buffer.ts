@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 
 export interface IFileReaderAsArrayBuffer {
   readonly name: string;
-  readonly fileContent: ArrayBuffer;
+  readonly result: ArrayBuffer;
   readonly size: number;
   readonly type: string;
   readonly lastModified: number;
@@ -31,7 +31,7 @@ export class FileReaderAsArrayBuffer implements IFileReaderAsArrayBuffer {
     });
   }
 
-  private constructor(file: File, public readonly fileContent: ArrayBuffer) {
+  private constructor(file: File, public readonly result: ArrayBuffer) {
     this.lastModified = file.lastModified;
     this.name = file.name;
     this.size = file.size;
