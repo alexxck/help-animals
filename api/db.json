@@ -1,14 +1,25 @@
 {
-  "current_user": {
-    "id": 0,
-    "permissions": {
-      "isActive": true,
-      "canAddEditAndRemoveUsers": true,
-      "canAddAndRemoveAnimals": true,
-      "canEditAnimals": true,
-      "canCreateAndCloseAnimalRequests": true
+  "authenticate": [
+    {
+      "id": "user",
+      "user": {
+        "id": 0,
+        "permissions": {
+          "isActive": true,
+          "canAddEditAndRemoveUsers": true,
+          "canAddAndRemoveAnimals": true,
+          "canEditAnimals": true,
+          "canCreateAndCloseAnimalRequests": true
+        }
+      }
+    },
+
+    {
+      "id": "token",
+      "token": "fakeApiToken"
     }
-  },
+  ],
+
   "users": [
     {
       "id": 0,
