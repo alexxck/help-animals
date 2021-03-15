@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserAuthService} from '../../shared/services/user-auth-service/user-auth.service';
-import {environment} from '../../../../environments';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(): void {
-    console.log(this.loginForm.value.login + this.loginForm.value.password);
     this.userAuthService.login(this.loginForm.value.login, this.loginForm.value.password); // todo fix to work with BE
     this.loginForm.patchValue({password: ''});
   }

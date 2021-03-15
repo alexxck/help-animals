@@ -6,8 +6,6 @@ import {Router} from '@angular/router';
 
 const AUTHENTICATION_URL = environment.apiUrl + '/authenticate/token';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/authenticate/user';
-
-const STORAGE_USER_NAME = 'authServiceInfo';
 const STORAGE_TOKEN_NAME = 'authToken';
 
 
