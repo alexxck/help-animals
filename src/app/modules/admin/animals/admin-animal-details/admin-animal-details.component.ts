@@ -3,7 +3,7 @@ import {IAdminAnimalInfo} from '../models/i-admin-animal-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import { UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 
 const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
@@ -94,7 +94,7 @@ export class AdminAnimalDetailsComponent {
     }, (err) => this.submitErrorHandler(err));
   }
 
-  submitErrorHandler(err: Error): void{
+  submitErrorHandler(err: Error): void {
     alert('Сталася помилка при відправці форми: ' + err.message);
   }
 }
