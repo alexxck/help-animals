@@ -14,11 +14,28 @@
   width: 100%;
 }
 
-.remember-container {
+.remember-container{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  grid-column-gap: 15px;
+}
+
+.remember-container-left{
   display: grid;
   grid-template-columns: auto auto;
   justify-content: left;
   grid-column-gap: 15px;
+}
+
+.remember-container-right{
+  align-self: center;
+  justify-self: center;
+}
+
+.remember-container-link {
+  font-size: 20px;
 }
 
 .submit-button {
