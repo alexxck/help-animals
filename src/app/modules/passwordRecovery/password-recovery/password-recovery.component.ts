@@ -32,7 +32,6 @@ export class PasswordRecoveryComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   ngAfterViewInit(): void {
-    console.log(this.form.nativeElement);
     this.subscription.add(fromEvent<Event>(this.form.nativeElement, 'submit').subscribe((e) => {
       e.preventDefault();
 
