@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NavMenuNewComponent} from './core/components/nav-menu-new/nav-menu-new.component';
 import {FullSizeHeaderComponent} from './core/components/full-size-header/full-size-header.component';
 import {NavMenuMobileComponent} from './core/components/nav-menu-mobile/nav-menu-mobile.component';
+import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {NavMenuMobileComponent} from './core/components/nav-menu-mobile/nav-menu
     NavMenuNewComponent,
     FullSizeHeaderComponent,
     NavMenuMobileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

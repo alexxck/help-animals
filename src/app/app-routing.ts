@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginGuard} from './modules/shared/guards/login-guard/login.guard';
+import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -22,7 +22,6 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [LoginGuard],
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
   {
@@ -32,6 +31,10 @@ const routes: Routes = [
   {
     path: 'passwordrecovery',
     loadChildren: () => import('./modules/passwordRecovery/passwordrecovery.module').then(m => m.PasswordrecoveryModule)
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
