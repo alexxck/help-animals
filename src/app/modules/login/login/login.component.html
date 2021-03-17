@@ -9,13 +9,17 @@
     <div class="error-message" *ngIf="loginForm.controls['password'].invalid">Required</div>
 
     <div class="remember-container new-line-padding">
-      <label for="remember" class="label">Запам'ятати:</label>
-      <input id="remember" type="checkbox" class="input" name="remember" formControlName="remember">
+      <div class="remember-container-left">
+        <label for="remember" class="label">Запам'ятати:</label>
+        <input id="remember" type="checkbox" class="input" name="remember" formControlName="remember">
+      </div>
+      <div class="remember-container-right">
+        <a class="remember-container-link" routerLink="passwordrecovery">Забули пароль?</a>
+      </div>
     </div>
 
     <div class="new-line-padding">
       <button type="button" class="button submit-button" (click)="submitLogin()" [disabled]="loginForm.invalid">Увійти</button>
     </div>
   </form>
-
 </div>
