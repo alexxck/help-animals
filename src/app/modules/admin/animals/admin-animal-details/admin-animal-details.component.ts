@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {ActivatedRoute} from '@angular/router';
-import {IUser, UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
+import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
@@ -16,8 +16,8 @@ const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
   styleUrls: ['./admin-animal-details.component.css']
 })
 export class AdminAnimalDetailsComponent {
-  addPermission = this.userAuthService.userUpdatedEvent.subscribe((user: IUser) => user.permissions.canAddAndRemoveAnimals);
-  editPermission = this.userAuthService.userUpdatedEvent.subscribe((user: IUser) => user.permissions.canEditAnimals);
+  addPermission = this.userAuthService.getUser().permissions.canAddAndRemoveAnimals; // todo rework to subscription if need
+  editPermission = this.userAuthService.getUser().permissions.canEditAnimals; // todo rework to subscription if need
 
   loadedPhotoFile = '';
   imagePreview = '';
