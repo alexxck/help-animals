@@ -5,7 +5,8 @@ import {IPagination, Pagination} from '../../../shared/components/pagination/pag
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {IAdminUserInfo} from '../models/i-admin-user-info';
+import {IAdminUserListGetResponse} from '../models/admin-user-list/i-admin-user-list-get-response';
+import {IAdminUserListTableElement} from '../models/admin-user-list/i-admin-user-list-table-element';
 
 const API_USERS_URL = environment.apiUrl + '/users';
 const ADMIN_USERS_URL = '/admin/users';
@@ -16,8 +17,7 @@ const ADMIN_USERS_URL = '/admin/users';
   styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnDestroy {
-  userList: IAdminUserInfo[] = [];
-
+  userList: IAdminUserListTableElement[] = [];
   pagination: IPagination;
 
   private querySubscription: Subscription;
@@ -39,9 +39,12 @@ export class AdminUserListComponent implements OnDestroy {
   }
 
   public getAnimals(): void {
-    this.httpClient.get<IAdminUserInfo[]>(API_USERS_URL).subscribe((res) => {
-      this.userList = res;
-      this.pagination.totalPages = 10; // todo set params from back
+    this.httpClient.get<IAdminUserListGetResponse>(API_USERS_URL).subscribe((res) => {
+      this.userList = res as unknown as IAdminUserListTableElement[]; // todo remove after receive params from back
+      this.pagination.totalPages = 10; // todo remove after receive params from back
+      // this.userList = res.users; // todo set params from back
+      // this.pagination.page = res.page; // todo set params from back
+      // this.pagination.totalPages = res.totalPages; // todo set params from back
     });
   }
 
