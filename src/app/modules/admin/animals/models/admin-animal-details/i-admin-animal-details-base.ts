@@ -1,7 +1,7 @@
 export interface IAdminAnimalDetailsBase {
   name: string;
   breed: string;
-  state: string;
+  sex: string;
   color: string;
   features: string;
   age: number;

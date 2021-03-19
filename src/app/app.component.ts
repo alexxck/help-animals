@@ -16,7 +16,7 @@ export class AppComponent implements AfterContentInit {
     this.updateMode();
   }
 
-  updateMode(): void {
+  updateMode(): void { // todo remove if dont use
     this.asideNeedShow = this.elRef.nativeElement.firstElementChild.offsetWidth > 900;
   }
 

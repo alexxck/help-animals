@@ -13,13 +13,11 @@
         }
       }
     },
-
     {
       "id": "token",
       "token": "fakeApiToken"
     }
   ],
-
   "users": [
     {
       "id": 0,
@@ -161,25 +159,25 @@
   "animals": [
     {
       "id": 1,
+      "age": 1,
       "breed": "Порода 1",
-      "state": "Стать 1",
+      "sex": "Стать 1",
       "color": "Колір 1",
       "features": "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
-      "age": 1,
-      "dateAdded": "03 03 2021",
-      "dateLastEdit": "04 03 2021",
+      "responsiblePerson": "some person data 1",
       "complexVaccination": true,
-      "rabiesVaccination": true,
+      "rabiesVaccination": false,
       "sterilization": true,
-      "animalHasFamily": true,
+      "animalHasFamily": false,
       "showInGallery": true,
-      "responsiblePerson": "some person data 1"
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021"
     },
     {
       "id": 2,
       "breed": "Порода 2",
-      "state": "Стать 2",
+      "sex": "Стать 2",
       "color": "Колір 2",
       "features": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -196,7 +194,7 @@
     {
       "id": 3,
       "breed": "Порода 3",
-      "state": "Стать 3",
+      "sex": "Стать 3",
       "color": "Колір 3",
       "features": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -214,7 +212,7 @@
     {
       "id": 4,
       "breed": "Порода 4",
-      "state": "Стать 4",
+      "sex": "Стать 4",
       "color": "Колір 4",
       "features": "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -231,7 +229,7 @@
     {
       "id": 5,
       "breed": "Порода 5",
-      "state": "Стать 5",
+      "sex": "Стать 5",
       "color": "Колір 5",
       "features": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -248,7 +246,7 @@
     {
       "id": 6,
       "breed": "Порода 6",
-      "state": "Стать 6",
+      "sex": "Стать 6",
       "color": "Колір 6",
       "features": "6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -265,7 +263,7 @@
     {
       "id": 7,
       "breed": "Порода 7",
-      "state": "Стать 7",
+      "sex": "Стать 7",
       "color": "Колір 7",
       "features": "7 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
@@ -282,7 +280,7 @@
     {
       "id": 8,
       "breed": "Порода 8",
-      "state": "Стать 8",
+      "sex": "Стать 8",
       "color": "Колір 8",
       "features": "8 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
       "imgUrl": "/assets/images/animals/default-cat-image.jpg",
