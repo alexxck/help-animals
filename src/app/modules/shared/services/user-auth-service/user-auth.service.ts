@@ -11,28 +11,26 @@ const STORAGE_TOKEN_NAME = 'authToken';
 
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   isActive: boolean;
-  canAddEditAndRemoveUsers: boolean;
-  canAddAndRemoveAnimals: boolean;
-  canEditAnimals: boolean;
-  canCreateAndCloseAnimalRequests: boolean;
+  permissionForAddEditAndRemoveUsers: boolean;
+  permissionForAddAndRemoveAnimals: boolean;
+  permissionForEditAnimals: boolean;
+  permissionForCreateAndCloseAnimalRequests: boolean;
 }
 
 export class UserAuthPermissionsDefault implements IUserAuthPermissions {
   isActive = false;
-  canAddEditAndRemoveUsers = false;
-  canAddAndRemoveAnimals = false;
-  canEditAnimals = false;
-  canCreateAndCloseAnimalRequests = false;
+  permissionForAddEditAndRemoveUsers = false;
+  permissionForAddAndRemoveAnimals = false;
+  permissionForEditAnimals = false;
+  permissionForCreateAndCloseAnimalRequests = false;
 }
 
-export interface IUser {
+interface IUser extends IUserAuthPermissions {
   id: string;
-  permissions: IUserAuthPermissions;
 }
 
-class User implements IUser {
+class User extends UserAuthPermissionsDefault implements IUser {
   id = '';
-  permissions = new UserAuthPermissionsDefault();
 }
 
 @Injectable({

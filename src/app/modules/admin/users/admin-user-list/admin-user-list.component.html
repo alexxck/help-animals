@@ -21,7 +21,7 @@
       <td>{{user.email}}</td>
       <td>{{user.phone1}}</td>
       <td>{{user.phone2}}</td>
-      <td>{{user.permissions.isActive ? '&#10004;' : '&#10008;'}}</td>
+      <td>{{user.isActive ? '&#10004;' : '&#10008;'}}</td>
       <td>{{user.lastEditDate}}</td>
       <td>
         <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id + '/details')}}">&#9997;</a>

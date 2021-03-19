@@ -4,13 +4,11 @@
       "id": "user",
       "user": {
         "id": 0,
-        "permissions": {
-          "isActive": true,
-          "canAddEditAndRemoveUsers": true,
-          "canAddAndRemoveAnimals": true,
-          "canEditAnimals": true,
-          "canCreateAndCloseAnimalRequests": true
-        }
+        "isActive": true,
+        "permissionForAddEditAndRemoveUsers": true,
+        "permissionForAddAndRemoveAnimals": true,
+        "permissionForEditAnimals": true,
+        "permissionForCreateAndCloseAnimalRequests": true
       }
     },
     {
@@ -28,51 +26,40 @@
       "email": "email1@gmail.com",
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
-      "permissions": {
-        "isActive": true,
-        "canAddEditAndRemoveUsers": true,
-        "canAddAndRemoveAnimals": true,
-        "canEditAnimals": true,
-        "canCreateAndCloseAnimalRequests": true
-      },
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": "ADMIN"
     },
     {
       "id": 1,
       "login": "login_1",
+      "password": "",
       "name": "name_1",
       "phone1": "name_1_phone1",
       "phone2": "name_1_phone2",
       "email": "email1@gmail.com",
-      "createDate": "05.03.2021",
-      "lastEditDate": "06.03.2021",
-      "permissions": {
-        "isActive": false,
-        "canAddEditAndRemoveUsers": false,
-        "canAddAndRemoveAnimals": false,
-        "canEditAnimals": false,
-        "canCreateAndCloseAnimalRequests": false,
-        "canAddAndRemoveUsers": true
-      },
-      "editedBy": 0
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": true
     },
     {
       "id": 2,
       "login": "login_2",
+      "password": "",
       "name": "name_2",
       "phone1": "name_2_phone1",
       "phone2": "name_2_phone2",
       "email": "email2@gmail.com",
-      "createDate": "05.03.2021",
-      "lastEditDate": "06.03.2021",
-      "permissions": {
-        "isActive": false,
-        "canAddEditAndRemoveUsers": false,
-        "canAddAndRemoveAnimals": false,
-        "canEditAnimals": false,
-        "canCreateAndCloseAnimalRequests": true
-      },
-      "editedBy": 1
+      "isActive": true,
+      "canAddEditAndRemoveUsers": true,
+      "canAddAndRemoveAnimals": true,
+      "canEditAnimals": true,
+      "canCreateAndCloseAnimalRequests": true
     },
     {
       "id": 3,
@@ -83,13 +70,11 @@
       "email": "email3@gmail.com",
       "createDate": "05.03.2021",
       "lastEditDate": "06.03.2021",
-      "permissions": {
-        "isActive": false,
-        "canAddEditAndRemoveUsers": false,
-        "canAddAndRemoveAnimals": false,
-        "canEditAnimals": false,
-        "canCreateAndCloseAnimalRequests": true
-      },
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": 2
     },
     {
@@ -103,14 +88,11 @@
       "email": "3",
       "createDate": "",
       "lastEditDate": "",
-      "permissions": {
-        "isActive": false,
-        "canAddEditAndRemoveUsers": false,
-        "canAddAndRemoveAnimals": false,
-        "canEditAnimals": false,
-        "canCreateAndCloseAnimalRequests": false,
-        "canAddEditAndRemoveNews": false
-      },
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     },
     {
@@ -124,14 +106,11 @@
       "email": "1",
       "createDate": "",
       "lastEditDate": "",
-      "permissions": {
-        "isActive": true,
-        "canAddEditAndRemoveUsers": true,
-        "canAddAndRemoveAnimals": true,
-        "canEditAnimals": true,
-        "canCreateAndCloseAnimalRequests": true,
-        "canAddEditAndRemoveNews": true
-      },
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     },
     {
@@ -145,14 +124,11 @@
       "email": "",
       "createDate": "",
       "lastEditDate": "",
-      "permissions": {
-        "isActive": false,
-        "canAddEditAndRemoveUsers": false,
-        "canAddAndRemoveAnimals": false,
-        "canEditAnimals": false,
-        "canCreateAndCloseAnimalRequests": false,
-        "canAddEditAndRemoveNews": false
-      },
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": false,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     }
   ],
@@ -176,20 +152,20 @@
     },
     {
       "id": 2,
+      "age": 2,
       "breed": "Порода 2",
       "sex": "Стать 2",
       "color": "Колір 2",
       "features": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet enim vel nisl sodales, eu feugiat diam tincidunt. In sed.",
-      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
-      "age": 2,
-      "dateAdded": "03 03 2021",
-      "dateLastEdit": "04 03 2021",
+      "responsiblePerson": "some person data 2",
       "complexVaccination": true,
-      "rabiesVaccination": true,
+      "rabiesVaccination": false,
       "sterilization": true,
       "animalHasFamily": false,
       "showInGallery": true,
-      "responsiblePerson": "some person data 2"
+      "imgUrl": "/assets/images/animals/default-cat-image.jpg",
+      "dateAdded": "03 03 2021",
+      "dateLastEdit": "04 03 2021"
     },
     {
       "id": 3,
@@ -294,6 +270,24 @@
       "showInGallery": true,
       "responsiblePerson": "some person data 8",
       "loadedPhotoFile": null
+    },
+    {
+      "id": 9,
+      "age": 3,
+      "breed": "test",
+      "sex": "test",
+      "color": "test",
+      "features": "test",
+      "responsiblePerson": "test",
+      "complexVaccination": true,
+      "rabiesVaccination": true,
+      "sterilization": true,
+      "animalHasFamily": true,
+      "showInGallery": true,
+      "imgUrl": "",
+      "dateAdded": "",
+      "dateLastEdit": "",
+      "editedBy": ""
     }
   ],
   "animals-find-requests": [
@@ -324,6 +318,14 @@
     {
       "id": 4,
       "address": "e45retfhr",
+      "closedData": "",
+      "openedData": "",
+      "userClosedId": 0,
+      "userCreatedId": 0
+    },
+    {
+      "id": 5,
+      "address": "dsfgdfgdfg",
       "closedData": "",
       "openedData": "",
       "userClosedId": "",

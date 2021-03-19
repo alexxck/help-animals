@@ -29,7 +29,7 @@ export class AdminUserListComponent implements OnDestroy {
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
         this.pagination.page = queryParam.page;
-        this.getAnimals();
+        this.getUsers();
       }
     );
   }
@@ -38,7 +38,7 @@ export class AdminUserListComponent implements OnDestroy {
     this.querySubscription.unsubscribe();
   }
 
-  public getAnimals(): void {
+  public getUsers(): void {
     this.httpClient.get<IAdminUserListGetResponse>(API_USERS_URL).subscribe((res) => {
       this.userList = res as unknown as IAdminUserListTableElement[]; // todo remove after receive params from back
       this.pagination.totalPages = 10; // todo remove after receive params from back

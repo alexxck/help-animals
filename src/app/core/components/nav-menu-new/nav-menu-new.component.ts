@@ -59,18 +59,19 @@ export class NavMenuNewComponent implements OnInit, OnDestroy {
   fillAdminMenuItems(): void {
     this.adminMenuItems = [];
 
-    const p = this.userAuthService.getUser().permissions;
-    if (!p.isActive) {
+    const user = this.userAuthService.getUser();
+
+    if (!user.isActive) {
       return;
     }
 
-    if (p.canCreateAndCloseAnimalRequests) {
+    if (user.permissionForCreateAndCloseAnimalRequests) {
       this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
     }
-    if (p.canCreateAndCloseAnimalRequests) {
+    if (user.permissionForCreateAndCloseAnimalRequests) {
       this.adminMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals/list'));
     }
-    if (p.canAddEditAndRemoveUsers) {
+    if (user.permissionForAddEditAndRemoveUsers) {
       this.adminMenuItems.push(new NavMenuItem('Керування користувачами', BASE_URL + '/admin/users'));
     }
   }

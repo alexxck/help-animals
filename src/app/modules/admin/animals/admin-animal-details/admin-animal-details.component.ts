@@ -16,8 +16,8 @@ const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
   styleUrls: ['./admin-animal-details.component.css']
 })
 export class AdminAnimalDetailsComponent {
-  addPermission = this.userAuthService.getUser().permissions.canAddAndRemoveAnimals; // todo rework to subscription if need
-  editPermission = this.userAuthService.getUser().permissions.canEditAnimals; // todo rework to subscription if need
+  addPermission = this.userAuthService.getUser().permissionForAddAndRemoveAnimals; // todo rework to subscription if need
+  editPermission = this.userAuthService.getUser().permissionForEditAnimals; // todo rework to subscription if need
 
   loadedPhotoFile = '';
   imagePreview = '';
