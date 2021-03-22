@@ -46,7 +46,7 @@ export class UserAuthService {
     this.currentUser = UserAuthService.getUserFromStorage() || new User();
     this.token = UserAuthService.getTokenFromStorage() || '';
 
-    if (this.token && !this.currentUser.id.toString()) {
+    if (this.token && !this.isAuthorized()) {
       this.loadUserFromServer();
     }
   }
@@ -66,6 +66,7 @@ export class UserAuthService {
     if (userStr) {
       return JSON.parse(atob(userStr));
     }
+
     return null;
   }
 
@@ -83,6 +84,12 @@ export class UserAuthService {
     return this.currentUser;
   }
 
+  public setUser(user: IUser): void {
+    this.currentUser = user;
+    UserAuthService.saveUserToStorage(user);
+    this.userUpdatedEvent.next(user);
+  }
+
   private loadUserFromServer(): Subscription {
     // return this.httpClient.get<IUser>(GET_CURRENT_USER_URL).subscribe((res) => { // todo rework for ad backend
     return this.httpClient.get<any>(GET_CURRENT_USER_URL).subscribe((res) => {
@@ -90,19 +97,8 @@ export class UserAuthService {
     });
   }
 
-  public setUser(user: IUser): void {
-    this.currentUser = user;
-    UserAuthService.saveUserToStorage(user);
-    this.userUpdatedEvent.next(user);
-  }
-
   public getToken(): string {
-    if (this.token) {
-      return this.token;
-    } else {
-      this.token = UserAuthService.getTokenFromStorage() || '';
-      return this.token;
-    }
+    return this.token;
   }
 
   public setToken(token: string): void {
@@ -122,6 +118,8 @@ export class UserAuthService {
 
   public logout(): void {
     localStorage.removeItem(STORAGE_TOKEN_NAME);
+    localStorage.removeItem(STORAGE_USER_NAME);
+    this.setToken('');
     this.setUser(new User());
     this.router.navigate(['']);
   }
