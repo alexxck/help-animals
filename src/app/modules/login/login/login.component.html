@@ -1,11 +1,11 @@
 <div class="login-root">
   <form [formGroup]="loginForm">
     <label class="label new-line-padding" for="login-input">Login:</label>
-    <input id="login-input" type="text" class="input max-width" name="login" formControlName="login">
+    <input id="login-input" type="text" class="input max-width" name="login" formControlName="login" autocomplete="on">
     <div class="error-message" *ngIf="loginForm.controls['login'].invalid">Required</div>
 
     <label class="label new-line-padding" for="password-input">Password:</label>
-    <input id="password-input" type="password" class="input max-width" name="password" formControlName="password">
+    <input id="password-input" type="password" class="input max-width" name="password" formControlName="password" autocomplete="off">
     <div class="error-message" *ngIf="loginForm.controls['password'].invalid">Required</div>
 
     <div class="remember-container new-line-padding">

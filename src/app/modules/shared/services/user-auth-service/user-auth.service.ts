@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 const AUTHENTICATION_URL = environment.apiUrl + '/authenticate/token';
 const GET_CURRENT_USER_URL = environment.apiUrl + '/authenticate/user';
 const STORAGE_TOKEN_NAME = 'authToken';
-
+const STORAGE_USER_NAME = 'authUser';
 
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   isActive: boolean;
@@ -38,15 +38,15 @@ class User extends UserAuthPermissionsDefault implements IUser {
 })
 export class UserAuthService {
 
-  private currentUser;
+  private currentUser: IUser;
   public userUpdatedEvent = new Subject<IUser>();
-  private token: string | null;
+  private token: string;
 
   constructor(private httpClient: HttpClient, private router: Router) {
-    this.currentUser = new User();
-    this.token = UserAuthService.getTokenFromStorage();
+    this.currentUser = UserAuthService.getUserFromStorage() || new User();
+    this.token = UserAuthService.getTokenFromStorage() || '';
 
-    if (this.token) {
+    if (this.token && !this.currentUser.id.toString()) {
       this.loadUserFromServer();
     }
   }
@@ -57,7 +57,21 @@ export class UserAuthService {
 
   private static saveTokenToStorage(token: string): void {
     if (token) {
-      localStorage.setItem(STORAGE_TOKEN_NAME, btoa(token));
+      localStorage.setItem(STORAGE_TOKEN_NAME, token);
+    }
+  }
+
+  private static getUserFromStorage(): IUser | null {
+    const userStr = localStorage.getItem(STORAGE_USER_NAME);
+    if (userStr) {
+      return JSON.parse(atob(userStr));
+    }
+    return null;
+  }
+
+  private static saveUserToStorage(user: IUser): void {
+    if (user) {
+      localStorage.setItem(STORAGE_USER_NAME, btoa(JSON.stringify(user)));
     }
   }
 
@@ -78,20 +92,30 @@ export class UserAuthService {
 
   public setUser(user: IUser): void {
     this.currentUser = user;
+    UserAuthService.saveUserToStorage(user);
     this.userUpdatedEvent.next(user);
   }
 
-  public getToken(): string | null {
-    return this.token;
+  public getToken(): string {
+    if (this.token) {
+      return this.token;
+    } else {
+      this.token = UserAuthService.getTokenFromStorage() || '';
+      return this.token;
+    }
+  }
+
+  public setToken(token: string): void {
+    this.token = token;
+    UserAuthService.saveTokenToStorage(token);
   }
 
   public login(email: string, password: string): void {
     // this.httpClient.post(AUTHENTICATION_URL, {email, password}) // todo use for real server
     this.httpClient.get(AUTHENTICATION_URL)
       .subscribe((resp: any) => {
-        this.token = resp.token;
+        this.setToken(resp.token);
         this.loadUserFromServer();
-        UserAuthService.saveTokenToStorage(resp.token);
         this.router.navigate(['']);
       });
   }
