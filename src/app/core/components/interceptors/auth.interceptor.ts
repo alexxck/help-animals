@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { EMPTY, Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
-import { UserAuthService } from '../services/user-auth-service/user-auth.service';
+import { UserAuthService } from '../../../modules/shared/services/user-auth-service/user-auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
