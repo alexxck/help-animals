@@ -4,8 +4,6 @@ import {PaginationComponent} from './components/pagination/pagination.component'
 import {RouterModule} from '@angular/router';
 import {sharedServices} from './services';
 import { LoaderComponent } from './components/loader/loader.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../../core/components/interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -18,12 +16,7 @@ import { AuthInterceptor } from '../../core/components/interceptors/auth.interce
     CommonModule,
     RouterModule,
   ],
-  providers: [...sharedServices,
-    {
-      provide: HTTP_INTERCEPTORS, // Injection Token
-      useClass: AuthInterceptor, // Interceptor class
-      multi: true, // we added array
-    }],
+  providers: [...sharedServices],
 })
 export class SharedModule {
 }

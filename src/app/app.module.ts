@@ -4,11 +4,12 @@ import {AppRouting} from './app-routing';
 import {AppComponent} from './app.component';
 import {NavMenuComponent} from './core/components/nav-menu/nav-menu.component';
 import {HeaderComponent} from './core/components/header/header.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {NavMenuNewComponent} from './core/components/nav-menu-new/nav-menu-new.component';
 import {FullSizeHeaderComponent} from './core/components/full-size-header/full-size-header.component';
 import {NavMenuMobileComponent} from './core/components/nav-menu-mobile/nav-menu-mobile.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,11 @@ import {PageNotFoundComponent} from './core/components/page-not-found/page-not-f
     HttpClientModule,
     AppRouting,
   ],
+  providers : [{
+    provide: HTTP_INTERCEPTORS, // Injection Token
+    useClass: AuthInterceptor, // Interceptor class
+    multi: true, // we added array
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
