@@ -8,7 +8,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
 import {IAdminAnimalDetailsPostPatchRequest} from '../models/admin-animal-details/i-admin-animal-details-post-patch-request';
 
-const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
+const API_ANIMAL_BASE_URL = environment.fakeApiUrl + '/animals/';
 
 @Component({
   selector: 'app-admin-animal-details',

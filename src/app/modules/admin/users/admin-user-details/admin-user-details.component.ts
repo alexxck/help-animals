@@ -7,7 +7,7 @@ import {FormBuilder, FormControl} from '@angular/forms';
 import {IAdminUserDetailsGetResponse} from '../models/admin-user-details/i-admin-user-details-get-response';
 import {IAdminUserDetails} from '../models/admin-user-details/i-admin-user-details';
 
-const API_USER_BASE_URL = environment.apiUrl + '/users/';
+const API_USER_BASE_URL = environment.fakeApiUrl + '/users/';
 const ROUTER_URL = '/admin/users/';
 
 

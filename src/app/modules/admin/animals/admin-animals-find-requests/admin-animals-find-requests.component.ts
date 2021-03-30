@@ -7,7 +7,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {IAdminAnimalFindRequest} from '../models/i-admin-animal-find-request';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
-const API_ANIMALS_FIND_REQUESTS_URL = environment.apiUrl + '/animals-find-requests/';
+const API_ANIMALS_FIND_REQUESTS_URL = environment.fakeApiUrl + '/animals-find-requests/';
 const ADMIN_ANIMALS_FIND_REQUESTS_URL = '/admin/animals/find-requests';
 
 class AnimalFindRequest implements IAdminAnimalFindRequest {

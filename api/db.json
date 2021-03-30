@@ -1,7 +1,8 @@
 {
-  "authenticate": [
-    {
-      "id": "user",
+  "login": {
+    "token": "fakeApiToken"
+  },
+  "authUser": {
       "user": {
         "id": 0,
         "isActive": true,
@@ -11,11 +12,6 @@
         "permissionForCreateAndCloseAnimalRequests": true
       }
     },
-    {
-      "id": "token",
-      "token": "fakeApiToken"
-    }
-  ],
   "users": [
     {
       "id": 0,

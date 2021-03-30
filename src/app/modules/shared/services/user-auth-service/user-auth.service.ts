@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Subject, Subscription} from 'rxjs';
+import {Subject} from 'rxjs';
 import {environment} from '../../../../../environments';
 import {Router} from '@angular/router';
 
-const AUTHENTICATION_URL = environment.apiUrl + '/authenticate/token';
-const GET_CURRENT_USER_URL = environment.apiUrl + '/authenticate/user';
+const AUTHENTICATION_URL = environment.apiUrl + '/login'; // BE api
+const GET_CURRENT_USER_URL = environment.fakeApiUrl + '/authUser';
+
 const STORAGE_TOKEN_NAME = 'authToken';
 const STORAGE_USER_NAME = 'authUser';
 
@@ -29,9 +30,11 @@ interface IUser extends IUserAuthPermissions {
   id: string;
 }
 
-class User extends UserAuthPermissionsDefault implements IUser {
+class UserGuest extends UserAuthPermissionsDefault implements IUser {
   id = '';
 }
+
+const userGuest = new UserGuest();
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +46,8 @@ export class UserAuthService {
   private token: string;
 
   constructor(private httpClient: HttpClient, private router: Router) {
-    this.currentUser = UserAuthService.getUserFromStorage() || new User();
     this.token = UserAuthService.getTokenFromStorage() || '';
+    this.currentUser = UserAuthService.getUserFromStorage() || userGuest;
 
     if (this.token && !this.isAuthorized()) {
       this.loadUserFromServer();
@@ -64,16 +67,19 @@ export class UserAuthService {
   private static getUserFromStorage(): IUser | null {
     const userStr = localStorage.getItem(STORAGE_USER_NAME);
     if (userStr) {
-      return JSON.parse(atob(userStr));
+      // return JSON.parse(atob(userStr));  // todo fix
+      return JSON.parse(userStr); // todo fix
     }
 
     return null;
   }
 
-  private static saveUserToStorage(user: IUser): void {
-    if (user) {
-      localStorage.setItem(STORAGE_USER_NAME, btoa(JSON.stringify(user)));
+  private saveUserToStorage(user: IUser): void {
+    if (!this.isAuthorized()) {
+      return;
     }
+    // localStorage.setItem(STORAGE_USER_NAME, btoa(JSON.stringify(user))); // todo fix
+    localStorage.setItem(STORAGE_USER_NAME, JSON.stringify(user)); // todo fix
   }
 
   public isAuthorized(): boolean {
@@ -86,15 +92,17 @@ export class UserAuthService {
 
   public setUser(user: IUser): void {
     this.currentUser = user;
-    UserAuthService.saveUserToStorage(user);
+    this.saveUserToStorage(user);
     this.userUpdatedEvent.next(user);
   }
 
-  private loadUserFromServer(): Subscription {
-    // return this.httpClient.get<IUser>(GET_CURRENT_USER_URL).subscribe((res) => { // todo rework for ad backend
-    return this.httpClient.get<any>(GET_CURRENT_USER_URL).subscribe((res) => {
-      this.setUser(res.user);
-    });
+  private loadUserFromServer(): void {
+    this.httpClient.get<{ user: IUser }>(GET_CURRENT_USER_URL).subscribe((res) => {
+        this.setUser(res.user);
+      }, err => {
+        console.log(err);
+      }
+    );
   }
 
   public getToken(): string {
@@ -107,12 +115,15 @@ export class UserAuthService {
   }
 
   public login(email: string, password: string): void {
-    // this.httpClient.post(AUTHENTICATION_URL, {email, password}) // todo use for real server
-    this.httpClient.get(AUTHENTICATION_URL)
+    // const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    // this.httpClient.post<{token: string}>(AUTHENTICATION_URL, JSON.stringify({email, password}), {headers})  // todo use for real server
+    this.httpClient.get<{ token: string }>(environment.fakeApiUrl + '/login')                        // todo use for fake API
       .subscribe((resp: any) => {
         this.setToken(resp.token);
         this.loadUserFromServer();
         this.router.navigate(['']);
+      }, error => {
+        console.log(error);
       });
   }
 
@@ -120,7 +131,7 @@ export class UserAuthService {
     localStorage.removeItem(STORAGE_TOKEN_NAME);
     localStorage.removeItem(STORAGE_USER_NAME);
     this.setToken('');
-    this.setUser(new User());
+    this.setUser(userGuest);
     this.router.navigate(['']);
   }
 }

@@ -8,7 +8,7 @@ import {UserAuthService} from '../../../shared/services/user-auth-service/user-a
 import {IAdminUserListGetResponse} from '../models/admin-user-list/i-admin-user-list-get-response';
 import {IAdminUserListTableElement} from '../models/admin-user-list/i-admin-user-list-table-element';
 
-const API_USERS_URL = environment.apiUrl + '/users';
+const API_USERS_URL = environment.fakeApiUrl + '/users';
 const ADMIN_USERS_URL = '/admin/users';
 
 @Component({

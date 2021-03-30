@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(): void {
-    this.userAuthService.login(this.loginForm.value.login, this.loginForm.value.password); // todo fix to work with BE
+    this.userAuthService.login(this.loginForm.value.login, this.loginForm.value.password);
     this.loginForm.patchValue({password: ''});
   }
 }

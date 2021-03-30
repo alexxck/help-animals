@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs';
 import {IPagination, Pagination} from '../../shared/components/pagination/pagination.component';
 
 const ANIMALS_URL = 'animals';
-const GET_ANIMALS_URL = environment.apiUrl + '/' + ANIMALS_URL;
+const GET_ANIMALS_URL = environment.fakeApiUrl + '/' + ANIMALS_URL;
 
 @Component({
   selector: 'app-animal-list',
