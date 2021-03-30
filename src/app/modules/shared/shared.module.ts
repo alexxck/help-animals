@@ -4,6 +4,7 @@ import {PaginationComponent} from './components/pagination/pagination.component'
 import {RouterModule} from '@angular/router';
 import {sharedServices} from './services';
 import { LoaderComponent } from './components/loader/loader.component';
+import {UserAuthService} from './services/user-auth-service/user-auth.service';
 
 
 @NgModule({
@@ -19,4 +20,7 @@ import { LoaderComponent } from './components/loader/loader.component';
   providers: [...sharedServices],
 })
 export class SharedModule {
+  constructor(private userAuthService: UserAuthService) {
+    userAuthService.init();
+  }
 }

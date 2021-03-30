@@ -19,7 +19,7 @@ class NavMenuItem implements INavMenuItem {
   templateUrl: './nav-menu-new.component.html',
   styleUrls: ['./nav-menu-new.component.css']
 })
-export class NavMenuNewComponent implements OnInit, OnDestroy {
+export class NavMenuNewComponent implements OnDestroy {
   publicMenuItems: INavMenuItem[] = [];
   adminMenuItems: INavMenuItem[] = [];
 
@@ -33,11 +33,6 @@ export class NavMenuNewComponent implements OnInit, OnDestroy {
       this.fillPublicMenuItems();
       this.fillAdminMenuItems();
     });
-  }
-
-  ngOnInit(): void {
-    this.fillPublicMenuItems();
-    this.fillAdminMenuItems();
   }
 
   ngOnDestroy(): void {
@@ -58,9 +53,7 @@ export class NavMenuNewComponent implements OnInit, OnDestroy {
 
   fillAdminMenuItems(): void {
     this.adminMenuItems = [];
-
     const user = this.userAuthService.getUser();
-
     if (!user.isActive) {
       return;
     }
