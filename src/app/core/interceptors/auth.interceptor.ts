@@ -15,7 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService : UserAuthService) {}
 
-  // Что бы интерсептор заработал ему нужен HTTPCLEINTMODULE, но он уже экспортирован в главный, тоесть шаред модуль нужно экспортнуть в главный
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return of(this.authService.getToken()).pipe(
       mergeMap( (token) => {
