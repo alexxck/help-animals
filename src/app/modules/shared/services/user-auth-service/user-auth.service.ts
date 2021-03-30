@@ -50,7 +50,7 @@ export class UserAuthService {
     this.currentUser = UserAuthService.getUserFromStorage() || userGuest;
 
     if (this.token && !this.isAuthorized()) {
-      this.loadUserFromServer();
+      this.loadUserFromServer(); // todo Error: NG0200: Circular dependency in DI detected for UserAuthService.
     }
   }
 
