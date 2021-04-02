@@ -8,8 +8,8 @@ import {UserAuthService} from '../../../shared/services/user-auth-service/user-a
 import {IAdminAnimalListTableElement} from '../models/admin-animal-list/i-admin-animal-list-table-element';
 import {IAdminAnimalListGetResponse} from '../models/admin-animal-list/i-admin-animal-list-get-response';
 
-const API_ADMIN_ANIMALS_URL = environment.fakeApiUrl + '/animals';
-const ADMIN_ANIMALS_URL = '/admin/animals';
+const API_ADMIN_ANIMALS_URL = environment.apiUrl + '/animals';
+export const ADMIN_ANIMALS_URL = '/admin/animals';
 
 
 @Component({

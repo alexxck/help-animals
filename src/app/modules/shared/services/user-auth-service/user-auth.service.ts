@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {environment} from '../../../../../environments';
 import {Router} from '@angular/router';
 import {TokenAuthService} from '../token-auth-service/token-auth.service';
 
-const AUTHENTICATION_URL = environment.apiUrl + '/login'; // BE api
+const AUTHENTICATION_URL = environment.apiUrl + '/login';
 const GET_CURRENT_USER_URL = environment.fakeApiUrl + '/authUser';
 
 const STORAGE_USER_NAME = 'authUser';
@@ -114,9 +114,9 @@ export class UserAuthService {
   }
 
   public login(email: string, password: string): void {
-    // const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    // this.httpClient.post<{token: string}>(AUTHENTICATION_URL, JSON.stringify({email, password}), {headers})  // todo use for real server
-    this.httpClient.get<{ token: string }>(environment.fakeApiUrl + '/login') // todo use for fake API
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    this.httpClient.post<{token: string}>(AUTHENTICATION_URL, JSON.stringify({email, password}), {headers})  // todo use for real server
+    // this.httpClient.get<{ token: string }>(environment.fakeApiUrl + '/login') // todo use for fake API
       .subscribe((resp: any) => {
         this.tokenAuthService.setToken(resp.token);
         this.loadUserFromServer();

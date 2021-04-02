@@ -1,14 +1,19 @@
 import {Component} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../../environments';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
 import {IAdminAnimalDetailsPostPatchRequest} from '../models/admin-animal-details/i-admin-animal-details-post-patch-request';
+import {IAdminAnimalDetailsBase} from '../models/admin-animal-details/i-admin-animal-details-base';
+import {AnimalDetailsConverters} from './models/animal-details-converters';
+import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
+import {ADMIN_ANIMALS_URL} from '../admin-animal-list/admin-animal-list.component';
+import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 
-const API_ANIMAL_BASE_URL = environment.fakeApiUrl + '/animals/';
+
+const API_ANIMAL_BASE_URL = environment.apiUrl + '/animals/';
 
 @Component({
   selector: 'app-admin-animal-details',
@@ -19,15 +24,16 @@ export class AdminAnimalDetailsComponent {
   addPermission = this.userAuthService.getUser().permissionForAddAndRemoveAnimals; // todo rework to subscription if need
   editPermission = this.userAuthService.getUser().permissionForEditAnimals; // todo rework to subscription if need
 
-  loadedPhotoFile = '';
+  loadedPhotoFile?: File;
   imagePreview = '';
-  imgUrl = '';
+  image = '';
   dateAdded = '';
   dateLastEdit = '';
   editedBy = '';
 
   form: FormGroup = this.formBuilder.group({ // todo add validators
       id: new FormControl(''),
+      name: new FormControl(''),
       age: new FormControl(0),
       breed: new FormControl(''),
       sex: new FormControl(''),
@@ -44,6 +50,7 @@ export class AdminAnimalDetailsComponent {
 
   constructor(private httpClient: HttpClient,
               private activatedRouter: ActivatedRoute,
+              private router: Router,
               private userAuthService: UserAuthService,
               private formBuilder: FormBuilder) {
     this.getAnimal(activatedRouter.snapshot.params.id);
@@ -54,9 +61,11 @@ export class AdminAnimalDetailsComponent {
       return;
     }
 
+    // this.httpClient.get<IAdminAnimalDetailsGetResponse>(environment.fakeApiUrl + '/animals/' + id).subscribe((res) => {
     this.httpClient.get<IAdminAnimalDetailsGetResponse>(API_ANIMAL_BASE_URL + id).subscribe((res) => {
       this.form.setValue({
         id: res.id,
+        name: res.name,
         age: res.age,
         breed: res.breed,
         sex: res.sex,
@@ -70,9 +79,9 @@ export class AdminAnimalDetailsComponent {
         showInGallery: res.showInGallery,
       });
 
-      this.imgUrl = res.imgUrl;
-      this.dateAdded = res.dateAdded;
-      this.dateLastEdit = res.dateLastEdit;
+      this.image = res.image;
+      this.dateAdded = convertTimestampToLocalDateTime(res.dateAdded);
+      this.dateLastEdit = convertTimestampToLocalDateTime(res.dateLastEdit);
       this.editedBy = res.editedBy;
     });
   }
@@ -86,10 +95,11 @@ export class AdminAnimalDetailsComponent {
     if (!elem.files) {
       return;
     }
+    const file = elem.files[0];
 
-    FileReaderAsDataUrl.readAsDataURL(elem.files[0]).subscribe(res => {
+    FileReaderAsDataUrl.readAsDataURL(file).subscribe(res => {
       this.imagePreview = res.fileContent;
-      this.loadedPhotoFile = res.fileContent;
+      this.loadedPhotoFile = file;
     }, error => {
       alert('Невдалося завантажити файл: ' + error);
     });
@@ -102,18 +112,14 @@ export class AdminAnimalDetailsComponent {
     }
 
     const url = API_ANIMAL_BASE_URL + this.form.value.id;
-
     const req: IAdminAnimalDetailsPostPatchRequest = {
-      ...this.form.value,
-      imgUrl: this.imgUrl,
-      dateAdded: this.dateAdded,
-      dateLastEdit: this.dateLastEdit,
-      editedBy: this.editedBy,
+      ...this.form.value as IAdminAnimalDetailsBase,
+      image: this.loadedPhotoFile || null,
     };
 
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+    const reqForm = AnimalDetailsConverters.convertAnimalPostPatchRequestToFormData(req);
 
-    this.httpClient.put(url, JSON.stringify(req), {headers}).subscribe(() => {
+    this.httpClient.patch(url, reqForm).subscribe(() => {
       this.getAnimal(this.form.value.id);
     }, (err) => this.submitErrorHandler(err));
   }
@@ -124,19 +130,15 @@ export class AdminAnimalDetailsComponent {
       return;
     }
 
-    const url = API_ANIMAL_BASE_URL;
-
     const req: IAdminAnimalDetailsPostPatchRequest = {
-      ...this.form.value,
-      imgUrl: this.imgUrl,
-      dateAdded: this.dateAdded,
-      dateLastEdit: this.dateLastEdit,
-      editedBy: this.editedBy,
+      ...this.form.value as IAdminAnimalDetailsBase,
+      image: this.loadedPhotoFile || null,
     };
 
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    this.httpClient.post(url, JSON.stringify(req), {headers}).subscribe(() => {
-      this.getAnimal(1); // todo get id from response
+    const reqForm = AnimalDetailsConverters.convertAnimalPostPatchRequestToFormData(req);
+    this.httpClient.post(API_ANIMAL_BASE_URL, reqForm).subscribe((res) => {
+      // this.getAnimal(res.id); // todo get id from response
+      this.router.navigateByUrl(ADMIN_ANIMALS_URL);
     }, (err) => this.submitErrorHandler(err));
   }
 

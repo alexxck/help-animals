@@ -3,15 +3,15 @@
     "token": "fakeApiToken"
   },
   "authUser": {
-      "user": {
-        "id": 0,
-        "isActive": true,
-        "permissionForAddEditAndRemoveUsers": true,
-        "permissionForAddAndRemoveAnimals": true,
-        "permissionForEditAnimals": true,
-        "permissionForCreateAndCloseAnimalRequests": true
-      }
-    },
+    "user": {
+      "id": 0,
+      "isActive": true,
+      "permissionForAddEditAndRemoveUsers": true,
+      "permissionForAddAndRemoveAnimals": true,
+      "permissionForEditAnimals": true,
+      "permissionForCreateAndCloseAnimalRequests": true
+    }
+  },
   "users": [
     {
       "id": 0,

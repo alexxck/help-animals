@@ -15,7 +15,16 @@
     </div>
 
     <div class="admin-details-form-field-container">
-      <label class="label" for="age">age:</label>
+      <label class="label" for="name">Ім'я:</label>
+      <input class="input"
+             id="name"
+             formControlName="name"
+             [readonly]="formReadonlyFieldCheck()"
+             type="text"/>
+    </div>
+
+    <div class="admin-details-form-field-container">
+      <label class="label" for="age">Вік:</label>
       <input class="input"
              id="age"
              formControlName="age"
@@ -70,7 +79,7 @@
 
     <div class="admin-details-form-field-container">
       <label class="label" for="imgUrl">Зображення:</label>
-      <img src="{{imagePreview || imgUrl}}" width="100%" alt="Image preview...">
+      <img src="{{imagePreview || image}}" width="100%" alt="Image preview...">
       <input class="input"
              id="imgUrl"
              type="file"
