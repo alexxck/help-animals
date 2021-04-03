@@ -6,5 +6,5 @@ export interface IAdminUserListTableElement extends IUserAuthPermissions{
   phone1: string;
   phone2: string;
   email: string;
-  lastEditDate: string;
+  updated_at: string;
 }

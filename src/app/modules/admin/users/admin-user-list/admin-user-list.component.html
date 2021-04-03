@@ -1,6 +1,6 @@
 <div class="admin-user-list-container">
   <div class="admin-animal-list-header">
-    <button type="button" class="button" routerLink="{{getRedirectToUserAddLink()}}">Додати користувача</button>
+<!--    <button type="button" class="button" routerLink="{{getRedirectToUsersControl()}}">Додати користувача</button>-->
   </div>
 
   <table class="table">
@@ -22,7 +22,7 @@
       <td>{{user.phone1}}</td>
       <td>{{user.phone2}}</td>
       <td>{{user.isActive ? '&#10004;' : '&#10008;'}}</td>
-      <td>{{user.lastEditDate}}</td>
+      <td>{{user.updated_at}}</td>
       <td>
         <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id + '/details')}}">&#9997;</a>
       </td>

@@ -1,15 +1,14 @@
 import {Component, OnDestroy} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {IAdminUserListGetResponse} from '../models/admin-user-list/i-admin-user-list-get-response';
-import {IAdminUserListTableElement} from '../models/admin-user-list/i-admin-user-list-table-element';
+import {IAdminUserListGetResponse} from './models/i-admin-user-list-get-response';
+import {IAdminUserListTableElement} from './models/i-admin-user-list-table-element';
+import {ADMIN_USERS_URL, API_ADMIN_USERS_URL} from '../models/urls';
+import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 
-const API_USERS_URL = environment.fakeApiUrl + '/users';
-const ADMIN_USERS_URL = '/admin/users';
 
 @Component({
   selector: 'app-admin-user-list',
@@ -39,8 +38,15 @@ export class AdminUserListComponent implements OnDestroy {
   }
 
   public getUsers(): void {
-    this.httpClient.get<IAdminUserListGetResponse>(API_USERS_URL).subscribe((res) => {
-      this.userList = res as unknown as IAdminUserListTableElement[]; // todo remove after receive params from back
+    this.httpClient.get<IAdminUserListGetResponse>(API_ADMIN_USERS_URL).subscribe((res) => {
+      const userList = res as unknown as IAdminUserListTableElement[]; // todo remove after receive params from back
+      userList.forEach((user) => {
+        user.updated_at = convertTimestampToLocalDateTime(user.updated_at);
+        return user;
+      });
+
+      this.userList = userList;
+
       this.pagination.totalPages = 10; // todo remove after receive params from back
       // this.userList = res.users; // todo set params from back
       // this.pagination.page = res.page; // todo set params from back
@@ -49,11 +55,6 @@ export class AdminUserListComponent implements OnDestroy {
   }
 
   public getRedirectToUserDetailsLink(id: number | string): string {
-    return ADMIN_USERS_URL + '/' + id;
+    return `${ADMIN_USERS_URL}/${id}`;
   }
-
-  public getRedirectToUserAddLink(): string {
-    return ADMIN_USERS_URL + '/add';
-  }
-
 }
