@@ -4,7 +4,7 @@ export class AnimalDetailsConverters {
   public static convertAnimalPostPatchRequestToFormData(request: IAdminAnimalDetailsPostPatchRequest): FormData {
     const reqFormData = new FormData();
 
-    // reqFormData.set('name', request.name);
+    // reqFormData.set('name', request.name); // todo remove
     // reqFormData.set('age', '10');
     // reqFormData.set('animal_has_family', request.animalHasFamily.toString());
     // reqFormData.set('sterilization', request.sterilization.toString());
@@ -19,13 +19,12 @@ export class AnimalDetailsConverters {
 
 
     Object.entries(request).forEach(([k, v]) => {
-      if (v === null || v === undefined) {
+      if (v === undefined || v === null) {
         return;
       }
 
       const key = camelToSnakeCaseConvertor(k);
-
-      if (typeof v.name === 'string' || typeof v === 'string') {
+      if (typeof v === 'string' || typeof v === 'object') {
         reqFormData.set(key, v);
       } else {
         reqFormData.set(key, v.toString());

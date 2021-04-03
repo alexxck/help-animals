@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  fakeApiUrl: 'http://localhost:3001',
-  apiUrl: 'http://localhost:3000/api/v1'
+  serverHost: 'http://localhost:3000',
+  apiUrl: '/api/v1',
+  fakeApiUrl: 'http://localhost:3001'
 };
 
 /*

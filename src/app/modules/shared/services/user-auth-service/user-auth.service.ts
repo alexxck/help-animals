@@ -5,7 +5,7 @@ import {environment} from '../../../../../environments';
 import {Router} from '@angular/router';
 import {TokenAuthService} from '../token-auth-service/token-auth.service';
 
-const AUTHENTICATION_URL = environment.apiUrl + '/login';
+const AUTHENTICATION_URL = environment.serverHost + environment.apiUrl + '/login';
 const GET_CURRENT_USER_URL = environment.fakeApiUrl + '/authUser';
 
 const STORAGE_USER_NAME = 'authUser';

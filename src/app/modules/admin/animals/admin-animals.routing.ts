@@ -17,7 +17,7 @@ export const AdminAnimalsRouting: Routes = [
     component: AdminAnimalsFindRequestsComponent,
   },
   {
-    path: ':id/details',
+    path: ':id',
     component: AdminAnimalDetailsComponent,
   },
   {

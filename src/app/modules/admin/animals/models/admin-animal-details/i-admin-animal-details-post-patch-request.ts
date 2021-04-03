@@ -1,5 +1,5 @@
 import {IAdminAnimalDetailsBase} from './i-admin-animal-details-base';
 
 export interface IAdminAnimalDetailsPostPatchRequest extends IAdminAnimalDetailsBase {
-  image: File | null;
+  'image_attributes[file]': File | null;
 }
