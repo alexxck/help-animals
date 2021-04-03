@@ -1,15 +1,29 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../../../../environments';
-import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {FormBuilder, FormControl} from '@angular/forms';
 import {IAdminUserDetailsGetResponse} from './models/i-admin-user-details-get-response';
 import {IAdminUserDetails} from './models/i-admin-user-details';
+import {API_ADMIN_USERS_URL} from '../models/urls';
+import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 
-const API_USER_BASE_URL = environment.fakeApiUrl + '/users/';
-const ROUTER_URL = '/admin/users/';
-
+class AdminUserDetails implements IAdminUserDetails {
+  email = '';
+  id = '';
+  isActive = false;
+  login = '';
+  name = '';
+  password = '';
+  permissionForAddEditAndRemoveAnimals = false;
+  permissionForAddEditAndRemoveUsers = false;
+  permissionForCreateAndCloseAnimalRequests = false;
+  permissionForEditAnimals = false;
+  phone1 = '';
+  phone2 = '';
+  createdAt = '';
+  editedBy = '';
+  updatedAt = '';
+}
 
 @Component({
   selector: 'app-user-animal-details',
@@ -17,33 +31,11 @@ const ROUTER_URL = '/admin/users/';
   styleUrls: ['./admin-user-details.component.css']
 })
 export class AdminUserDetailsComponent implements AfterViewInit {
-  currentUser = this.userAuthService.getUser();
-
-  form = this.formBuilder.group({
-    id: new FormControl(),
-    login: new FormControl(''),
-    password: new FormControl(''),
-    name: new FormControl(''),
-    phone1: new FormControl(''),
-    phone2: new FormControl(''),
-    email: new FormControl(''),
-
-    isActive: new FormControl(false),
-    permissionForAddEditAndRemoveUsers: new FormControl(false),
-    permissionForAddAndRemoveAnimals: new FormControl(false),
-    permissionForEditAnimals: new FormControl(false),
-    permissionForCreateAndCloseAnimalRequests: new FormControl(false),
-  });
-
-  createdDate = '';
-  lastEditDate = '';
-  editedBy = '';
+  userDetails = new AdminUserDetails();
 
   constructor(private httpClient: HttpClient,
               private activatedRouter: ActivatedRoute,
-              public userAuthService: UserAuthService,
-              private router: Router,
-              private formBuilder: FormBuilder) {
+              public userAuthService: UserAuthService) {
   }
 
   ngAfterViewInit(): void {
@@ -55,56 +47,22 @@ export class AdminUserDetailsComponent implements AfterViewInit {
       return;
     }
 
-    this.httpClient.get<IAdminUserDetailsGetResponse>(API_USER_BASE_URL + id).subscribe((res) => {
-      this.form.setValue({
-        id: res.id.toString(),
-        login: res.login,
-        password: '',
-        name: res.name,
-        phone1: res.phone1,
-        phone2: res.phone2,
-        email: res.email,
+    this.httpClient.get<IAdminUserDetailsGetResponse>(`${API_ADMIN_USERS_URL}/${id}`).subscribe((res) => {
+      this.userDetails.id = res.id.toString();
+      this.userDetails.login = res.login;
+      this.userDetails.name = res.name;
+      this.userDetails.phone1 = res.phone1;
+      this.userDetails.phone2 = res.phone2;
+      this.userDetails.email = res.email;
 
-        isActive: res.isActive,
-        permissionForAddEditAndRemoveUsers: res.permissionForAddEditAndRemoveUsers,
-        permissionForAddAndRemoveAnimals: res.permissionForAddAndRemoveAnimals,
-        permissionForEditAnimals: res.permissionForEditAnimals,
-        permissionForCreateAndCloseAnimalRequests: res.permissionForCreateAndCloseAnimalRequests,
-      });
+      this.userDetails.isActive = res.is_active;
+      this.userDetails.permissionForAddEditAndRemoveUsers = res.permission_for_add_edit_and_remove_users;
+      this.userDetails.permissionForAddEditAndRemoveAnimals = res.permission_for_add_edit_and_remove_animals;
+      this.userDetails.permissionForCreateAndCloseAnimalRequests = res.permission_for_create_and_close_animal_requests;
 
-      this.createdDate = res.createDate;
-      this.lastEditDate = res.lastEditDate;
-      this.editedBy = res.editedBy;
+      this.userDetails.createdAt = convertTimestampToLocalDateTime(res.created_at);
+      this.userDetails.updatedAt = convertTimestampToLocalDateTime(res.updated_at);
+      this.userDetails.editedBy = res.edited_by;
     });
-  }
-
-  formReadonlyFieldCheck(): boolean {
-    return !this.currentUser.permissionForAddEditAndRemoveUsers;
-  }
-
-  submitEditUser(): void {
-    const url = API_USER_BASE_URL + this.form.value.id;
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-
-    const req: IAdminUserDetails = this.form.value;
-
-    this.httpClient.put(url, JSON.stringify(req), {headers}).subscribe(() => {
-      this.getUser(this.form.value.id);
-    }, (err) => this.submitErrorHandler(err));
-  }
-
-  submitAddUser(): void {
-    const url = API_USER_BASE_URL;
-    const req: IAdminUserDetails = this.form.value;
-
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    this.httpClient.post(url, JSON.stringify(req), {headers}).subscribe(() => {
-      this.router.navigate([ROUTER_URL]);
-      // this.getUser(this.editedUser.id);
-    }, (err) => this.submitErrorHandler(err));
-  }
-
-  submitErrorHandler(err: Error): void {
-    alert('Сталася помилка при відправці форми: ' + err.message);
   }
 }

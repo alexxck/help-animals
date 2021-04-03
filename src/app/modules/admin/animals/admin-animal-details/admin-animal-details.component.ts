@@ -19,8 +19,7 @@ import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
   styleUrls: ['./admin-animal-details.component.css']
 })
 export class AdminAnimalDetailsComponent {
-  addPermission = this.userAuthService.getUser().permissionForAddAndRemoveAnimals; // todo rework to subscription if need
-  editPermission = this.userAuthService.getUser().permissionForEditAnimals; // todo rework to subscription if need
+  animalsChangePermission = this.userAuthService.getUser().permissionForAddEditAndRemoveAnimals; // todo rework to subscription if need
 
   loadedPhotoFile?: File;
   imagePreview = '';
@@ -84,7 +83,7 @@ export class AdminAnimalDetailsComponent {
   }
 
   formReadonlyFieldCheck(): boolean {
-    return !this.addPermission && !this.editPermission;
+    return !this.animalsChangePermission;
   }
 
   addPhoto(event: Event): void {

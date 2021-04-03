@@ -129,13 +129,13 @@
 
     <button class="button admin-details-form-field-submit-button"
             type="button"
-            *ngIf="form.value.id && editPermission"
+            *ngIf="form.value.id && animalsChangePermission"
             (click)="submitEditAnimal()"
             [disabled]="form.invalid">Підтвердити зміни
     </button>
     <button class="button admin-details-form-field-submit-button"
             type="button"
-            *ngIf="!form.value.id && addPermission"
+            *ngIf="!form.value.id && animalsChangePermission"
             (click)="submitAddAnimal()"
             [disabled]="form.invalid">Додати тварину
     </button>

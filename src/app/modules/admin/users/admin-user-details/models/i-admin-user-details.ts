@@ -8,5 +8,7 @@ export interface IAdminUserDetails extends IUserAuthPermissions {
   phone1: string;
   phone2: string;
   email: string;
-
+  createdAt: string;
+  updatedAt: string;
+  editedBy: string;
 }

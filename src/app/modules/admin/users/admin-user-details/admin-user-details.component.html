@@ -1,161 +1,97 @@
 <div class="admin-details">
+  <h4 class="caption">Перегляд користувача:</h4>
 
-  <form [formGroup]="form">
-    <div *ngIf="form.value.id">
-      <h4 class="caption">Перегляд (Редагування) користувача:</h4>
-      <label class="label admin-details-form-field-label" for="id">id:</label>
-      <input class="input admin-details-form-field-input"
-             id="id" formControlName="id"
-             readonly="readonly"/>
-    </div>
+  <div class="admin-details-form-field-container">
+    <label class="label" for="id">id:</label>
+    <input class="input admin-details-form-field-input"
+           id="id"
+           value="{{userDetails.id}}"
+           readonly="readonly"/>
+  </div>
 
-    <div *ngIf="!form.value.id">
-      <h4 class="caption">Створення нового користувача:</h4>
-    </div>
+  <div class="admin-details-form-field-container">
+    <label class="label" for="login">Логін:</label>
+    <input class="input admin-details-form-field-input"
+           id="login"
+           value="{{userDetails.login}}"
+           readonly="readonly"
+           type="text"/>
+  </div>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="login">Логін:</label>
-      <input class="input admin-details-form-field-input"
-             id="login"
-             formControlName="login"
-             [readonly]="formReadonlyFieldCheck()"
-             type="text"/>
-      <div class="input-error" *ngIf="form.controls.login.invalid">Обов'язкове</div>
-    </div>
+  <div class="admin-details-form-field-container">
+    <label class="label" for="name">Ім'я та прізвище:</label>
+    <input class="input admin-details-form-field-input"
+           id="name"
+           value="{{userDetails.name}}"
+           readonly="readonly"
+           type="text"/>
+  </div>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="password">Пароль:</label>
-      <input class="input admin-details-form-field-input"
-             id="password"
-             formControlName="password"
-             [readonly]="formReadonlyFieldCheck()"
-             type="password"
-             autocomplete="off"/>
-      <div class="input-error" *ngIf="form.controls.password.invalid">Обов'язкове</div>
-    </div>
+  <div class="admin-details-form-field-container">
+    <label class="label" for="email">Email:</label>
+    <input class="input admin-details-form-field-input"
+           id="email"
+           value="{{userDetails.email}}"
+           readonly="readonly"
+           type="text"/>
+  </div>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="passwordConfirm">Підтвердження паролю:</label>
-      <input class="input admin-details-form-field-input"
-             id="passwordConfirm"
-             #passwordConfirm
-             [readonly]="formReadonlyFieldCheck()"
-             type="password"
-             autocomplete="off"/>
-      <div class="input-error" *ngIf="form.value.password !== passwordConfirm.value">Паролі не співпадають</div>
-    </div>
+  <div class="admin-details-form-field-container">
+    <label class="label">Телефони:</label>
+    <label for="phone1"></label>
+    <input class="input admin-details-form-field-input"
+           id="phone1"
+           value="{{userDetails.phone1}}"
+           readonly="readonly"
+           type="text"/>
+    <label for="phone2"></label>
+    <input class="input admin-details-form-field-input"
+           id="phone2"
+           value="{{userDetails.phone2}}"
+           readonly="readonly"
+           type="text"/>
+  </div>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="name">Ім'я та прізвище:</label>
-      <input class="input admin-details-form-field-input"
-             id="name" formControlName="name"
-             [readonly]="formReadonlyFieldCheck()"
-             type="text"/>
-      <div class="input-error" *ngIf="form.controls.name.invalid">Обов'язкове</div>
-    </div>
+  <p class="label admin-details-form-field-container">Керування правами доступа:</p>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label" for="email">Email:</label>
-      <input class="input admin-details-form-field-input"
-             id="email"
-             formControlName="email"
-             [readonly]="formReadonlyFieldCheck()"
-             type="text"/>
-    </div>
+  <section class="key-value-table-style">
+    <label class="label font-weight--default">Діючий (активний) користувач:</label>
+    <label class="label colored-font">{{userDetails.isActive ? '&#10004;' : '&#10008;'}}</label>
 
-    <div class="admin-details-form-field-container">
-      <label class="label admin-details-form-field-label">Телефони:</label>
-      <label for="phone1"></label>
-      <input class="input admin-details-form-field-input"
-             id="phone1"
-             formControlName="phone1"
-             [readonly]="formReadonlyFieldCheck()"
-             type="text"/>
-      <label for="phone2"></label>
-      <input class="input admin-details-form-field-input"
-             id="phone2"
-             formControlName="phone2"
-             [readonly]="formReadonlyFieldCheck()"
-             type="text"/>
+    <label class="label font-weight--default">Отримання та закриття заяв про знайдених тварин:</label>
+    <label
+      class="label colored-font">{{userDetails.permissionForCreateAndCloseAnimalRequests ? '&#10004;' : '&#10008;'}}</label>
 
-    </div>
+    <label class="label font-weight--default">Редагування тварин:</label>
+    <label
+      class="label colored-font">{{userDetails.permissionForAddEditAndRemoveAnimals ? '&#10004;' : '&#10008;'}}</label>
 
-    <p class="label admin-details-form-field-container">Керування правами доступа:</p>
+    <label class="label font-weight--default">Створення/видалення/редагування користувачів:</label>
+    <label
+      class="label colored-font">{{userDetails.permissionForAddEditAndRemoveUsers ? '&#10004;' : '&#10008;'}}</label>
+  </section>
 
-    <section class="key-value-table-style">
-      <label class="label admin-details-form-field-label" for="isActive">Діючий (активний)
-        користувач:</label>
-      <input class="input admin-details-form-field-input"
-             id="isActive"
-             formControlName="isActive"
-             type="checkbox"
-             [readonly]="formReadonlyFieldCheck()"/>
-
-      <label class="label admin-details-form-field-label"
-             for="permissionForCreateAndCloseAnimalRequests">Отримання та закриття заяв про
-        знайдених тварин:</label>
-      <input class="input admin-details-form-field-input"
-             id="permissionForCreateAndCloseAnimalRequests"
-             formControlName="permissionForCreateAndCloseAnimalRequests"
-             type="checkbox"
-             [readonly]="formReadonlyFieldCheck()"/>
-
-      <label class="label admin-details-form-field-label" for="permissionForAddAndRemoveAnimals">Додавання/видалення
-        тварин:</label>
-      <input class="input admin-details-form-field-input"
-             id="permissionForAddAndRemoveAnimals"
-             formControlName="permissionForAddAndRemoveAnimals"
-             type="checkbox"
-             [readonly]="formReadonlyFieldCheck()"/>
-
-      <label class="label admin-details-form-field-label" for="permissionForEditAnimals">Редагування
-        карточок
-        тварин:</label>
-      <input class="input admin-details-form-field-input"
-             id="permissionForEditAnimals"
-             formControlName="permissionForEditAnimals"
-             type="checkbox"
-             [readonly]="formReadonlyFieldCheck()"/>
-
-      <label class="label admin-details-form-field-label" for="permissionForAddEditAndRemoveUsers">Створення/видалення/редагування
-        користувачів:</label>
-      <input class="input admin-details-form-field-input"
-             id="permissionForAddEditAndRemoveUsers"
-             formControlName="permissionForAddEditAndRemoveUsers"
-             type="checkbox"
-             [readonly]="formReadonlyFieldCheck()"/>
-    </section>
-
-    <button class="button admin-details-form-field-submit-button" type="button"
-            *ngIf="form.value.id && currentUser.permissionForAddEditAndRemoveUsers"
-            [disabled]="form.invalid || form.value.password !== passwordConfirm.value"
-            (click)="submitEditUser()">Підтвердити зміни
-    </button>
-
-    <button class="button admin-details-form-field-submit-button" type="button"
-            *ngIf="!form.value.id && currentUser.permissionForAddEditAndRemoveUsers"
-            [disabled]="form.invalid || form.value.password !== passwordConfirm.value"
-            (click)="submitAddUser()">Додати користувача
-    </button>
-  </form>
-
-  <div class="admin-details-form-field-container" *ngIf="lastEditDate">
+  <div class="admin-details-form-field-container">
     <label class="label" for="dateLastEdit">Дата останнього редагування:</label>
-    <input class="input" id="dateLastEdit" value="{{lastEditDate}}"
+    <input class="input"
+           id="dateLastEdit"
+           value="{{userDetails.updatedAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="createdDate">
-    <label class="label admin-details-form-field-label" for="dateAdded">Дата створення:</label>
-    <input class="input admin-details-form-field-input" id="dateAdded" value="{{createdDate}}"
+  <div class="admin-details-form-field-container">
+    <label class="label" for="dateAdded">Дата створення:</label>
+    <input class="input admin-details-form-field-input"
+           id="dateAdded"
+           value="{{userDetails.createdAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="lastEditDate">
-    <label class="label admin-details-form-field-label" for="editedBy">Зміни внесені користувачем: </label>
-    <input class="input admin-details-form-field-input" id="editedBy" value="{{editedBy}}"
+  <div class="admin-details-form-field-container">
+    <label class="label" for="editedBy">Зміни внесені користувачем: </label>
+    <input class="input admin-details-form-field-input"
+           id="editedBy"
+           value="{{userDetails.editedBy}}"
            readonly="readonly"/>
   </div>
 </div>
-
-

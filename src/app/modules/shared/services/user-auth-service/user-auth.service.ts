@@ -13,16 +13,14 @@ const STORAGE_USER_NAME = 'authUser';
 export interface IUserAuthPermissions { //  todo maybe edit, if backend say
   isActive: boolean;
   permissionForAddEditAndRemoveUsers: boolean;
-  permissionForAddAndRemoveAnimals: boolean;
-  permissionForEditAnimals: boolean;
+  permissionForAddEditAndRemoveAnimals: boolean;
   permissionForCreateAndCloseAnimalRequests: boolean;
 }
 
 export class UserAuthPermissionsDefault implements IUserAuthPermissions {
   isActive = false;
   permissionForAddEditAndRemoveUsers = false;
-  permissionForAddAndRemoveAnimals = false;
-  permissionForEditAnimals = false;
+  permissionForAddEditAndRemoveAnimals = false;
   permissionForCreateAndCloseAnimalRequests = false;
 }
 
@@ -115,8 +113,8 @@ export class UserAuthService {
 
   public login(email: string, password: string): void {
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
-    this.httpClient.post<{token: string}>(AUTHENTICATION_URL, JSON.stringify({email, password}), {headers})  // todo use for real server
-    // this.httpClient.get<{ token: string }>(environment.fakeApiUrl + '/login') // todo use for fake API
+    this.httpClient.post<{ token: string }>(AUTHENTICATION_URL, JSON.stringify({email, password}), {headers})  // todo use for real server
+      // this.httpClient.get<{ token: string }>(environment.fakeApiUrl + '/login') // todo use for fake API
       .subscribe((resp: any) => {
         this.tokenAuthService.setToken(resp.token);
         this.loadUserFromServer();

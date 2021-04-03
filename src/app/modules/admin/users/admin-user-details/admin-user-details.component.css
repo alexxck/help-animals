@@ -1,6 +1,7 @@
 .admin-details {
   margin: 0 auto;
   padding-top: 15px;
+  padding-bottom: 15px;
   max-width: 600px;
 }
 
@@ -13,4 +14,12 @@
   font-size: var(--default-component-font-size);
   font-weight: 600;
   text-align: center;
+}
+
+.colored-font{
+  color: rgb(var(--default-component-background-color));
+}
+
+.font-weight--default{
+  font-weight: 400;
 }

@@ -19,12 +19,12 @@
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
-      <td>{{user.phone1}}</td>
-      <td>{{user.phone2}}</td>
-      <td>{{user.isActive ? '&#10004;' : '&#10008;'}}</td>
+      <td class="text-align--center">{{user.phone1}}</td>
+      <td class="text-align--center">{{user.phone2}}</td>
+      <td class="text-align--center">{{user.isActive ? '&#10004;' : '&#10008;'}}</td>
       <td>{{user.updated_at}}</td>
-      <td>
-        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id + '/details')}}">&#9997;</a>
+      <td class="text-align--center">
+        <a class="admin-animal-list-redirect-edit-animal" routerLink="{{getRedirectToUserDetailsLink(user.id + '/details')}}">🔍</a>
       </td>
     </tr>
   </table>

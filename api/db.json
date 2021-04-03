@@ -7,8 +7,7 @@
       "id": 0,
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": true,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": true,
       "permissionForCreateAndCloseAnimalRequests": true
     }
   },
@@ -24,8 +23,7 @@
       "lastEditDate": "06.03.2021",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
       "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": "ADMIN"
     },
@@ -39,8 +37,8 @@
       "email": "email1@gmail.com",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
+
       "permissionForCreateAndCloseAnimalRequests": true
     },
     {
@@ -68,8 +66,8 @@
       "lastEditDate": "06.03.2021",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
+
       "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": 2
     },
@@ -86,8 +84,8 @@
       "lastEditDate": "",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
+
       "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     },
@@ -104,8 +102,8 @@
       "lastEditDate": "",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
+
       "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     },
@@ -122,8 +120,8 @@
       "lastEditDate": "",
       "isActive": true,
       "permissionForAddEditAndRemoveUsers": true,
-      "permissionForAddAndRemoveAnimals": false,
-      "permissionForEditAnimals": true,
+      "permissionForAddEditAndRemoveAnimals": false,
+
       "permissionForCreateAndCloseAnimalRequests": false,
       "editedBy": ""
     }
