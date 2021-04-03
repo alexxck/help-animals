@@ -9,11 +9,9 @@ import {IAdminAnimalDetailsPostPatchRequest} from '../models/admin-animal-detail
 import {IAdminAnimalDetailsBase} from '../models/admin-animal-details/i-admin-animal-details-base';
 import {AnimalDetailsConverters} from './models/animal-details-converters';
 import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
-import {ADMIN_ANIMALS_URL} from '../admin-animal-list/admin-animal-list.component';
 import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
+import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
 
-const API_ANIMAL_DETAILS_BASE_URL = environment.serverHost + environment.apiUrl + '/animals_admin/';
-export const ADMIN_ANIMAL_DETAILS_BASE_URL = '/admin/animals/';
 
 @Component({
   selector: 'app-admin-animal-details',
@@ -61,7 +59,7 @@ export class AdminAnimalDetailsComponent {
       return;
     }
 
-    this.httpClient.get<IAdminAnimalDetailsGetResponse>(API_ANIMAL_DETAILS_BASE_URL + id).subscribe((res) => {
+    this.httpClient.get<IAdminAnimalDetailsGetResponse>(`${API_ADMIN_ANIMALS_URL}/${id}`).subscribe((res) => {
       this.form.setValue({
         id: res.id,
         name: res.name,
@@ -110,7 +108,7 @@ export class AdminAnimalDetailsComponent {
       return;
     }
 
-    const url = API_ANIMAL_DETAILS_BASE_URL + this.form.value.id;
+    const url = `${API_ADMIN_ANIMALS_URL}/${this.form.value.id}`;
     const req: IAdminAnimalDetailsPostPatchRequest = {
       ...this.form.value as IAdminAnimalDetailsBase,
       'image_attributes[file]': this.loadedPhotoFile || null,
@@ -135,7 +133,7 @@ export class AdminAnimalDetailsComponent {
     };
 
     const reqForm = AnimalDetailsConverters.convertAnimalPostPatchRequestToFormData(req);
-    this.httpClient.post<{ id: string }>(API_ANIMAL_DETAILS_BASE_URL, reqForm).subscribe((res) => {
+    this.httpClient.post<{ id: string }>(API_ADMIN_ANIMALS_URL, reqForm).subscribe((res) => {
       // this.getAnimal(res.id); // todo get id from response
       // this.router.navigateByUrl(ANIMAL_DETAILS_BASE_URL + res.id); // todo get id from response
       this.router.navigateByUrl(ADMIN_ANIMALS_URL);
