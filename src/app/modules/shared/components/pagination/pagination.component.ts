@@ -7,6 +7,7 @@ export interface IPagination {
   totalPages: number;
   url: string;
   additionalParams: object;
+  getQueryParams: () => { [param: string]: string | string[] };
 }
 
 export class Pagination implements IPagination {
@@ -15,6 +16,14 @@ export class Pagination implements IPagination {
   totalPages = 5;
   url = '';
   additionalParams = {};
+
+  getQueryParams(): { [param: string]: string | string[] } {
+    return {
+      page: this.page.toString(),
+      per_page: this.perPage.toString(),
+      ...this.additionalParams
+    };
+  }
 }
 
 @Component({
@@ -54,7 +63,7 @@ export class PaginationComponent implements AfterContentChecked {
   getUrlParamsForPage(page: number | string): Params {
     return {
       page,
-      perPage: this.pagination.perPage,
+      per_page: this.pagination.perPage,
       ...this.pagination.additionalParams
     };
   }

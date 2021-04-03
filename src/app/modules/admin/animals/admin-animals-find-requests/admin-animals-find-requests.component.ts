@@ -49,8 +49,8 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
-        this.pagination.page = queryParam.page || 1;
-        this.pagination.perPage = queryParam.perPage || 20;
+        this.pagination.page = queryParam.page || this.pagination.page;
+        this.pagination.perPage = queryParam.per_page || this.pagination.perPage;
         this.getAnimalsFindRequests();
       }
     );
@@ -64,7 +64,7 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
     const httpParams = new HttpParams();
     httpParams.append('filter', this.currentQueryFilterParams.filter);
     httpParams.append('page', this.pagination.page.toString());
-    httpParams.append('perPage', this.pagination.perPage.toString());
+    httpParams.append('per_page', this.pagination.perPage.toString());
 
     this.httpClient.get<IAdminAnimalFindRequest[]>(API_ANIMALS_FIND_REQUESTS_URL, {params: httpParams}).subscribe((res) => {
       this.animalRequestList = res;

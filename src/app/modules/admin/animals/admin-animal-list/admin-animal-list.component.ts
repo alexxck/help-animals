@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
@@ -33,7 +33,8 @@ export class AdminAnimalListComponent implements OnDestroy {
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
-        this.pagination.page = queryParam.page;
+        this.pagination.page = queryParam.page || this.pagination.page;
+        this.pagination.perPage = queryParam.per_page || this.pagination.perPage;
         this.getAnimals();
       }
     );
@@ -44,7 +45,8 @@ export class AdminAnimalListComponent implements OnDestroy {
   }
 
   public getAnimals(): void {
-    this.httpClient.get<IAdminAnimalListGetResponse>(API_ADMIN_ANIMALS_URL).subscribe((res) => {
+    const httpParams = new HttpParams().appendAll(this.pagination.getQueryParams());
+    this.httpClient.get<IAdminAnimalListGetResponse>(API_ADMIN_ANIMALS_URL, {params: httpParams}).subscribe((res) => {
       this.animalList = (res as unknown as IAdminAnimalListTableElement[]);   // todo remove when use back
       // this.animalList = res.animals;  // todo set params from back
       // this.pagination.page = res.page; // todo set params from back

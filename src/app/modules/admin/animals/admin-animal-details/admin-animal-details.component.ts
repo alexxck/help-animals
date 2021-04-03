@@ -79,7 +79,7 @@ export class AdminAnimalDetailsComponent {
         showInGallery: res.showInGallery,
       });
 
-      this.imageUrl = environment.serverHost + res.image.file.url;
+      this.imageUrl = res.image ? environment.serverHost + res.image.file.url : '';
       this.dateAdded = convertTimestampToLocalDateTime(res.dateAdded);
       this.dateLastEdit = convertTimestampToLocalDateTime(res.dateLastEdit);
       this.editedBy = res.editedBy;
@@ -136,7 +136,7 @@ export class AdminAnimalDetailsComponent {
     };
 
     const reqForm = AnimalDetailsConverters.convertAnimalPostPatchRequestToFormData(req);
-    this.httpClient.post<{id: string}>(API_ANIMAL_DETAILS_BASE_URL, reqForm).subscribe((res) => {
+    this.httpClient.post<{ id: string }>(API_ANIMAL_DETAILS_BASE_URL, reqForm).subscribe((res) => {
       // this.getAnimal(res.id); // todo get id from response
       // this.router.navigateByUrl(ANIMAL_DETAILS_BASE_URL + res.id); // todo get id from response
       this.router.navigateByUrl(ADMIN_ANIMALS_URL);
