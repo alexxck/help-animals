@@ -12,9 +12,8 @@ import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-a
 import {ADMIN_ANIMALS_URL} from '../admin-animal-list/admin-animal-list.component';
 import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 
-
-const API_ANIMAL_DETAILS_BASE_URL = environment.serverHost + environment.apiUrl + '/animals/';
-const ANIMAL_DETAILS_BASE_URL = 'admin/animals/';
+const API_ANIMAL_DETAILS_BASE_URL = environment.serverHost + environment.apiUrl + '/animals_admin/';
+export const ADMIN_ANIMAL_DETAILS_BASE_URL = '/admin/animals/';
 
 @Component({
   selector: 'app-admin-animal-details',

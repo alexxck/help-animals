@@ -7,8 +7,9 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {IAdminAnimalListTableElement} from '../models/admin-animal-list/i-admin-animal-list-table-element';
 import {IAdminAnimalListGetResponse} from '../models/admin-animal-list/i-admin-animal-list-get-response';
+import {ADMIN_ANIMAL_DETAILS_BASE_URL} from '../admin-animal-details/admin-animal-details.component';
 
-const API_ADMIN_ANIMALS_URL = environment.serverHost + environment.apiUrl + '/animals';
+const API_ADMIN_ANIMALS_URL = environment.serverHost + environment.apiUrl + '/animals_admin';
 export const ADMIN_ANIMALS_URL = '/admin/animals';
 
 
@@ -55,10 +56,10 @@ export class AdminAnimalListComponent implements OnDestroy {
   }
 
   public getRedirectToAnimalDetailsLink(id: number | string): string {
-    return ADMIN_ANIMALS_URL + '/' + id;
+    return ADMIN_ANIMAL_DETAILS_BASE_URL + id;
   }
 
   public getRedirectToAddLink(): string {
-    return ADMIN_ANIMALS_URL + '/add';
+    return ADMIN_ANIMAL_DETAILS_BASE_URL + 'add';
   }
 }
