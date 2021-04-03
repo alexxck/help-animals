@@ -5,10 +5,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {IAdminAnimalDetailsPostPatchRequest} from '../models/admin-animal-details/i-admin-animal-details-post-patch-request';
-import {IAdminAnimalDetailsBase} from '../models/admin-animal-details/i-admin-animal-details-base';
+import {IAdminAnimalDetailsPostPatchRequest} from './models/i-admin-animal-details-post-patch-request';
+import {IAdminAnimalDetailsBase} from './models/i-admin-animal-details-base';
 import {AnimalDetailsConverters} from './models/animal-details-converters';
-import {IAdminAnimalDetailsGetResponse} from '../models/admin-animal-details/i-admin-animal-details-get-response';
+import {IAdminAnimalDetailsGetResponse} from './models/i-admin-animal-details-get-response';
 import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
 

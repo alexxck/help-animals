@@ -4,7 +4,7 @@ import {IPagination, Pagination} from '../../../shared/components/pagination/pag
 import {Subscription} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {IAdminAnimalFindRequest} from '../models/i-admin-animal-find-request';
+import {IAdminAnimalFindRequest} from './models/i-admin-animal-find-request';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 
 const API_ANIMALS_FIND_REQUESTS_URL = environment.fakeApiUrl + '/animals-find-requests/';

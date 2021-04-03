@@ -1,4 +1,4 @@
-import {IAdminAnimalDetailsPostPatchRequest} from '../../models/admin-animal-details/i-admin-animal-details-post-patch-request';
+import {IAdminAnimalDetailsPostPatchRequest} from './i-admin-animal-details-post-patch-request';
 
 export class AnimalDetailsConverters {
   public static convertAnimalPostPatchRequestToFormData(request: IAdminAnimalDetailsPostPatchRequest): FormData {

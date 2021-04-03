@@ -4,8 +4,8 @@ import {IPagination, Pagination} from '../../../shared/components/pagination/pag
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {IAdminAnimalListTableElement} from '../models/admin-animal-list/i-admin-animal-list-table-element';
-import {IAdminAnimalListGetResponse} from '../models/admin-animal-list/i-admin-animal-list-get-response';
+import {IAdminAnimalListTableElement} from './models/i-admin-animal-list-table-element';
+import {IAdminAnimalListGetResponse} from './models/i-admin-animal-list-get-response';
 import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
 
 
