@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {IPagination, Pagination} from '../../../shared/components/pagination/pagination.component';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
@@ -27,7 +27,8 @@ export class AdminUserListComponent implements OnDestroy {
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
-        this.pagination.page = queryParam.page;
+        this.pagination.page = queryParam.page || this.pagination.page;
+        this.pagination.perPage = queryParam.per_page || this.pagination.perPage;
         this.getUsers();
       }
     );
@@ -38,7 +39,8 @@ export class AdminUserListComponent implements OnDestroy {
   }
 
   public getUsers(): void {
-    this.httpClient.get<IAdminUserListGetResponseElement[]>(API_ADMIN_USERS_URL, {observe: 'response'})
+    const httpParams = new HttpParams().appendAll(this.pagination.getQueryParams());
+    this.httpClient.get<IAdminUserListGetResponseElement[]>(API_ADMIN_USERS_URL, {params: httpParams, observe: 'response'})
       .subscribe((res) => {
         if (res.body) {
           this.userList = convertResponseToUserList(res.body);

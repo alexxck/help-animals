@@ -16,8 +16,8 @@ export interface IPagination {
 
 export class Pagination implements IPagination {
   page = 1;
-  perPage = 20;
-  totalPages = 5;
+  perPage = 5;
+  totalPages = 1;
   url = '';
   additionalParams = {};
 
