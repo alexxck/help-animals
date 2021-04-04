@@ -1,10 +1,9 @@
-export interface IAnimalInfo {
+export interface IAnimalInfoGetResponse {
   id: string;
-  name: string;
   breed: string;
   age: number;
   state: string;
   color: string;
   features: string;
-  imgUrl: string;
+  image: { file: { url: string } };
 }

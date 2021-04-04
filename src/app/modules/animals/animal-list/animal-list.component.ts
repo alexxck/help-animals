@@ -1,10 +1,12 @@
 import {Component, OnDestroy} from '@angular/core';
 import {environment} from '../../../../environments';
-import {HttpClient} from '@angular/common/http';
-import {IAnimalInfo} from '../models/ianimal-info';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {IAnimalInfo} from './models/ianimal-info';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {IPagination, Pagination} from '../../shared/components/pagination/pagination.component';
+import {IAnimalInfoGetResponse} from './models/ianimal-infoget-response';
+import {convertAnimalGetResponseToAnimalList} from './models/convert-animal-get-response-to-animal-list';
 
 const ANIMALS_URL = 'animals';
 const GET_ANIMALS_URL = environment.fakeApiUrl + '/' + ANIMALS_URL;
@@ -26,7 +28,8 @@ export class AnimalListComponent implements OnDestroy {
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
-        this.pagination.page = queryParam.page;
+        this.pagination.page = queryParam.page || this.pagination.page;
+        this.pagination.perPage = queryParam.per_page || this.pagination.perPage;
         this.getAnimals();
       }
     );
@@ -37,9 +40,13 @@ export class AnimalListComponent implements OnDestroy {
   }
 
   public getAnimals(): void {
-    this.httpClient.get<IAnimalInfo[]>(GET_ANIMALS_URL).subscribe((res) => {
-      this.animalList = res;
-      this.pagination.totalPages = 10; // todo set params from back
-    });
+    const httpParams = new HttpParams().appendAll(this.pagination.getQueryParams());
+    this.httpClient.get<IAnimalInfoGetResponse[]>(GET_ANIMALS_URL, {params: httpParams, observe: 'response'})
+      .subscribe((res) => {
+        if (res.body) {
+          this.animalList = convertAnimalGetResponseToAnimalList(res.body);
+          this.pagination.setFromResponseHeaders(res.headers);
+        }
+      });
   }
 }

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {IAnimalInfo} from '../models/ianimal-info';
+import {IAnimalInfo} from '../animal-list/models/ianimal-info';
 
 @Component({
   selector: 'app-animal-card',
