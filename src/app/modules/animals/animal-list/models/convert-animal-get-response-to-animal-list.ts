@@ -10,7 +10,7 @@ export const convertAnimalGetResponseToAnimalList = (response: IAnimalInfoGetRes
         state: resp.state,
         color: resp.color,
         features: resp.features,
-        // imgUrl: resp.image.file.url, // fix when real API
+        // imgUrl: res.image ? environment.serverHost + res.image.file.url : '', // fix when real API
         imgUrl: '/assets/images/animals/default-cat-image.jpg',
       };
     }
