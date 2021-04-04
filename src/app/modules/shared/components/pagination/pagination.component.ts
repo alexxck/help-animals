@@ -1,5 +1,8 @@
 import {AfterContentChecked, Component, Input} from '@angular/core';
-import {Params} from '@angular/router';
+import {HttpHeaders} from '@angular/common/http';
+
+export const PAGE_HEADER_NAME = 'X-Page';
+export const TOTAL_PAGES_HEADER_NAME = 'X-Total-Pages';
 
 export interface IPagination {
   page: number;
@@ -7,7 +10,8 @@ export interface IPagination {
   totalPages: number;
   url: string;
   additionalParams: object;
-  getQueryParams: () => { [param: string]: string | string[] };
+  getQueryParams: () => { [param: string]: string };
+  setFromResponseHeaders: (headers: HttpHeaders) => void;
 }
 
 export class Pagination implements IPagination {
@@ -17,12 +21,17 @@ export class Pagination implements IPagination {
   url = '';
   additionalParams = {};
 
-  getQueryParams(): { [param: string]: string | string[] } {
+  getQueryParams(): { [param: string]: string } {
     return {
       page: this.page.toString(),
       per_page: this.perPage.toString(),
       ...this.additionalParams
     };
+  }
+
+  setFromResponseHeaders(headers: HttpHeaders): void {
+    this.page = Number(headers.get(PAGE_HEADER_NAME)) || 1;
+    this.totalPages = Number(headers.get(TOTAL_PAGES_HEADER_NAME)) || 1;
   }
 }
 
@@ -60,10 +69,10 @@ export class PaginationComponent implements AfterContentChecked {
     return this.pagination.url;
   }
 
-  getUrlParamsForPage(page: number | string): Params {
+  getUrlParamsForPage(page: number | string): { [param: string]: string } {
     return {
-      page,
-      per_page: this.pagination.perPage,
+      page: page.toString(),
+      per_page: this.pagination.perPage.toString(),
       ...this.pagination.additionalParams
     };
   }

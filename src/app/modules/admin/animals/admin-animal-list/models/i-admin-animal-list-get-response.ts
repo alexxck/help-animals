@@ -1,7 +1,8 @@
-import {IAdminAnimalListTableElement} from './i-admin-animal-list-table-element';
-
-export interface IAdminAnimalListGetResponse {
-  animals: IAdminAnimalListTableElement[];
-  page: number;
-  totalPages: number;
+export interface IAdminAnimalListGetResponseElement {
+  id: string;
+  complexVaccination: boolean;
+  rabiesVaccination: boolean;
+  sterilization: boolean;
+  animalHasFamily: boolean;
+  responsiblePerson: string;
 }

@@ -4,10 +4,10 @@ import {IPagination, Pagination} from '../../../shared/components/pagination/pag
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
-import {IAdminUserListGetResponse} from './models/i-admin-user-list-get-response';
 import {IAdminUserListTableElement} from './models/i-admin-user-list-table-element';
 import {ADMIN_USERS_URL, API_ADMIN_USERS_URL} from '../models/urls';
-import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
+import {IAdminUserListGetResponseElement} from './models/i-admin-user-list-get-response-element';
+import {convertResponseToUserList} from './models/convert-response-to-user-list';
 
 
 @Component({
@@ -38,20 +38,13 @@ export class AdminUserListComponent implements OnDestroy {
   }
 
   public getUsers(): void {
-    this.httpClient.get<IAdminUserListGetResponse>(API_ADMIN_USERS_URL).subscribe((res) => {
-      const userList = res as unknown as IAdminUserListTableElement[]; // todo remove after receive params from back
-      userList.forEach((user) => {
-        user.updated_at = convertTimestampToLocalDateTime(user.updated_at);
-        return user;
+    this.httpClient.get<IAdminUserListGetResponseElement[]>(API_ADMIN_USERS_URL, {observe: 'response'})
+      .subscribe((res) => {
+        if (res.body) {
+          this.userList = convertResponseToUserList(res.body);
+          this.pagination.setFromResponseHeaders(res.headers);
+        }
       });
-
-      this.userList = userList;
-
-      this.pagination.totalPages = 10; // todo remove after receive params from back
-      // this.userList = res.users; // todo set params from back
-      // this.pagination.page = res.page; // todo set params from back
-      // this.pagination.totalPages = res.totalPages; // todo set params from back
-    });
   }
 
   public getRedirectToUserDetailsLink(id: number | string): string {

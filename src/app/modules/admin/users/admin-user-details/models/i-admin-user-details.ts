@@ -3,7 +3,6 @@ import {IUserAuthPermissions} from '../../../../shared/services/user-auth-servic
 export interface IAdminUserDetails extends IUserAuthPermissions {
   id: string;
   login: string;
-  password: string;
   name: string;
   phone1: string;
   phone2: string;

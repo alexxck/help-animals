@@ -5,8 +5,9 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {IAdminAnimalListTableElement} from './models/i-admin-animal-list-table-element';
-import {IAdminAnimalListGetResponse} from './models/i-admin-animal-list-get-response';
 import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
+import {IAdminAnimalListGetResponseElement} from './models/i-admin-animal-list-get-response';
+import {convertResponseToAnimalList} from './models/convert-response-to-animal-list';
 
 
 @Component({
@@ -43,12 +44,13 @@ export class AdminAnimalListComponent implements OnDestroy {
 
   public getAnimals(): void {
     const httpParams = new HttpParams().appendAll(this.pagination.getQueryParams());
-    this.httpClient.get<IAdminAnimalListGetResponse>(API_ADMIN_ANIMALS_URL, {params: httpParams}).subscribe((res) => {
-      this.animalList = (res as unknown as IAdminAnimalListTableElement[]);   // todo remove when use back
-      // this.animalList = res.animals;  // todo set params from back
-      // this.pagination.page = res.page; // todo set params from back
-      this.pagination.totalPages = 10; // todo set params from back
-    });
+    this.httpClient.get<IAdminAnimalListGetResponseElement[]>(API_ADMIN_ANIMALS_URL, {params: httpParams, observe: 'response'})
+      .subscribe((res) => {
+        if (res.body) {
+          this.animalList = convertResponseToAnimalList(res.body);
+          this.pagination.setFromResponseHeaders(res.headers);
+        }
+      });
   }
 
   public getRedirectToAnimalDetailsLink(id: number | string): string {
