@@ -133,9 +133,7 @@ export class AdminAnimalDetailsComponent {
 
     const reqForm = AnimalDetailsConverters.convertAnimalPostPatchRequestToFormData(req);
     this.httpClient.post<{ id: string }>(API_ADMIN_ANIMALS_URL, reqForm).subscribe((res) => {
-      // this.getAnimal(res.id); // todo get id from response
-      // this.router.navigateByUrl(ANIMAL_DETAILS_BASE_URL + res.id); // todo get id from response
-      this.router.navigateByUrl(ADMIN_ANIMALS_URL);
+      this.router.navigateByUrl(`${ADMIN_ANIMALS_URL}/${res.id}`);
     }, (err) => this.submitErrorHandler(err));
   }
 
