@@ -141,19 +141,19 @@
     </button>
   </form>
 
-  <div class="admin-details-form-field-container" *ngIf="dateLastEdit">
+  <div class="admin-details-form-field-container" *ngIf="updatedAt">
     <label class="label" for="dateLastEdit">Дата останнього редагування:</label>
-    <input class="input" id="dateLastEdit" value="{{dateLastEdit}}"
+    <input class="input" id="dateLastEdit" value="{{updatedAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="dateLastEdit">
+  <div class="admin-details-form-field-container" *ngIf="updatedAt">
     <label class="label" for="dateAdded">Тварина додавання тварини:</label>
-    <input class="input" id="dateAdded" value="{{dateAdded}}"
+    <input class="input" id="dateAdded" value="{{createdAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="dateLastEdit">
+  <div class="admin-details-form-field-container" *ngIf="updatedAt">
     <label class="label" for="editedBy">Останні зміни внесені користувачем:</label>
     <input class="input" id="editedBy" value="{{editedBy}}" readonly="readonly"/>
   </div>

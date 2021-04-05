@@ -1,5 +1,5 @@
-import {IAdminAnimalDetailsBase} from './i-admin-animal-details-base';
+import {IAdminAnimalDetailsRequestResponseBaseParams} from './i-admin-animal-details-request-response-base-params';
 
-export interface IAdminAnimalDetailsPostPatchRequest extends IAdminAnimalDetailsBase {
+export interface IAdminAnimalDetailsPostPatchRequest extends IAdminAnimalDetailsRequestResponseBaseParams {
   'image_attributes[file]': File | null;
 }

@@ -5,11 +5,11 @@ export const convertResponseToAnimalList = (response: IAdminAnimalListGetRespons
   return response.map((resp) => {
       return {
         id: resp.id,
-        complexVaccination: resp.complexVaccination,
-        rabiesVaccination: resp.rabiesVaccination,
+        complexVaccination: resp.complex_vaccination,
+        rabiesVaccination: resp.rabies_vaccination,
         sterilization: resp.sterilization,
-        animalHasFamily: resp.animalHasFamily,
-        responsiblePerson: resp.responsiblePerson
+        animalHasFamily: resp.animal_has_family,
+        responsiblePerson: resp.responsible_person
       };
     }
   );

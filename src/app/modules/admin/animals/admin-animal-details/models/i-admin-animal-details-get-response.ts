@@ -1,10 +1,10 @@
-import {IAdminAnimalDetailsBase} from './i-admin-animal-details-base';
+import {IAdminAnimalDetailsRequestResponseBaseParams} from './i-admin-animal-details-request-response-base-params';
 
-export interface IAdminAnimalDetailsGetResponse extends IAdminAnimalDetailsBase {
+export interface IAdminAnimalDetailsGetResponse extends IAdminAnimalDetailsRequestResponseBaseParams {
   id: string;
   image: { file: { url: string } };
 
-  dateAdded: string;
-  dateLastEdit: string;
-  editedBy: string;
+  created_at: string;
+  updated_at: string;
+  edited_by: string;
 }

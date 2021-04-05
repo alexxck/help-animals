@@ -1,8 +1,8 @@
 export interface IAdminAnimalListGetResponseElement {
   id: string;
-  complexVaccination: boolean;
-  rabiesVaccination: boolean;
+  complex_vaccination: boolean;
+  rabies_vaccination: boolean;
   sterilization: boolean;
-  animalHasFamily: boolean;
-  responsiblePerson: string;
+  animal_has_family: boolean;
+  responsible_person: string;
 }

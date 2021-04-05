@@ -6,11 +6,11 @@ import {UserAuthService} from '../../../shared/services/user-auth-service/user-a
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {IAdminAnimalDetailsPostPatchRequest} from './models/i-admin-animal-details-post-patch-request';
-import {IAdminAnimalDetailsBase} from './models/i-admin-animal-details-base';
 import {AnimalDetailsConverters} from './models/animal-details-converters';
 import {IAdminAnimalDetailsGetResponse} from './models/i-admin-animal-details-get-response';
 import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
+import {IAdminAnimalDetailsRequestResponseBaseParams} from './models/i-admin-animal-details-request-response-base-params';
 
 
 @Component({
@@ -24,8 +24,8 @@ export class AdminAnimalDetailsComponent {
   loadedPhotoFile?: File;
   imagePreview = '';
   imageUrl = '';
-  dateAdded = '';
-  dateLastEdit = '';
+  createdAt = '';
+  updatedAt = '';
   editedBy = '';
 
   form: FormGroup = this.formBuilder.group({ // todo add validators
@@ -67,18 +67,18 @@ export class AdminAnimalDetailsComponent {
         sex: res.sex,
         color: res.color,
         features: res.features,
-        responsiblePerson: res.responsiblePerson,
-        complexVaccination: res.complexVaccination,
-        rabiesVaccination: res.rabiesVaccination,
+        responsiblePerson: res.responsible_person,
+        complexVaccination: res.complex_vaccination,
+        rabiesVaccination: res.rabies_vaccination,
         sterilization: res.sterilization,
-        animalHasFamily: res.animalHasFamily,
-        showInGallery: res.showInGallery,
+        animalHasFamily: res.animal_has_family,
+        showInGallery: res.show_in_gallery,
       });
 
       this.imageUrl = res.image ? environment.serverHost + res.image.file.url : '';
-      this.dateAdded = convertTimestampToLocalDateTime(res.dateAdded);
-      this.dateLastEdit = convertTimestampToLocalDateTime(res.dateLastEdit);
-      this.editedBy = res.editedBy;
+      this.createdAt = convertTimestampToLocalDateTime(res.created_at);
+      this.updatedAt = convertTimestampToLocalDateTime(res.updated_at);
+      this.editedBy = res.edited_by;
     });
   }
 
@@ -109,7 +109,7 @@ export class AdminAnimalDetailsComponent {
 
     const url = `${API_ADMIN_ANIMALS_URL}/${this.form.value.id}`;
     const req: IAdminAnimalDetailsPostPatchRequest = {
-      ...this.form.value as IAdminAnimalDetailsBase,
+      ...this.form.value as IAdminAnimalDetailsRequestResponseBaseParams,
       'image_attributes[file]': this.loadedPhotoFile || null,
     };
 
@@ -127,7 +127,7 @@ export class AdminAnimalDetailsComponent {
     }
 
     const req: IAdminAnimalDetailsPostPatchRequest = {
-      ...this.form.value as IAdminAnimalDetailsBase,
+      ...this.form.value as IAdminAnimalDetailsRequestResponseBaseParams,
       'image_attributes[file]': this.loadedPhotoFile || null,
     };
 
