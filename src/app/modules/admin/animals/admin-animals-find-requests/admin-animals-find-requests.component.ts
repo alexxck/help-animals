@@ -92,9 +92,7 @@ export class AdminAnimalsFindRequestsComponent implements OnDestroy {
 
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
     this.httpClient.post(API_ANIMALS_FIND_REQUESTS_URL, JSON.stringify(animalFindRequest), {headers}).subscribe(() => {
-      this.router.navigate([ADMIN_ANIMALS_FIND_REQUESTS_URL], {
-        queryParams: this.currentQueryFilterParams
-      });
+      this.getAnimalsFindRequests();
       this.newRequestAddress = '';
     }, (err) => this.submitErrorHandler(err));
   }
