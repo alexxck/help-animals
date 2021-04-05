@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  fe:
+    container_name: help_animals_fe
+    command: npx ng serve --host 0.0.0.0
+    build: .
+    ports:
+      - 4200:4200
+    depends_on:
+      - fake_api
+  
+  fake_api:
+    container_name: help_animals_fe_fake_api
+    command: npx json-server --watch ./api/db.json --host 0.0.0.0 --port 3001
+    build: .
+    ports:
+      - 3001:3001
+    volumes:
+      - ./api:/home/app/api:rw
+
