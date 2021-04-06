@@ -66,8 +66,6 @@
   position: relative;
   display: inline-block;
   margin-right: 20px;
-  filter: invert(1);
-  transform: scale(0.5);
 }
 
 @media (max-width:1200px) {
@@ -78,11 +76,11 @@
 
 @media (max-width:767px) {
   .wrapper{
-  padding: 70px 20px 20px;
+  padding: 70px 10px 10px;
   background: url("../../../../assets/images/chilling.svg");
-  background-size: 140px;
+  background-size: 100px;
   background-repeat: no-repeat;
-  background-position: 50% 100%;
+  background-position: 50% 18%;
   justify-content: center;
 }
 
@@ -111,10 +109,8 @@
   color: #2F2E41;
   font-size: 1.2rem;
 }
-}
 
-@media (max-width:430px) {
-  .wrapper{
-    background-size: 115px;
-  }
+.social{
+  bottom: 10px;
+}
 }
