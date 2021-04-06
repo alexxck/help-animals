@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { UserAuthService } from 'src/app/modules/shared/services/user-auth-service/user-auth.service';
 
@@ -58,10 +58,6 @@ export class NavigationUiComponent implements OnInit, OnDestroy, AfterViewInit{
     }))
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   fillPublicMenuItems(): void {
     this.publicMenuItems = [];
     this.publicMenuItems.push(new NavMenuItem('Переглянути тваринок', BASE_URL + 'animals'));
@@ -94,5 +90,9 @@ export class NavigationUiComponent implements OnInit, OnDestroy, AfterViewInit{
 
   isAuth(): boolean{
     return this.userAuthService.isAuthorized()
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,0 +1,120 @@
+.wrapper{
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  background: url('../../../../assets/images/friends.svg');
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: 100% 55%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 100px;
+}
+
+.wrapper .main {
+    max-width: 600px;
+}
+
+.wrapper .main .container .main__header{
+  color: #2F2E41;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.wrapper .main .container .main__text{
+  font-size: 1.2rem;
+  color: #2F2E41;
+  font-weight: 300;
+  margin: 20px 0
+}
+
+.wrapper .main .container .phone{
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0  0 10px 0;
+}
+
+.wrapper .main .container .phone .phone__items-link{
+  color: #2F2E41;
+  font-size: 1.5rem;
+}
+
+.wrapper .main .container  .main__link{
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.social{
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+}
+
+.social .social__items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social li .social__items-link{
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  filter: invert(1);
+  transform: scale(0.5);
+}
+
+@media (max-width:1200px) {
+  .wrapper{
+  background-size: 350px;
+  }
+}
+
+@media (max-width:767px) {
+  .wrapper{
+  padding: 70px 20px 20px;
+  background: url("../../../../assets/images/chilling.svg");
+  background-size: 140px;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  justify-content: center;
+}
+
+.wrapper .main .container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapper .main .container .main__header{
+  font-size: 2.5rem;
+}
+
+.wrapper .main .container .main__text{
+  font-size: 1rem;
+  margin: 10px 0
+}
+
+.wrapper .main .container .phone{
+  flex-direction: column;
+  padding: 0 0 10px 0;
+}
+
+.wrapper .main .container .phone .phone__items-link{
+  color: #2F2E41;
+  font-size: 1.2rem;
+}
+}
+
+@media (max-width:430px) {
+  .wrapper{
+    background-size: 115px;
+  }
+}

@@ -1,0 +1,27 @@
+<article class="wrapper">
+  <section class="main">
+    <div class="container">
+      <h1 class="main__header">Благодійна Організація "БФ ДоброКіт"</h1>
+      <p class="main__text">
+        Якщо ви знайшли бездомного котика, зателефонуйте нам будь ласка та повідомте про нього за телефонами :
+      </p>
+      <ul class="phone">
+        <li class="phone__items" *ngFor="let phone of phones;">
+          <a class="phone__items-link" href="tel:+38{{phone}}">{{ phone }}</a>
+        </li>
+      </ul>
+      <a routerLink="animals" class="main__link button">Нашi котики!</a>
+    </div>
+  </section>
+  <ul class="social">
+    <li class="social__items">
+      <a href="" class="social__items-link"><img src="./img/drive-download-20201107T150058Z-001/facebook.png" alt=""/></a>
+    </li>
+    <li class="social__items">
+      <a href="" class="social__items-link"><img src="./img/drive-download-20201107T150058Z-001/twitter.png" alt="" /></a>
+    </li>
+    <li class="social__items">
+      <a href="" class="social__items-link"><img src="./img/drive-download-20201107T150058Z-001/instagram.png" alt="" /></a>
+    </li>
+  </ul>
+</article>
