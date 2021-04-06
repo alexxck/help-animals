@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit, AfterViewInit, OnDestroy 
   private subscription: Subscription = new Subscription();
   private statePassword?: string = '';
   private stateRepeatPassword?: string = '';
-  public message: string = '';
+  public message = '';
 
   constructor(private httpClient: HttpClient,
     private formBuilder: FormBuilder,
@@ -65,7 +65,7 @@ export class ResetPasswordComponent implements OnInit, AfterViewInit, OnDestroy 
     return this.resetPasswordForm.controls.password.value === this.resetPasswordForm.controls.repeatPassword.value
   }
 
-  public submit(event: any):void {
+  public submit(event: Event):void {
     console.log(event);
 
   }

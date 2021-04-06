@@ -84,6 +84,6 @@ h6 {
   font-weight: 400;
 }
 
-body.lock{
+body._lock{
   overflow: hidden;
 }

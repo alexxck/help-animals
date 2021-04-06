@@ -1,0 +1,24 @@
+<nav class="menu__body" [ngClass]="{
+  '_auth': isAuth(),
+  '_active': active}">
+  <ul class="menu__list">
+    <li *ngFor="let item of publicMenuItems">
+      <a class="menu__link"  [routerLink]="item.url">
+        <img class="menu__link-image" src="/assets/images/pawprintCat.svg" alt="">
+        <p class="menu__link-text">{{item.text}}</p>
+      </a>
+    </li>
+    <li *ngIf="isAuth()">
+      <a class="menu__link" #menu>
+        <img class="menu__link-image" src="/assets/images/pawprintCat.svg" alt="">
+        <p class="menu__link-text">Меню</p>
+      </a>
+      <span class="menu__arrow"></span>
+      <ul class="menu__sub-list">
+        <li *ngFor="let items of adminMenuItems" [routerLink]="items.url">
+          <a class="menu__sub-link">{{items.text}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
