@@ -46,6 +46,7 @@ export class AnimalListComponent implements OnDestroy {
         if (res.body) {
           this.animalList = convertAnimalGetResponseToAnimalList(res.body);
           this.pagination.setFromResponseHeaders(res.headers);
+          this.pagination.totalPages = 10; // todo remove at real API
         }
       });
   }
