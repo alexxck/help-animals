@@ -8,15 +8,15 @@ import {
 } from '@angular/common/http';
 import { EMPTY, Observable, of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
-import { UserAuthService } from '../../modules/shared/services/user-auth-service/user-auth.service';
+import { TokenAuthService } from 'src/app/modules/shared/services/token-auth-service/token-auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService : UserAuthService) {}
+  constructor(private tokenAuthService : TokenAuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return of(this.authService.getToken()).pipe(
+    return of(this.tokenAuthService.getToken()).pipe(
       mergeMap( (token) => {
         const authRequest = token ?  request.clone({
           setHeaders: {
