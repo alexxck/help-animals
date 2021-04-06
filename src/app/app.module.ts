@@ -10,6 +10,8 @@ import {FullSizeHeaderComponent} from './core/components/full-size-header/full-s
 import {NavMenuMobileComponent} from './core/components/nav-menu-mobile/nav-menu-mobile.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { NavigationUiComponent } from './core/components/navigation-new-design/navigation-ui.component';
+import { HeaderUiComponent } from './core/components/header-new-design/header-ui.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     NavMenuNewComponent,
     FullSizeHeaderComponent,
     NavMenuMobileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavigationUiComponent,
+    HeaderUiComponent,
   ],
   imports: [
     BrowserModule,

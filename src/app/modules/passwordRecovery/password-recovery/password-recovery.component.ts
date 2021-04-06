@@ -39,8 +39,6 @@ export class PasswordRecoveryComponent implements OnInit, AfterViewInit, OnDestr
         // this.httpClient.post()
         console.log('valid');
         this.resetForm();
-      } else {
-
       }
     }))
   }
