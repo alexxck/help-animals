@@ -8,8 +8,8 @@ import {IPagination, Pagination} from '../../shared/components/pagination/pagina
 import {IAnimalInfoGetResponse} from './models/ianimal-infoget-response';
 import {convertAnimalGetResponseToAnimalList} from './models/convert-animal-get-response-to-animal-list';
 
-const ANIMALS_URL = 'animals';
-const GET_ANIMALS_URL = environment.fakeApiUrl + '/' + ANIMALS_URL;
+export const ANIMALS_URL = '/animals';
+const GET_ANIMALS_URL = environment.fakeApiUrl + ANIMALS_URL;
 
 @Component({
   selector: 'app-animal-list',
@@ -24,7 +24,7 @@ export class AnimalListComponent implements OnDestroy {
 
   constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) {
     this.pagination = new Pagination();
-    this.pagination.url = '/' + ANIMALS_URL;
+    this.pagination.url = ANIMALS_URL;
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {
