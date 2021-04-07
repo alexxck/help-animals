@@ -1,5 +1,6 @@
 import {IAnimalInfoGetResponse} from './ianimal-infoget-response';
 import {IAnimalInfo} from './ianimal-info';
+import {environment} from '../../../../../environments';
 
 export const convertAnimalGetResponseToAnimalList = (response: IAnimalInfoGetResponse[]): IAnimalInfo[] => {
   return response.map((resp) => {
@@ -7,11 +8,10 @@ export const convertAnimalGetResponseToAnimalList = (response: IAnimalInfoGetRes
         id: resp.id,
         breed: resp.breed,
         age: resp.age,
-        state: resp.state,
+        sex: resp.sex,
         color: resp.color,
         features: resp.features,
-        // imgUrl: res.image ? environment.serverHost + res.image.file.url : '', // fix when real API
-        imgUrl: '/assets/images/animals/default-cat-image.jpg',
+        imgUrl: resp.image ? environment.serverHost + resp.image.file.url : ''
       };
     }
   );

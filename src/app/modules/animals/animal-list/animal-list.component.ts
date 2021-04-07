@@ -9,7 +9,7 @@ import {IAnimalInfoGetResponse} from './models/ianimal-infoget-response';
 import {convertAnimalGetResponseToAnimalList} from './models/convert-animal-get-response-to-animal-list';
 
 export const ANIMALS_URL = '/animals';
-const GET_ANIMALS_URL = environment.fakeApiUrl + ANIMALS_URL;
+const API_GET_ANIMALS_URL = environment.serverHost + environment.apiUrl + ANIMALS_URL;
 
 @Component({
   selector: 'app-animal-list',
@@ -41,12 +41,11 @@ export class AnimalListComponent implements OnDestroy {
 
   public getAnimals(): void {
     const httpParams = new HttpParams().appendAll(this.pagination.getQueryParams());
-    this.httpClient.get<IAnimalInfoGetResponse[]>(GET_ANIMALS_URL, {params: httpParams, observe: 'response'})
+    this.httpClient.get<IAnimalInfoGetResponse[]>(API_GET_ANIMALS_URL, {params: httpParams, observe: 'response'})
       .subscribe((res) => {
         if (res.body) {
           this.animalList = convertAnimalGetResponseToAnimalList(res.body);
           this.pagination.setFromResponseHeaders(res.headers);
-          this.pagination.totalPages = 10; // todo remove at real API
         }
       });
   }
