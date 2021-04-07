@@ -2,14 +2,14 @@ version: '3.8'
 services:
   fe:
     container_name: help_animals_fe
-    command: ng serve --host 0.0.0.0
+    command: npx ng serve --host 0.0.0.0
     build: .
     ports:
       - 4200:4200
     depends_on:
       - fake_api
-    volumes:
-      - .:/home/app:rw
+#    volumes:
+#      - .:/home/app:rw
 
   fake_api:
     container_name: help_animals_fe_fake_api
