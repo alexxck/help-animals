@@ -42,6 +42,8 @@
   visibility: hidden;
   transition: all 0.3s ease 0s;
   pointer-events: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
 }
 
 .menu__sub-list li {
@@ -50,10 +52,13 @@
 
 .menu__sub-list li:last-child {
   margin: 0;
+  text-align: center;
 }
 
 .menu__sub-link {
+  display: inline-block;
   color: #fff;
+  text-align: center;
 }
 
 .menu__sub-link:hover {

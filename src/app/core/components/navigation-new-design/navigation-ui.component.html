@@ -8,7 +8,7 @@
         <p class="menu__link-text">{{item.text}}</p>
       </a>
     </li>
-    <li *ngIf="isAuth()">
+    <li *ngIf="isAuth() && !isMobile()">
       <a class="menu__link" #menu>
         <img class="menu__link-image" src="/assets/images/pawprintCat.svg" alt="">
         <p class="menu__link-text">Меню</p>

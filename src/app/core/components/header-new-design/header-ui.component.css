@@ -53,6 +53,7 @@
       width: 100%;
       background-color: #fff;
       transition: all .3s ease 0s;
+      pointer-events: none;
   }
 
   .menu__icon:before,

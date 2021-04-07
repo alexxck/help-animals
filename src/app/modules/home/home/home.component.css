@@ -76,11 +76,11 @@
 
 @media (max-width:767px) {
   .wrapper{
-  padding: 70px 10px 10px;
+  padding: 0px 10px 10px;
   background: url("../../../../assets/images/chilling.svg");
-  background-size: 100px;
+  background-size: 160px;
   background-repeat: no-repeat;
-  background-position: 50% 18%;
+  background-position: 50% 0%;
   justify-content: center;
 }
 
