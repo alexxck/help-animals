@@ -24,7 +24,6 @@ export class NavigationUiComponent implements OnInit, OnDestroy, AfterViewInit{
 
 
   active = false;
-
   @ViewChildren('menu') menu!: QueryList<ElementRef>;
 
   publicMenuItems: INavMenuItem[] = [];
@@ -33,20 +32,16 @@ export class NavigationUiComponent implements OnInit, OnDestroy, AfterViewInit{
   subscription: Subscription;
 
   constructor(private userAuthService: UserAuthService) {
-
     this.subscription = userAuthService.userUpdatedEvent.subscribe(() => {
-      this.fillPublicMenuItems();
-      this.fillAdminMenuItems();
+      this.createMenu();
     });
   }
 
   ngOnInit(): void {
-    this.fillPublicMenuItems();
-    this.fillAdminMenuItems();
+    this.createMenu();
   }
 
   ngAfterViewInit(): void {
-    console.log(this.active)
     this.subscription.add(this.menu.changes.subscribe((element)=>{
       element.toArray().forEach((element: ElementRef) => {
         fromEvent<Event>(element.nativeElement, "click")
@@ -58,38 +53,61 @@ export class NavigationUiComponent implements OnInit, OnDestroy, AfterViewInit{
     }))
   }
 
-  fillPublicMenuItems(): void {
+  private createMenu(): void {
     this.publicMenuItems = [];
+    this.adminMenuItems = [];
+
+    if(!this.isMobile()) {
+      this.standartMenu();
+      this.additionalMenu('desktop');
+    } else {
+      this.standartMenu();
+      this.additionalMenu('mobile');
+    }
+  }
+
+  private standartMenu(): void {
     this.publicMenuItems.push(new NavMenuItem('Переглянути тваринок', BASE_URL + 'animals'));
     this.publicMenuItems.push(new NavMenuItem('Про нас', BASE_URL + 'about'));
     this.publicMenuItems.push(new NavMenuItem('Допомогти котикам', BASE_URL + 'donate'));
     if(!this.userAuthService.isAuthorized()) this.publicMenuItems.push(new NavMenuItem('Вхід', BASE_URL + 'login'))
   }
 
-  fillAdminMenuItems(): void {
-    this.adminMenuItems = [];
-
+  private additionalMenu(flag: string): void {
     const user = this.userAuthService.getUser();
 
-    if (!user.isActive) {
-      return;
-    }
+    if (!user.isActive) return;
 
-    if (user.permissionForCreateAndCloseAnimalRequests) {
-      this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
+    switch (flag) {
+      case 'desktop':
+        if (user.permissionForCreateAndCloseAnimalRequests) this.adminMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
+        if (user.permissionForCreateAndCloseAnimalRequests) this.adminMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals/list'));
+        if (user.permissionForAddEditAndRemoveUsers) this.adminMenuItems.push(new NavMenuItem('Керування користувачами', BASE_URL + '/admin/users'));
+        this.adminMenuItems.push(new NavMenuItem('Вихiд', BASE_URL + 'login'));
+        break;
+      case 'mobile':
+        if (user.permissionForCreateAndCloseAnimalRequests) this.publicMenuItems.push(new NavMenuItem('Повідомлення про знайдену тварину', BASE_URL + '/admin/animals/find-requests'));
+        if (user.permissionForCreateAndCloseAnimalRequests) this.publicMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals/list'));
+        if (user.permissionForAddEditAndRemoveUsers) this.publicMenuItems.push(new NavMenuItem('Керування користувачами', BASE_URL + '/admin/users'));
+        this.publicMenuItems.push(new NavMenuItem('Вихiд', BASE_URL + 'login'));
+        break;
+      default:
+        break;
     }
-    if (user.permissionForCreateAndCloseAnimalRequests) {
-      this.adminMenuItems.push(new NavMenuItem('Керування обліком тварин', BASE_URL + '/admin/animals/list'));
-    }
-    if (user.permissionForAddEditAndRemoveUsers) {
-      this.adminMenuItems.push(new NavMenuItem('Керування користувачами', BASE_URL + '/admin/users'));
-    }
-
-    this.adminMenuItems.push(new NavMenuItem('Вихiд', BASE_URL + 'login'));
   }
 
   isAuth(): boolean{
     return this.userAuthService.isAuthorized()
+  }
+
+  isMobile(): boolean {
+    const width = Math.max(
+      document.body.scrollWidth, document.documentElement.scrollWidth,
+      document.body.offsetWidth, document.documentElement.offsetWidth,
+      document.body.clientWidth, document.documentElement.clientWidth
+    );
+
+    return width <= 767;
   }
 
   ngOnDestroy(): void {
