@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../../../environments';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserAuthService} from '../../../shared/services/user-auth-service/user-auth.service';
 import {FileReaderAsDataUrl} from '../../../shared/models/file-reader-as-data-url';
@@ -8,9 +7,29 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {IAdminAnimalDetailsPostPatchRequest} from './models/i-admin-animal-details-post-patch-request';
 import {AnimalDetailsConverters} from './models/animal-details-converters';
 import {IAdminAnimalDetailsGetResponse} from './models/i-admin-animal-details-get-response';
-import {convertTimestampToLocalDateTime} from '../../../shared/models/convert-timestamp-to-locale-date-time';
 import {ADMIN_ANIMALS_URL, API_ADMIN_ANIMALS_URL} from '../models/urls';
 import {IAdminAnimalDetailsRequestResponseBaseParams} from './models/i-admin-animal-details-request-response-base-params';
+import {IAdminAnimalDetails} from './models/i-admin-animal-details';
+
+class AdminAnimalDetails implements IAdminAnimalDetails {
+  age = 0;
+  animalHasFamily = false;
+  breed = '';
+  color = '';
+  complexVaccination = false;
+  createdAt = '';
+  editedBy = '';
+  features = '';
+  id = '';
+  imageUrl = '';
+  name = '';
+  rabiesVaccination = false;
+  responsiblePerson = '';
+  sex = '';
+  showInGallery = false;
+  sterilization = false;
+  updatedAt = '';
+}
 
 
 @Component({
@@ -21,12 +40,11 @@ import {IAdminAnimalDetailsRequestResponseBaseParams} from './models/i-admin-ani
 export class AdminAnimalDetailsComponent {
   animalsChangePermission = this.userAuthService.getUser().permissionForAddEditAndRemoveAnimals; // todo rework to subscription if need
 
+  adminAnimalDetails: IAdminAnimalDetails = new AdminAnimalDetails();
+  formWasChanged = false;
+
   loadedPhotoFile?: File;
   imagePreview = '';
-  imageUrl = '';
-  createdAt = '';
-  updatedAt = '';
-  editedBy = '';
 
   form: FormGroup = this.formBuilder.group({ // todo add validators
       id: new FormControl(''),
@@ -51,6 +69,7 @@ export class AdminAnimalDetailsComponent {
               private userAuthService: UserAuthService,
               private formBuilder: FormBuilder) {
     this.getAnimal(activatedRouter.snapshot.params.id);
+    this.form.valueChanges.subscribe(val => this.formWasChanged = true);
   }
 
   public getAnimal(id?: number | string): void {
@@ -59,26 +78,23 @@ export class AdminAnimalDetailsComponent {
     }
 
     this.httpClient.get<IAdminAnimalDetailsGetResponse>(`${API_ADMIN_ANIMALS_URL}/${id}`).subscribe((res) => {
+      this.adminAnimalDetails = AnimalDetailsConverters.convertAnimalGetResponseToAdminAnimalDetails(res);
       this.form.setValue({
-        id: res.id,
-        name: res.name,
-        age: res.age,
-        breed: res.breed,
-        sex: res.sex,
-        color: res.color,
-        features: res.features,
-        responsiblePerson: res.responsible_person,
-        complexVaccination: res.complex_vaccination,
-        rabiesVaccination: res.rabies_vaccination,
-        sterilization: res.sterilization,
-        animalHasFamily: res.animal_has_family,
-        showInGallery: res.show_in_gallery,
+        id: this.adminAnimalDetails.id,
+        name: this.adminAnimalDetails.name,
+        age: this.adminAnimalDetails.age,
+        breed: this.adminAnimalDetails.breed,
+        sex: this.adminAnimalDetails.sex,
+        color: this.adminAnimalDetails.color,
+        features: this.adminAnimalDetails.features,
+        responsiblePerson: this.adminAnimalDetails.responsiblePerson,
+        complexVaccination: this.adminAnimalDetails.complexVaccination,
+        rabiesVaccination: this.adminAnimalDetails.rabiesVaccination,
+        sterilization: this.adminAnimalDetails.sterilization,
+        animalHasFamily: this.adminAnimalDetails.animalHasFamily,
+        showInGallery: this.adminAnimalDetails.showInGallery,
       });
-
-      this.imageUrl = res.image ? environment.serverHost + res.image.file.url : '';
-      this.createdAt = convertTimestampToLocalDateTime(res.created_at);
-      this.updatedAt = convertTimestampToLocalDateTime(res.updated_at);
-      this.editedBy = res.edited_by;
+      this.formWasChanged = false;
     });
   }
 
@@ -139,5 +155,9 @@ export class AdminAnimalDetailsComponent {
 
   submitErrorHandler(err: Error): void {
     alert('Сталася помилка при відправці форми: ' + err.message);
+  }
+
+  printAnimal(): void {
+    AnimalDetailsConverters.convertToPdf(this.adminAnimalDetails);
   }
 }

@@ -79,7 +79,7 @@
 
     <div class="admin-details-form-field-container">
       <label class="label" for="imgUrl">Зображення:</label>
-      <img src="{{imagePreview || imageUrl}}" width="100%" alt="Image preview...">
+      <img src="{{imagePreview || adminAnimalDetails.imageUrl}}" width="100%" alt="Image preview...">
       <input class="input"
              id="imgUrl"
              type="file"
@@ -126,7 +126,8 @@
              type="checkbox"
              [readonly]="formReadonlyFieldCheck()"/>
     </section>
-
+  </form>
+  <div class="buttons-container">
     <button class="button admin-details-form-field-submit-button"
             type="button"
             *ngIf="form.value.id && animalsChangePermission"
@@ -139,23 +140,28 @@
             (click)="submitAddAnimal()"
             [disabled]="form.invalid">Додати тварину
     </button>
-  </form>
+    <button class="button admin-details-form-field-submit-button"
+            type="button"
+            (click)="printAnimal()"
+            [disabled]="formWasChanged">Друкувати
+    </button>
+  </div>
 
-  <div class="admin-details-form-field-container" *ngIf="updatedAt">
+  <div class="admin-details-form-field-container" *ngIf="adminAnimalDetails.updatedAt">
     <label class="label" for="dateLastEdit">Дата останнього редагування:</label>
-    <input class="input" id="dateLastEdit" value="{{updatedAt}}"
+    <input class="input" id="dateLastEdit" value="{{adminAnimalDetails.updatedAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="updatedAt">
+  <div class="admin-details-form-field-container" *ngIf="adminAnimalDetails.updatedAt">
     <label class="label" for="dateAdded">Тварина додавання тварини:</label>
-    <input class="input" id="dateAdded" value="{{createdAt}}"
+    <input class="input" id="dateAdded" value="{{adminAnimalDetails.createdAt}}"
            readonly="readonly"/>
   </div>
 
-  <div class="admin-details-form-field-container" *ngIf="updatedAt">
+  <div class="admin-details-form-field-container" *ngIf="adminAnimalDetails.updatedAt">
     <label class="label" for="editedBy">Останні зміни внесені користувачем:</label>
-    <input class="input" id="editedBy" value="{{editedBy}}" readonly="readonly"/>
+    <input class="input" id="editedBy" value="{{adminAnimalDetails.editedBy}}" readonly="readonly"/>
   </div>
 </div>
 

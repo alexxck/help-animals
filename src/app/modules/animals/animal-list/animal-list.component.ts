@@ -25,6 +25,7 @@ export class AnimalListComponent implements OnDestroy {
   constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) {
     this.pagination = new Pagination();
     this.pagination.url = ANIMALS_URL;
+    this.pagination.perPage = 12;
 
     this.querySubscription = this.activatedRoute.queryParams.subscribe(
       (queryParam: Params) => {

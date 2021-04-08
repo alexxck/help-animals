@@ -14,8 +14,14 @@
   height: auto;
 }
 
-.caption{
+.caption {
   font-size: var(--default-component-font-size);
   font-weight: 600;
   text-align: center;
+}
+
+.buttons-container {
+  display: grid;
+  grid-auto-flow: column;
+  max-width: 600px;
 }
