@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "startJsonServer": "json-server --watch ./api/db.json --port 3001",
-    "buildProduction": "ng build --prod --base-href ./",
+    "buildProductionBaseHrefRoot": "ng build --prod --base-href ./",
+    "buildProduction": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
