@@ -34,6 +34,6 @@ jobs:
         run: |
           sudo apt update && sudo apt upgrade -y
           sudo apt install curl gnupg -y
-          curl -sL https://deb.nodesource.com/setup_12.x  | bash -
+          sudo curl -sL https://deb.nodesource.com/setup_12.x  | bash -
           sudo apt-get install nodejs -y
 
